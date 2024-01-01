@@ -7,11 +7,21 @@ export ZSH="$HOME/.oh-my-zsh"
 alias rl="source ~/.zshrc"
 alias hgrep="history | grep "
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
+
+fzcd () {
+    choice=$(fd -H . "$HOME" -tdirectory | \
+        fzf --scheme=path --color=16,fg+:magenta,prompt:green,pointer:green)
+    if [ "$choice" ]; then
+        cd "$choice"
+        clear
+        precmd
+        zle reset-prompt
+    fi
+}
+
+zle -N fzcd
+bindkey '^o' fzcd
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
