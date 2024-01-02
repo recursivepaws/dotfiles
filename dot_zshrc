@@ -6,6 +6,8 @@ export ZSH="$HOME/.oh-my-zsh"
 
 alias rl="source ~/.zshrc"
 alias hgrep="history | grep "
+alias setclip="xclip -selection c"
+alias getclip="xclip -selection c -o"
 
 ZSH_THEME="robbyrussell"
 
