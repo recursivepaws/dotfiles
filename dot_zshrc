@@ -17,7 +17,6 @@ fzcd () {
     if [ "$choice" ]; then
         cd "$choice"
         clear
-        precmd
         zle reset-prompt
     fi
 }
