@@ -1,5 +1,5 @@
 return {
-	--{ 'preservim/nerdtree' },
+	{ "preservim/nerdtree" },
 	{ "ryanoasis/vim-devicons" },
 	--lazy
 	{
