@@ -24,7 +24,7 @@ return {
 				formatters_by_ft = {
 					lua = { "stylua" },
 					sh = { "shfmt" },
-					rust = { "rust_analyzer" },
+					rust = { "rust-analyzer" },
 				},
 				format_on_save = {
 					timeout_ms = 500,

@@ -7,7 +7,8 @@ return {
 		},
 	},]]
 	-- Disable some of the default LazyVim plugins
-  -- 
+	--
+	{ "lambdalisue/suda.vim" },
 	{ "akinsho/bufferline.nvim", enabled = false },
 	{ "windwp/nvim-autopairs", config = true },
 	{ "tpope/vim-fugitive" },

@@ -7,5 +7,5 @@ return {
 		-- vim.keymap.set("n", "<N-j>", moveline.down)
 		-- vim.keymap.set("v", "<N-k>", moveline.block_up)
 		-- vim.keymap.set("v", "<N-j>", moveline.block_down)
-	end
+	end,
 }
