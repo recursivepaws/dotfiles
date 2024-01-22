@@ -26,7 +26,6 @@ local function map(mode, lhs, rhs, opts)
 end
 
 vim.g.mapleader = " "
-
 -- Disable arrow keys
 map("", "<up>", "<nop>")
 map("", "<down>", "<nop>")
