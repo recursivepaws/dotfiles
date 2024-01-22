@@ -1,8 +1,13 @@
 return {
 	"hrsh7th/nvim-cmp",
 	dependencies = {
+		-- Load lsp first
 		"neovim/nvim-lspconfig",
+		-- Lsp completion source
 		"hrsh7th/cmp-nvim-lsp",
+		-- Useful completion sources
+		"hrsh7th/cmp-nvim-lsp-signature-help",
+		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-vsnip",
@@ -38,10 +43,30 @@ return {
 				end, { "i", "s" }),
 			},
 			sources = {
-				{ name = "vsnip" },
-				{ name = "buffer" },
+				{ name = "nvim_lsp", keyword_length = 3 },
+				{ name = "nvim_lsp_signature_help" },
+				{ name = "nvim_lua", keyword_length = 2 },
+				{ name = "vsnip", keyword_length = 2 },
+				{ name = "buffer", keyword_length = 2 },
 				{ name = "path" },
 				{ name = "cmdline" },
+			},
+			window = {
+				completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered(),
+			},
+			formatting = {
+				fields = { "menu", "abbr", "kind" },
+				format = function(entry, item)
+					local menu_icon = {
+						nvim_lsp = "λ",
+						vsnip = "⋗",
+						buffer = "Ω",
+						path = "🖫",
+					}
+					item.menu = menu_icon[entry.source.name]
+					return item
+				end,
 			},
 		})
 	end,

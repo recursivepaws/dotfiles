@@ -41,7 +41,6 @@ return {
 				"pylsp",
 				"marksman",
 				"ltex",
-				"codelldb",
 			},
 		})
 	end,
