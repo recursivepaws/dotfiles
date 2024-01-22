@@ -4,7 +4,15 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-alias rl="source ~/.zshrc && source ~/.bashrc"
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+	PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+
+PATH="$HOME/go/bin/:$HOME/.cargo/bin/:/usr/local/go/bin/:$PATH"
+export PATH
+
+alias rl="source ~/.zshrc"
 alias hgrep="history | grep "
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
@@ -116,3 +124,12 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+PATH="/home/veragonzalez/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/veragonzalez/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/veragonzalez/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/veragonzalez/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/veragonzalez/perl5"; export PERL_MM_OPT;
+
+# opam configuration
+[[ ! -r /home/veragonzalez/.opam/opam-init/init.zsh ]] || source /home/veragonzalez/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null

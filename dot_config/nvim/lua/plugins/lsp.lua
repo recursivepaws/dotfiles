@@ -29,30 +29,19 @@ return {
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			ensure_installed = {
-				"rust_analyzer",
 				"lua_ls",
-			},
-		})
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
-		lspconfig.rust_analyzer.setup({
-			capabilities = capabilities,
-			settings = {
-				["rust-analyzer"] = {
-					imports = {
-						granularity = {
-							group = "module",
-						},
-						prefix = "self",
-					},
-					cargo = {
-						buildScripts = {
-							enable = true,
-						},
-					},
-					procMacro = {
-						enable = true,
-					},
-				},
+				"html",
+				"ocamllsp",
+				"clangd",
+				"cssls",
+				"gopls",
+				"biome",
+				"taplo",
+				"sqlls",
+				"pylsp",
+				"marksman",
+				"ltex",
+				"codelldb",
 			},
 		})
 	end,

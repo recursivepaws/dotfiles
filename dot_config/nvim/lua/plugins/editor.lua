@@ -1,21 +1,28 @@
 return {
-	{ "preservim/nerdtree" },
+	-- Dev icons
 	{ "ryanoasis/vim-devicons" },
-	--lazy
+	--[[ File browser
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 	},
+	--]]
+	-- Indent blank lines
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+	-- Better diagnostics, references, quickfixes, telescope results
 	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {},
 	},
+	-- Indicate git differences in editor
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
 			require("gitsigns").setup()
 		end,
 	},
+	-- Run formatters on save
 	{
 		"stevearc/conform.nvim",
 		opts = {},
@@ -24,7 +31,6 @@ return {
 				formatters_by_ft = {
 					lua = { "stylua" },
 					sh = { "shfmt" },
-					rust = { "rust-analyzer" },
 				},
 				format_on_save = {
 					timeout_ms = 500,
@@ -32,5 +38,12 @@ return {
 				},
 			})
 		end,
+	},
+	-- Rust-specific quality of life
+	{
+		"mrcjkb/rustaceanvim",
+		version = "^3", -- Recommended
+		ft = { "rust" },
+		dependencies = { "mfussenegger/nvim-dap" },
 	},
 }
