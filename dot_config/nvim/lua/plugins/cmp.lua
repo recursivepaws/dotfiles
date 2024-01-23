@@ -41,6 +41,7 @@ return {
 						fallback()
 					end
 				end, { "i", "s" }),
+				["<S-Tab>"] = cmp.mapping.select_prev_item(),
 			},
 			sources = {
 				{ name = "nvim_lsp", keyword_length = 3 },

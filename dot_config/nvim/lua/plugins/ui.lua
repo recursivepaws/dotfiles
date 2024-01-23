@@ -13,6 +13,7 @@ return {
 			vim.notify = require("notify")
 		end,
 	},
+	-- Improved file search
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.5",
@@ -91,4 +92,6 @@ return {
 			})
 		end,
 	},
+	-- Markdown rendering
+	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
 }
