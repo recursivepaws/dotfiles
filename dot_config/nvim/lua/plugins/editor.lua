@@ -1,12 +1,6 @@
 return {
 	-- Dev icons
 	{ "ryanoasis/vim-devicons" },
-	--[[ File browser
-	{
-		"nvim-telescope/telescope-file-browser.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-	},
-	--]]
 	-- Indent blank lines
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 	-- Better diagnostics, references, quickfixes, telescope results
@@ -42,7 +36,7 @@ return {
 	-- Rust-specific quality of life
 	{
 		"mrcjkb/rustaceanvim",
-		version = "^3", -- Recommended
+		version = "^3",
 		ft = { "rust" },
 		dependencies = { "mfussenegger/nvim-dap" },
 	},
