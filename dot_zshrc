@@ -12,7 +12,7 @@ fi
 PATH="$HOME/go/bin/:$HOME/.cargo/bin/:/usr/local/go/bin/:$PATH"
 export PATH
 
-alias rl="source ~/.zshrc"
+alias rl="source ~/.zshrc; kill -SIGUSR1 $(pgrep kitty)"
 alias hgrep="history | grep "
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
