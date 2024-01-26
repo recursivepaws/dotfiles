@@ -30,18 +30,24 @@ return {
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
-					elseif vim.fn["vsnip#available"](1) == 1 then
-						vim.api.nvim_feedkeys(
-							vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true),
-							""
-						)
+					elseif luasnip.expand_or_jumpable() then
+						luasnip.expand_or_jump()
 					elseif has_words_before() then
 						cmp.complete()
 					else
 						fallback()
 					end
-				end, { "i", "s" }),
-				["<S-Tab>"] = cmp.mapping.select_prev_item(),
+				end),
+				["<S-Tab>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						cmp.select_prev_item()
+					elseif luasnip.jumpable(-1) then
+						luasnip.jump(-1)
+					else
+						fallback()
+					end
+				end),
+				["<CR>"] = cmp.mapping.confirm({ select = false }),
 			},
 			sources = {
 				{ name = "nvim_lsp", keyword_length = 3 },
