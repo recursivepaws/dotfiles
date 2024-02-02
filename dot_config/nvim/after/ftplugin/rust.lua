@@ -20,3 +20,15 @@ vim.keymap.set("n", "<leader>r", vim.lsp.buf.references, { buffer = bufnr })
 vim.keymap.set("n", "<leader>f", function()
 	vim.lsp.buf.format({ async = true })
 end, { buffer = bufnr })
+
+vim.g.rustaceanvim = {
+	server = {
+		settings = {
+			["rust-analyzer"] = {
+				cargo = {
+					features = "all",
+				},
+			},
+		},
+	},
+}

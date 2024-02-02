@@ -1,8 +1,9 @@
 [user]
 	email = me@vera.lgbt
 	name = Vera Gonzalez
-
 [include]
 	path = ~/.gitalias
+[core]
+	editor = nvim
 [commit]
 	gpgsign = true
