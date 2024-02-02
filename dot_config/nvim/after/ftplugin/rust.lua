@@ -1,5 +1,7 @@
 local bufnr = vim.api.nvim_get_current_buf()
 
+-- Semicolon
+vim.keymap.set("n", ";;", "$a;<Esc>", { buffer = bufnr })
 -- Declaration
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr })
 -- Definition
