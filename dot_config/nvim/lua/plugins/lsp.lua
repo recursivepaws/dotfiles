@@ -21,12 +21,28 @@ return {
 					-- "clangd",
 					"cssls",
 					"gopls",
-					"biome",
+					-- "biome",
+					"tsserver",
+					"eslint",
+					"html",
+					"cssls",
 					"taplo",
 					"sqlls",
 					"pylsp",
 					"marksman",
 					"ltex",
+				},
+				handlers = {
+					["tsserver"] = function()
+						lspconfig.tsserver.setup({
+							capabilities = lsp_capabilities,
+							settings = {
+								completions = {
+									completeFunctionCalls = true,
+								},
+							},
+						})
+					end,
 				},
 			})
 		end,
