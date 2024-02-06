@@ -82,10 +82,10 @@
   l = log
   m = merge
   o = checkout
-  p = pull
+  j = pull
+  k = push
   s = status
   w = whatchanged
-  pu = push
 
   ##
   # Short aliases for frequent commands and options.
