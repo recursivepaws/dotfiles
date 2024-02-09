@@ -12,6 +12,11 @@ return {
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-vsnip",
 		"hrsh7th/vim-vsnip",
+		{
+			"L3MON4D3/LuaSnip",
+			version = "v2.*",
+			build = "make install_jsregexp",
+		},
 	},
 	config = function()
 		local has_words_before = function()
@@ -20,6 +25,7 @@ return {
 		end
 
 		local cmp = require("cmp")
+		local luasnip = require("luasnip")
 		cmp.setup({
 			snippet = {
 				expand = function(args)
