@@ -5,7 +5,7 @@ if [ ${EUID} != 0 ]; then
 	exit 1
 fi
 
-echo "Installing Kitty, Firefox, ..."
+echo "Installing GUI Apps"
 
 # Install
-dnf install -y kitty firefox
+dnf install -y kitty firefox telegram-desktop geary
