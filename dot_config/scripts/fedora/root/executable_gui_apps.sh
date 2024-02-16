@@ -5,5 +5,7 @@ if [ ${EUID} != 0 ]; then
 	exit 1
 fi
 
+echo "Installing Kitty, Firefox, ..."
+
 # Install
-dnf install -y kitty
+dnf install -y kitty firefox
