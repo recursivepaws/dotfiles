@@ -2,8 +2,6 @@
 session="banyan-develop"
 
 banyan_path="~/Documents/banyan"
-cd $banyan_path
-
 core_path="$banyan_path/banyan-core"
 
 tmux new-session -d -s $session
