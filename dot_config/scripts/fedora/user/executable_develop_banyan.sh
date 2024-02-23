@@ -27,7 +27,7 @@ tmux split-window -v -t $session:$window
 tmux send-keys -t $session:$window "cd $core_path/crates/banyan-staging-service && clear" C-m
 
 tmux split-window -v -t $session:$window
-tmux send-keys -t $session:$window "cd $core_path/crates/banyan-staging-service && clear" C-m
+tmux send-keys -t $session:$window "cd $core_path/crates/banyan-storage-provider-service && clear" C-m
 
 tmux select-layout -t $session:$window even-horizontal
 
