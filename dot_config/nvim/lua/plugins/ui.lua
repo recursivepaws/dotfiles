@@ -49,8 +49,24 @@ return {
 	{
 		"xiyaowong/transparent.nvim",
 	},
-	-- Classic file browser
-	{ "preservim/nerdtree" },
+	-- Modify filesystem
+	{
+		"stevearc/oil.nvim",
+		opts = {},
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("oil").setup()
+		end,
+	},
+	-- Quickly navigate filesystem
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("harpoon").setup()
+		end,
+	},
 	-- Statusline
 	{
 		"sontungexpt/sttusline",

@@ -15,6 +15,10 @@ tmux new-window -t $session:$window -n "core"
 tmux send-keys -t $session:$window "cd ~/Documents/banyan/banyan-core && clear && nvim" C-m
 
 window=3
+tmux new-window -t $session:$window -n "js"
+tmux send-keys -t $session:$window "cd ~/Documents/banyan/banyan-core/crates/banyan-core-service/frontend && clear && nvim" C-m
+
+window=4
 tmux new-window -t $session:$window -n "run"
 tmux send-keys -t $session:$window "cd $core_path && clear" C-m
 
