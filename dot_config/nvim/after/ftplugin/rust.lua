@@ -27,6 +27,9 @@ vim.g.rustaceanvim = {
 	server = {
 		settings = {
 			["rust-analyzer"] = {
+				server = {
+					path = "/usr/bin/ra-multiplex",
+				},
 				cargo = {
 					features = "all",
 				},
@@ -35,12 +38,18 @@ vim.g.rustaceanvim = {
 	},
 }
 
+-- { "rust-analyzer.server.path": "~/.local/bin/rust-analyzer-linux" }
+
 -- Custom tooling to update the Rust Analyzer target spontaneously
 function UpdateRustAnalyzerTarget(newTarget)
 	require("lspconfig").rust_analyzer.setup({
 		settings = {
 			["rust-analyzer"] = {
+				server = {
+					path = "/usr/bin/ra-multiplex",
+				},
 				cargo = {
+					features = "all",
 					target = newTarget,
 				},
 			},
