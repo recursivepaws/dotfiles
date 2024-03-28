@@ -6,6 +6,7 @@
 	path = ~/.gitalias
 
 [core]
+	excludesfile = ~/.gitignore
 	editor = nvim
 	pager = delta
 
@@ -20,7 +21,29 @@
 	conflictstyle = diff3
 
 [diff]
+	algorithm = histogram
 	colorMoved = default
 
 [commit]
+	verbose = true
 	gpgsign = true
+
+[pull]
+	rebase = true
+
+[rebase]
+	autosquash = true
+	autostash = true
+
+[push]
+	default = current
+
+[init]
+	defaultBranch = main
+
+[rerere]
+	enabled = true
+
+[help]
+	autocorrect = 10
+
