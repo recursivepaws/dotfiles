@@ -1,4 +1,5 @@
 return {
+	{ "Asheq/close-buffers.vim" },
 	-- Gain sudo rw access when needed
 	{ "lambdalisue/suda.vim" },
 	-- Auto pair parens of all kinds
