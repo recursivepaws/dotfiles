@@ -103,9 +103,10 @@ return {
 			vim.keymap.set("n", "<C-w>", function()
 				harpoon:list():prev()
 			end)
-			vim.keymap.set("n", "<C-r>", function()
-				harpoon:list():next()
-			end)
+
+			--vim.keymap.set("n", "<C-r>", function()
+			--harpoon:list():next()
+			--end)
 		end,
 	},
 	-- Statusline
