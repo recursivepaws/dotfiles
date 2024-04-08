@@ -133,3 +133,4 @@ PERL_MM_OPT="INSTALL_BASE=/home/veragonzalez/perl5"; export PERL_MM_OPT;
 
 # opam configuration
 [[ ! -r /home/veragonzalez/.opam/opam-init/init.zsh ]] || source /home/veragonzalez/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+

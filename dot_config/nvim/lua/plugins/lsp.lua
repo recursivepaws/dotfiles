@@ -15,36 +15,48 @@ return {
 			require("mason").setup()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
+					-- Lua
 					"lua_ls",
+					-- Web
 					"html",
-					-- "ocamllsp",
-					-- "clangd",
 					"cssls",
-					"gopls",
-					-- "biome",
 					"tsserver",
 					"eslint",
-					"html",
-					"cssls",
+					-- C
+					"clangd",
+					-- OpenGL
+					"glsl_analyzer",
+					-- Toml
 					"taplo",
+					-- SQL
 					"sqlls",
+					-- Python
 					"pylsp",
+					-- Markdown
 					"marksman",
+					-- LaTex
 					"ltex",
 				},
-				handlers = {
-					["tsserver"] = function()
-						lspconfig.tsserver.setup({
-							capabilities = lsp_capabilities,
-							settings = {
-								completions = {
-									completeFunctionCalls = true,
-								},
-							},
-						})
-					end,
-				},
 			})
+			-- Web
+			lspconfig.tsserver.setup({})
+			lspconfig.eslint.setup({})
+			-- C
+			lspconfig.clangd.setup({})
+			-- OpenGL
+			lspconfig.glsl_analyzer.setup({})
+			-- Toml
+			lspconfig.taplo.setup({})
+			-- SQL
+			lspconfig.sqlls.setup({})
+			-- Python
+			lspconfig.pylsp.setup({})
+			-- Markdown
+			lspconfig.marksman.setup({
+				filetypes = { "markdown", "markdown.mdx", "md", "mdx" },
+			})
+			-- LaTex
+			lspconfig.ltex.setup({})
 		end,
 	},
 }

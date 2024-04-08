@@ -38,16 +38,4 @@ map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
 
--- Terminal mappings
-map("n", "<C-t>", ":term<CR>", { noremap = true }) -- open
-map("t", "<Esc>", "<C-\\><C-n>:q!<CR>") --, { noremap = true })                    -- exit
-
-vim.g.neovide_scale_factor = 0.75
-vim.g.neovide_scroll_animation_length = 0.15
-vim.g.neovide_cursor_animation_length = 0.10
-vim.g.neovide_hide_mouse_when_typing = true
-vim.g.neovide_refresh_rate = 60
-vim.g.neovide_no_idle = true
-vim.g.neovide_profiler = true
-
 require("lazy").setup("plugins")

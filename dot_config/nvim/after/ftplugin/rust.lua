@@ -27,9 +27,6 @@ vim.g.rustaceanvim = {
 	server = {
 		settings = {
 			["rust-analyzer"] = {
-				server = {
-					path = "/usr/bin/ra-multiplex",
-				},
 				cargo = {
 					features = "all",
 				},
@@ -45,9 +42,6 @@ function UpdateRustAnalyzerTarget(newTarget)
 	require("lspconfig").rust_analyzer.setup({
 		settings = {
 			["rust-analyzer"] = {
-				server = {
-					path = "/usr/bin/ra-multiplex",
-				},
 				cargo = {
 					features = "all",
 					target = newTarget,
