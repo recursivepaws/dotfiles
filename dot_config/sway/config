@@ -23,7 +23,7 @@ set $menu bemenu-run | xargs swaymsg exec --
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg ~/Pictures/wallpaper.jpg fill scale 1.5
+output * bg ~/.config/sway/wallpaper.jpg fill scale 1.5
 
 # Show if windows are xWayland
 for_window [shell="^((?!xdg_shell).)*$"] title_format "%title :: %shell"
