@@ -41,13 +41,47 @@ return {
 		"nvimdev/dashboard-nvim",
 		event = "VimEnter",
 		config = function()
-			require("dashboard").setup()
+			require("dashboard").setup({
+				theme = "hyper",
+				config = {
+					header = {
+						"",
+						"    _   __ ______ ____  _    __ ____ __  ___",
+						"   / | / // ____// __ \\| |  / //  _//  |/  /",
+						"  /  |/ // __/  / / / /| | / / / / / /|_/ / ",
+						" / /|  // /___ / /_/ / | |/ /_/ / / /  / /  ",
+						"/_/ |_//_____/ \\____/  |___//___//_/  /_/   ",
+						"                                            ",
+						"",
+					},
+					disable_move = { false },
+					shortcut = {
+						{ desc = "󰊳 Update", group = "@property", action = "PlugUpdate", key = "u" },
+						{
+							icon = " ",
+							icon_hl = "@variable",
+							desc = "Files",
+							group = "Label",
+							action = "Files",
+							key = "f",
+						},
+					},
+					packages = { false },
+					project = { enable = true },
+					mru = { limit = 7 },
+					footer = {},
+				},
+			})
 		end,
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 	-- Makes the window transparent
 	{
 		"xiyaowong/transparent.nvim",
+		config = function()
+			require("transparent").setup()
+			vim.cmd([[TransparentEnable]])
+		end,
 	},
 	-- Modify filesystem
 	{
