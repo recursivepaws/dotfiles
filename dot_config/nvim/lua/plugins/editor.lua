@@ -2,7 +2,21 @@ return {
 	-- Dev icons
 	{ "ryanoasis/vim-devicons" },
 	-- Indent blank lines
-	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {},
+		config = function()
+			require("ibl")
+			-- Hide indent guides
+			vim.api.nvim_create_autocmd({ "VimEnter" }, {
+				command = "IBLDisable",
+			})
+			vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+				command = "IBLEnable",
+			})
+		end,
+	},
 	-- Better diagnostics, references, quickfixes, telescope results
 	{
 		"folke/trouble.nvim",
