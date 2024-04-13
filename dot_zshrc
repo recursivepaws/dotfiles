@@ -14,7 +14,7 @@ export PATH
 
 export GPG_TTY=$(tty)
 
-alias rl="source ~/.zshrc; kill -SIGUSR1 $(pgrep kitty)"
+alias rl="source ~/.bashrc; source ~/.zshrc; kill -SIGUSR1 $(pgrep kitty)"
 alias hgrep="history | grep "
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
@@ -33,6 +33,13 @@ fzcd () {
 
 zle -N fzcd
 bindkey '^o' fzcd
+
+
+name=$(cat /etc/hostname)
+if [[ `uname` == Linux ]] then
+    /usr/bin/keychain $HOME/.ssh/id_ed25519
+	source $HOME/.keychain/$name-sh
+fi
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
