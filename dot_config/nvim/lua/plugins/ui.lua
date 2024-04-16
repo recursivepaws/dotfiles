@@ -9,8 +9,9 @@ return {
 	-- Improves notification display
 	{
 		"rcarriga/nvim-notify",
+		lazy = false,
 		config = function()
-			vim.notify = require("notify")
+			require("notify").setup({ timeout = 50 })
 		end,
 	},
 	-- Improved file search

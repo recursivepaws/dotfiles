@@ -28,7 +28,7 @@ vim.g.rustaceanvim = {
 		settings = {
 			["rust-analyzer"] = {
 				cargo = {
-					features = "all",
+					--features = "all",
 				},
 			},
 		},
@@ -43,7 +43,7 @@ function UpdateRustAnalyzerTarget(newTarget)
 		settings = {
 			["rust-analyzer"] = {
 				cargo = {
-					features = "all",
+					--features = "all",
 					target = newTarget,
 				},
 			},
