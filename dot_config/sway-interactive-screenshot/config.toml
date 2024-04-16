@@ -1,0 +1,14 @@
+[screenshot]
+prompt = "📷> "
+save_dir = "~/Pictures/screenshots/"
+file_name = "%Y-%m-%d_%H:%M:%S.png"
+type = "png"
+png_level = 6
+cursor = false
+
+[screencast]
+prompt = "📹> "
+pid_file = "${XDG_RUNTIME_DIR}/sway-interactive-screenshot.${WAYLAND_DISPLAY}.video.pid"
+save_dir = "~/Videos/screencasts/"
+file_name = "%Y-%m-%d_%H:%M:%S.mkv"
+audio = "ask" # "yes" or "no"

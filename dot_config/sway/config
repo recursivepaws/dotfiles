@@ -234,4 +234,10 @@ bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next 
 bindsym XF86AudioPrev exec playerctl previous 
 
+#
+# Screen Capture
+#
+bindsym Shift+Print exec /usr/bin/sway-interactive-screenshot 
+bindsym $mod+Shift+Print exec /usr/bin/sway-interactive-screenshot --video
+
 include /etc/sway/config.d/*
