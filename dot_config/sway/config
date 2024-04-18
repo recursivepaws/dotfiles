@@ -237,7 +237,8 @@ bindsym XF86AudioPrev exec playerctl previous
 #
 # Screen Capture
 #
-bindsym Shift+Print exec /usr/bin/sway-interactive-screenshot 
-bindsym $mod+Shift+Print exec /usr/bin/sway-interactive-screenshot --video
+set $sis $(which sway-interactive-screenshot)
+bindsym Shift+Print exec $sis 
+bindsym $mod+Shift+Print exec $sis --video
 
 include /etc/sway/config.d/*
