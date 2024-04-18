@@ -21,6 +21,7 @@
         "network",
         "power-profiles-daemon",
         "cpu",
+		"custom/gpu-usage",
         "memory",
         "temperature",
         "backlight",
@@ -113,6 +114,12 @@
         "format": "{usage}% ",
         "tooltip": false
     },
+	"custom/gpu-usage": {
+		"exec": "~/.config/waybar/gpu-usage.sh",
+		"format": "GPU: {}",
+		"return-type": "",
+		"interval": 1
+	},
     "memory": {
         "format": "{}% "
     },
