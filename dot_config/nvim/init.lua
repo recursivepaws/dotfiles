@@ -17,6 +17,13 @@ vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
 vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
 vim.o.termguicolors = true
 
+vim.g.clipboard = {
+	name = "osc52",
+	copy = { ["+"] = { "wl-copy" }, ["*"] = { "wl-copy" } },
+	paste = { ["+"] = { "wl-paste" }, ["*"] = { "wl-paste" } },
+}
+vim.o.clipboard = "unnamedplus"
+
 --
 local function map(mode, lhs, rhs, opts)
 	local options = { noremap = true, silent = true }
