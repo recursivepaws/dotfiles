@@ -14,6 +14,7 @@ return {
 			local lspconfig = require("lspconfig")
 			require("mason").setup()
 			require("mason-lspconfig").setup({
+				automatic_installation = true,
 				ensure_installed = {
 					-- Lua
 					"lua_ls",
@@ -36,6 +37,8 @@ return {
 					"marksman",
 					-- LaTex
 					"ltex",
+					-- WGPU
+					"wgsl_analyzer",
 				},
 			})
 			-- Web
@@ -57,6 +60,14 @@ return {
 			})
 			-- LaTex
 			lspconfig.ltex.setup({})
+			-- WGPU
+			vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+				pattern = "*.wgsl",
+				callback = function()
+					vim.bo.filetype = "wgsl"
+				end,
+			})
+			lspconfig.wgsl_analyzer.setup({})
 		end,
 	},
 }
