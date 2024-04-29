@@ -37,7 +37,7 @@ bindkey '^o' fzcd
 
 name=$(cat /etc/hostname)
 if [[ `uname` == Linux ]] then
-    /usr/bin/keychain $HOME/.ssh/id_ed25519
+    /usr/bin/keychain --quiet $HOME/.ssh/id_ed25519
 	source $HOME/.keychain/$name-sh
 fi
 
