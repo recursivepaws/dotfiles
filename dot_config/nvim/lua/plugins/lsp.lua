@@ -35,6 +35,8 @@ return {
 					"pylsp",
 					-- Markdown
 					"marksman",
+					-- MDX
+					"mdx_analyzer",
 					-- LaTex
 					"ltex",
 					-- WGPU
@@ -55,9 +57,14 @@ return {
 			-- Python
 			lspconfig.pylsp.setup({})
 			-- Markdown
-			lspconfig.marksman.setup({
-				filetypes = { "markdown", "markdown.mdx", "md", "mdx" },
+			vim.filetype.add({
+				extension = {
+					md = "markdown.md",
+					mdx = "markdown.mdx",
+				},
 			})
+			lspconfig.marksman.setup({})
+			lspconfig.mdx_analyzer.setup({})
 			-- LaTex
 			lspconfig.ltex.setup({})
 			-- WGPU

@@ -1,2 +1,1 @@
-PERCENT=$(cat /sys/class/hwmon/hwmon2/device/gpu_busy_percent)
-echo $PERCENT
+cat /sys/class/hwmon/hwmon0/device/gpu_busy_percent
