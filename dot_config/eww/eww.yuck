@@ -63,7 +63,7 @@
 (deflisten music :initial ""
   "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
 
-(defpoll volume :interval "1s"
+(defpoll volume :interval "50ms"
   "scripts/vol.sh")
   
 (defpoll gpu_percent :interval "1s"

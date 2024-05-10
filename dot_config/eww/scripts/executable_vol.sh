@@ -1,5 +1,5 @@
 #!/bin/bash
-
-REGEX_VOL=":(.*),"
-[[ $(pw-volume status) =~ $REGEX_VOL ]]
-echo ${BASH_REMATCH[1]}
+REGEX_VOL=": (.*)"
+[[ $(wpctl get-volume @DEFAULT_AUDIO_SINK@) =~ $REGEX_VOL ]]
+VOLUME=$(echo ${BASH_REMATCH[1]})
+echo "$VOLUME * 100.0" | bc -l
