@@ -50,7 +50,7 @@ return {
 	-- Rust-specific quality of life
 	{
 		"mrcjkb/rustaceanvim",
-		version = "^3",
+		version = "^4",
 		ft = { "rust" },
 		dependencies = { "mfussenegger/nvim-dap" },
 	},
