@@ -1,0 +1,49 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+	PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+
+PATH="$HOME/go/bin/:$HOME/.cargo/bin/:/usr/local/go/bin/:$PATH"
+export PATH
+export GPG_TTY=$(tty)
+alias rl="source ~/.bashrc; source ~/.zshrc; kill -SIGUSR1 $(pgrep kitty)"
+ZSH_THEME="robbyrussell"
+
+name=$(cat /etc/hostname)
+if [[ `uname` == Linux ]] then
+    /usr/bin/keychain --quiet $HOME/.ssh/id_ed25519
+	source $HOME/.keychain/$name-sh
+fi
+
+echo "plugins"
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  git
+  nvm
+  fzf
+)
+
+echo "source oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
+
+echo "perl paths"
+PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"~/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=~/perl5"; export PERL_MM_OPT;
+
+echo "opam path"
+# opam configuration
+[[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null
+
