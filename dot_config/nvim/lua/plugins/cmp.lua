@@ -26,6 +26,7 @@ return {
 
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
+		local compare = require("cmp.config.compare")
 		cmp.setup({
 			snippet = {
 				expand = function(args)
@@ -82,9 +83,10 @@ return {
 			},
 			window = {
 				completion = {
-					winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:Pmenu,Search:None",
+					winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
 					col_offset = -3,
 					side_padding = 0,
+					winblend = vim.o.pumblend,
 				},
 				documentation = cmp.config.window.bordered({
 					winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Pmenu,Search:None",
@@ -99,6 +101,19 @@ return {
 					kind.menu = "    (" .. (strings[2] or "") .. ")"
 					return kind
 				end,
+			},
+			sorting = {
+				comparators = {
+					compare.kind,
+					compare.offset,
+					compare.score,
+					compare.exact,
+					compare.recently_used,
+					compare.locality,
+					compare.sort_text,
+					compare.length,
+					compare.order,
+				},
 			},
 		})
 		cmp.setup.filetype({ "sql" }, {
