@@ -46,6 +46,9 @@ return {
 				formatters_by_ft = {
 					lua = { "stylua" },
 					sh = { "shfmt" },
+					zsh = { "shfmt" },
+					bashrc = { "shfmt" },
+					zshrc = { "shfmt" },
 				},
 				format_on_save = {
 					timeout_ms = 500,

@@ -16,6 +16,8 @@ return {
 			require("mason-lspconfig").setup({
 				automatic_installation = true,
 				ensure_installed = {
+					-- Bash
+					"bashls",
 					-- Lua
 					"lua_ls",
 					-- Web
@@ -43,6 +45,10 @@ return {
 					"wgsl_analyzer",
 				},
 			})
+			-- Bash
+			lspconfig.bashls.setup({ filetypes = { "sh", "zsh", "zshrc", "bashrc" } })
+			-- Lua
+			lspconfig.lua_ls.setup({})
 			-- Web
 			lspconfig.tsserver.setup({})
 			lspconfig.eslint.setup({})
