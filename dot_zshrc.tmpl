@@ -10,8 +10,11 @@ add_to_path "$HOME/.local/bin/"
 add_to_path "$HOME/bin/"
 add_to_path "$HOME/go/bin/"
 add_to_path "$HOME/.cargo/bin/"
-# Mac
+# Platform specific stuff
+{{- if eq .chezmoi.os "darwin" -}}
 add_to_path "/opt/homebrew/bin/"
+{{- else if eq .chezmoi.os "linux" -}}
+{{- end -}}
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
