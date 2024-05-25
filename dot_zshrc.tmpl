@@ -44,6 +44,7 @@ plugins=(
 	zsh-syntax-highlighting
 	thefuck
 	zoxide
+	eza
 )
 source $ZSH/oh-my-zsh.sh
 # opam configuration
@@ -87,7 +88,7 @@ export FZF_DEFAULT_OPTS=" \
 export BAT_THEME=catppuccin_mocha
 
 # Aliases
-alias rl="source ~/.zshrc; kill -SIGUSR1 $(pgrep kitty)"
+alias rl="source ~/.zshrc; kill -SIGUSR1 $(pidof kitty)"
 alias cat="bat"
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 alias l="ls"
