@@ -22,8 +22,7 @@ export NVM_DIR="$HOME/.nvm"
 export GPG_TTY=$(tty)
 
 # SSH
-# TODO make this not shit
-name=$(cat /etc/hostname)
+name="{{ .chezmoi.hostname }}"
 if [[ $(uname) == Linux ]]; then
 	/usr/bin/keychain --quiet $HOME/.ssh/id_ed25519
 	source $HOME/.keychain/$name-sh
