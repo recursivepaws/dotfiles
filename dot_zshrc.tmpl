@@ -34,6 +34,8 @@ export ZSH_THEME="robbyrussell"
 
 # Catppucchin mocha zsh highlighting
 source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
+
+export ZOXIDE_CMD_OVERRIDE="cd"
 # Load plugins
 plugins=(
 	git
@@ -89,4 +91,3 @@ alias rl="source ~/.zshrc; kill -SIGUSR1 $(pgrep kitty)"
 alias cat="bat"
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 alias l="ls"
-alias cd="z"
