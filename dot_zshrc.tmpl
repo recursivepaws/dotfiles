@@ -1,20 +1,23 @@
 # Set up PATH
+if [ "$PATH" = "" ]; then
+	export PATH="/bin"
+fi
 add_to_path() {
 	if ! [[ "$PATH" =~ "$1" ]]; then
 		export PATH="$1:$PATH"
 	fi
 }
-add_to_path "/usr/bin/"
-add_to_path "/usr/local/bin/"
-add_to_path "$HOME/.local/bin/"
-add_to_path "$HOME/bin/"
-add_to_path "$HOME/go/bin/"
-add_to_path "$HOME/.cargo/bin/"
+add_to_path "/usr/bin"
+add_to_path "/usr/local/bin"
+add_to_path "$HOME/.local/bin"
+add_to_path "$HOME/bin"
+add_to_path "$HOME/go/bin"
+add_to_path "$HOME/.cargo/bin"
+
 # Platform specific stuff
-{{- if eq .chezmoi.os "darwin" -}}
-add_to_path "/opt/homebrew/bin/"
-{{- else if eq .chezmoi.os "linux" -}}
-{{- end -}}
+{{- if eq .chezmoi.os "darwin" }}
+eval "$(/opt/homebrew/bin/brew shellenv)"
+{{- end }}
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
