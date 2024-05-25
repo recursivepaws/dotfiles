@@ -10,13 +10,13 @@ return {
 		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-vsnip",
-		"hrsh7th/vim-vsnip",
+		"hrsh7th/cmp-calc",
 		{
 			"L3MON4D3/LuaSnip",
 			version = "v2.*",
 			build = "make install_jsregexp",
 		},
+		"onsails/lspkind.nvim",
 	},
 	config = function()
 		local has_words_before = function()
@@ -26,62 +26,94 @@ return {
 
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
+		local compare = require("cmp.config.compare")
 		cmp.setup({
 			snippet = {
 				expand = function(args)
-					vim.fn["vsnip#anonymous"](args.body)
+					require("luasnip").lsp_expand(args.body)
 				end,
 			},
 			mapping = {
+				-- Exit
+				["<C-e>"] = cmp.mapping.abort(),
+				-- Navigate documentation
+				["<C-j>"] = cmp.mapping.scroll_docs(4),
+				["<C-k>"] = cmp.mapping.scroll_docs(-4),
+				-- Navigate entries
+				["<Down>"] = cmp.mapping(
+					cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+					{ "i" }
+				),
+				["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
+				-- Select
+				["<CR>"] = cmp.mapping(cmp.mapping.confirm(), { "i", "c" }),
+				-- Navigate
 				["<Tab>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_next_item()
-					--[[
-					elseif luasnip.expand_or_jumpable() then
+					if luasnip.expand_or_jumpable() then
 						luasnip.expand_or_jump()
 					elseif has_words_before() then
 						cmp.complete()
-					--]]
 					else
 						fallback()
 					end
-				end),
+				end, { "i", "s" }),
 				["<S-Tab>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_prev_item()
-					elseif luasnip.jumpable(-1) then
+					if luasnip.jumpable(-1) then
 						luasnip.jump(-1)
 					else
 						fallback()
 					end
-				end),
-				["<CR>"] = cmp.mapping.confirm({ select = false }),
+				end, { "i", "s" }),
 			},
 			sources = {
-				{ name = "nvim_lsp", keyword_length = 3 },
+				-- DB
+				{ name = "vim-dadbod-completion" },
+				-- LSP
+				{ name = "nvim_lsp" },
 				{ name = "nvim_lsp_signature_help" },
-				{ name = "nvim_lua", keyword_length = 2 },
-				{ name = "vsnip", keyword_length = 2 },
-				{ name = "buffer", keyword_length = 2 },
+				-- Lua
+				{ name = "nvim_lua" },
+				{ name = "luasnip" },
+				-- Math
+				{ name = "calc" },
+				{ name = "buffer" },
+				-- Filesystem
 				{ name = "path" },
 				{ name = "cmdline" },
 			},
 			window = {
-				completion = cmp.config.window.bordered(),
-				documentation = cmp.config.window.bordered(),
+				completion = {
+					winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
+					col_offset = -3,
+					side_padding = 0,
+					winblend = vim.o.pumblend,
+				},
+				documentation = cmp.config.window.bordered({
+					winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Pmenu,Search:None",
+				}),
 			},
 			formatting = {
-				fields = { "menu", "abbr", "kind" },
-				format = function(entry, item)
-					local menu_icon = {
-						nvim_lsp = "λ",
-						vsnip = "⋗",
-						buffer = "Ω",
-						path = "🖫",
-					}
-					item.menu = menu_icon[entry.source.name]
-					return item
+				fields = { "kind", "abbr", "menu" },
+				format = function(entry, vim_item)
+					local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+					local strings = vim.split(kind.kind, "%s", { trimempty = true })
+					kind.kind = " " .. (strings[1] or "") .. " "
+					kind.menu = "    (" .. (strings[2] or "") .. ")"
+					return kind
 				end,
+			},
+			sorting = {
+				comparators = {
+					compare.kind,
+					compare.offset,
+					compare.score,
+					compare.exact,
+					compare.recently_used,
+					compare.locality,
+					compare.sort_text,
+					compare.length,
+					compare.order,
+				},
 			},
 		})
 		cmp.setup.filetype({ "sql" }, {

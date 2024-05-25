@@ -24,6 +24,9 @@ vim.keymap.set("n", "<leader>f", function()
 end, { buffer = bufnr })
 
 vim.g.rustaceanvim = {
+	tools = {
+		hover_actions = { auto_focus = true },
+	},
 	server = {
 		settings = {
 			["rust-analyzer"] = {

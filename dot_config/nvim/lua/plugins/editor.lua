@@ -1,6 +1,13 @@
 return {
 	-- Dev icons
 	{ "ryanoasis/vim-devicons" },
+	-- Smart comments
+	{
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	},
 	-- Indent blank lines
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -39,6 +46,7 @@ return {
 				formatters_by_ft = {
 					lua = { "stylua" },
 					sh = { "shfmt" },
+					zsh = { "shfmt" },
 				},
 				format_on_save = {
 					timeout_ms = 500,
@@ -50,14 +58,13 @@ return {
 	-- Rust-specific quality of life
 	{
 		"mrcjkb/rustaceanvim",
-		version = "^3",
+		version = "^4",
 		ft = { "rust" },
 		dependencies = { "mfussenegger/nvim-dap" },
 	},
 	-- Pretty LSP-based folding
 	{
 		"kevinhwang91/nvim-ufo",
-
 		dependencies = { "kevinhwang91/promise-async" },
 		config = function()
 			local handler = function(virtText, lnum, endLnum, width, truncate)

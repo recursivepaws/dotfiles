@@ -16,6 +16,8 @@ return {
 			require("mason-lspconfig").setup({
 				automatic_installation = true,
 				ensure_installed = {
+					-- Bash
+					"bashls",
 					-- Lua
 					"lua_ls",
 					-- Web
@@ -43,6 +45,10 @@ return {
 					"wgsl_analyzer",
 				},
 			})
+			-- Bash
+			lspconfig.bashls.setup({ filetypes = { "sh", "zsh" } })
+			-- Lua
+			lspconfig.lua_ls.setup({})
 			-- Web
 			lspconfig.tsserver.setup({})
 			lspconfig.eslint.setup({})
@@ -57,12 +63,6 @@ return {
 			-- Python
 			lspconfig.pylsp.setup({})
 			-- Markdown
-			vim.filetype.add({
-				extension = {
-					md = "markdown.md",
-					mdx = "markdown.mdx",
-				},
-			})
 			lspconfig.marksman.setup({})
 			lspconfig.mdx_analyzer.setup({})
 			-- LaTex

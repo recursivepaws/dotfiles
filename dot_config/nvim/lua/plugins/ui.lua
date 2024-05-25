@@ -1,9 +1,43 @@
 return {
 	-- Preferred theme
 	{
-		"rebelot/kanagawa.nvim",
+		"catppuccin/nvim",
+		name = "catppuccin",
 		config = function()
-			vim.cmd([[colorscheme kanagawa-wave]])
+			vim.cmd.colorscheme("catppuccin")
+			require("catppuccin").setup({
+				flavour = "mocha",
+				custom_highlights = function(C)
+					return {
+						CmpItemKindSnippet = { fg = C.base, bg = C.mauve },
+						CmpItemKindKeyword = { fg = C.base, bg = C.red },
+						CmpItemKindText = { fg = C.base, bg = C.teal },
+						CmpItemKindMethod = { fg = C.base, bg = C.blue },
+						CmpItemKindConstructor = { fg = C.base, bg = C.blue },
+						CmpItemKindFunction = { fg = C.base, bg = C.blue },
+						CmpItemKindFolder = { fg = C.base, bg = C.blue },
+						CmpItemKindModule = { fg = C.base, bg = C.blue },
+						CmpItemKindConstant = { fg = C.base, bg = C.peach },
+						CmpItemKindField = { fg = C.base, bg = C.green },
+						CmpItemKindProperty = { fg = C.base, bg = C.green },
+						CmpItemKindEnum = { fg = C.base, bg = C.green },
+						CmpItemKindUnit = { fg = C.base, bg = C.green },
+						CmpItemKindClass = { fg = C.base, bg = C.yellow },
+						CmpItemKindVariable = { fg = C.base, bg = C.flamingo },
+						CmpItemKindFile = { fg = C.base, bg = C.blue },
+						CmpItemKindInterface = { fg = C.base, bg = C.yellow },
+						CmpItemKindColor = { fg = C.base, bg = C.red },
+						CmpItemKindReference = { fg = C.base, bg = C.red },
+						CmpItemKindEnumMember = { fg = C.base, bg = C.red },
+						CmpItemKindStruct = { fg = C.base, bg = C.blue },
+						CmpItemKindValue = { fg = C.base, bg = C.peach },
+						CmpItemKindEvent = { fg = C.base, bg = C.blue },
+						CmpItemKindOperator = { fg = C.base, bg = C.blue },
+						CmpItemKindTypeParameter = { fg = C.base, bg = C.blue },
+						CmpItemKindCopilot = { fg = C.base, bg = C.teal },
+					}
+				end,
+			})
 		end,
 	},
 	-- Improves notification display
@@ -11,7 +45,7 @@ return {
 		"rcarriga/nvim-notify",
 		lazy = false,
 		config = function()
-			require("notify").setup({ timeout = 50 })
+			require("notify").setup({ timeout = 100, background_colour = "#000000" })
 		end,
 	},
 	-- Improved file search
@@ -79,56 +113,6 @@ return {
 		config = function()
 			require("oil").setup()
 			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-		end,
-	},
-	-- Quickly navigate filesystem
-	{
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim",
-		},
-		config = function()
-			local harpoon = require("harpoon")
-			harpoon:setup({})
-
-			-- basic telescope configuration
-			local conf = require("telescope.config").values
-			local function toggle_telescope(harpoon_files)
-				local file_paths = {}
-				for _, item in ipairs(harpoon_files.items) do
-					table.insert(file_paths, item.value)
-				end
-
-				require("telescope.pickers")
-					.new({}, {
-						prompt_title = "Harpoon",
-						finder = require("telescope.finders").new_table({
-							results = file_paths,
-						}),
-						previewer = conf.file_previewer({}),
-						sorter = conf.generic_sorter({}),
-					})
-					:find()
-			end
-
-			vim.keymap.set("n", "<C-e>", function()
-				toggle_telescope(harpoon:list())
-			end, { desc = "Open harpoon window" })
-
-			vim.keymap.set("n", "<leader>a", function()
-				harpoon:list():append()
-			end)
-
-			-- Toggle previous & next buffers stored within Harpoon list
-			vim.keymap.set("n", "<C-w>", function()
-				harpoon:list():prev()
-			end)
-
-			--vim.keymap.set("n", "<C-r>", function()
-			--harpoon:list():next()
-			--end)
 		end,
 	},
 	-- Statusline
