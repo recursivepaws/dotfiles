@@ -24,8 +24,8 @@ export GPG_TTY=$(tty)
 # SSH
 # TODO make this not shit
 name=$(cat /etc/hostname)
-if [[ `uname` == Linux ]] then
-    /usr/bin/keychain --quiet $HOME/.ssh/id_ed25519
+if [[ $(uname) == Linux ]]; then
+	/usr/bin/keychain --quiet $HOME/.ssh/id_ed25519
 	source $HOME/.keychain/$name-sh
 fi
 
@@ -37,16 +37,16 @@ export ZSH_THEME="robbyrussell"
 source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 # Load plugins
 plugins=(
-  git
-  nvm
-  fzf
-  zsh-syntax-highlighting
-  thefuck
-  zoxide
+	git
+	nvm
+	fzf
+	zsh-syntax-highlighting
+	thefuck
+	zoxide
 )
 source $ZSH/oh-my-zsh.sh
 # opam configuration
-[[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null
+[[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh" >/dev/null 2>/dev/null
 # Use fd instead of fzf
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -57,21 +57,21 @@ export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
 _fzf_compgen_path() {
-  fd --hidden --exclude .git . "$1"
+	fd --hidden --exclude .git . "$1"
 }
 _fzf_compgen_dir() {
-  fd --type=d --hidden --exclude .git . "$1"
+	fd --type=d --hidden --exclude .git . "$1"
 }
 _fzf_comprun() {
-  local command=$1
-  shift
+	local command=$1
+	shift
 
-  case "$command" in
-    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-    export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
-    ssh)          fzf --preview 'dig {}'                   "$@" ;;
-    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
-  esac
+	case "$command" in
+	cd) fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+	export | unset) fzf --preview "eval 'echo $'{}" "$@" ;;
+	ssh) fzf --preview 'dig {}' "$@" ;;
+	*) fzf --preview "$show_file_or_dir_preview" "$@" ;;
+	esac
 }
 
 # fzf git

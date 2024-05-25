@@ -46,7 +46,7 @@ return {
 				},
 			})
 			-- Bash
-			lspconfig.bashls.setup({ filetypes = { "sh", "zsh", "zshrc", "bashrc" } })
+			lspconfig.bashls.setup({ filetypes = { "sh", "zsh" } })
 			-- Lua
 			lspconfig.lua_ls.setup({})
 			-- Web
@@ -63,12 +63,6 @@ return {
 			-- Python
 			lspconfig.pylsp.setup({})
 			-- Markdown
-			vim.filetype.add({
-				extension = {
-					md = "markdown.md",
-					mdx = "markdown.mdx",
-				},
-			})
 			lspconfig.marksman.setup({})
 			lspconfig.mdx_analyzer.setup({})
 			-- LaTex

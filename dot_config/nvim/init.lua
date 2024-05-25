@@ -38,6 +38,24 @@ end
 vim.g.mapleader = " "
 --vim.lsp.inlay_hint.enable()
 
+--au BufNewFile,BufRead *zsh*.tmpl setfiletype zsh
+--
+vim.filetype.add({
+	extension = {
+		md = "markdown.md",
+		mdx = "markdown.mdx",
+	},
+})
+vim.filetype.add({
+	pattern = {
+		["%.env%.[%w_.-]+"] = "dotenv",
+		["%.bashrc"] = "sh",
+		["%.zshrc"] = "zsh",
+		["dot_zshrc%.tmpl"] = "zsh",
+		["dot_bashrc%.tmpl"] = "sh",
+	},
+})
+
 -- Disable arrow keys
 map("", "<up>", "<nop>")
 map("", "<down>", "<nop>")
