@@ -40,6 +40,13 @@ return {
 			})
 		end,
 	},
+	-- Color Code rendering
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup({ "*" })
+		end,
+	},
 	-- Improves notification display
 	{
 		"rcarriga/nvim-notify",
