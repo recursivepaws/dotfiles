@@ -1,12 +1,12 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[](pink)\
+[](red)\
 $os\
 $username\
-[](bg:peach fg:pink)\
+[](bg:orange fg:red)\
 $directory\
-[](fg:peach bg:yellow)\
+[](fg:orange bg:yellow)\
 $git_branch\
 $git_status\
 [](fg:yellow bg:green)\
@@ -19,46 +19,32 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[](fg:green bg:blue)\
+[](fg:green bg:cyan)\
 $localip\
-[](fg:blue bg:mauve)\
+[](fg:cyan bg:purple)\
 $time\
-[ ](fg:mauve)\
+[ ](fg:purple)\
 $line_break$character"""
 
-palette = 'catppuccin_mocha'
+palette = 'dracula'
 
-[palettes.catppuccin_mocha]
-rosewater = "#f5e0dc"
-flamingo = "#f2cdcd"
-pink = "#f5c2e7"
-mauve = "#cba6f7"
-red = "#f38ba8"
-maroon = "#eba0ac"
-peach = "#fab387"
-yellow = "#f9e2af"
-green = "#a6e3a1"
-teal = "#94e2d5"
-sky = "#89dceb"
-sapphire = "#74c7ec"
-blue = "#89b4fa"
-lavender = "#b4befe"
-text = "#cdd6f4"
-subtext1 = "#bac2de"
-subtext0 = "#a6adc8"
-overlay2 = "#9399b2"
-overlay1 = "#7f849c"
-overlay0 = "#6c7086"
-surface2 = "#585b70"
-surface1 = "#45475a"
-surface0 = "#313244"
-base = "#1e1e2e"
-mantle = "#181825"
-crust = "#11111b"
+[palettes.dracula]
+red = "#ff5555"
+orange = "#ffb86c"
+yellow = "#f1fa8c"
+green = "#50fa7b"
+cyan = "#8be9fd"
+purple = "#bd93f9"
+foreground = "#f8f8f2"
+antiground = "#07070D"
+background = "#282a36"
+line = "#44475a"
+select = "#44475a"
+comment = "#6272a4"
 
 [os]
 disabled = false
-style = "bg:pink fg:crust"
+style = "bg:red fg:antiground"
 
 [os.symbols]
 Windows = "󰍲"
@@ -83,12 +69,12 @@ RedHatEnterprise = "󱄛"
 
 [username]
 show_always = true
-style_user = "bg:pink fg:crust"
-style_root = "bg:pink fg:crust"
+style_user = "bg:red fg:antiground"
+style_root = "bg:red fg:antiground"
 format = '[ $user ]($style)'
 
 [directory]
-style = "fg:crust bg:peach"
+style = "fg:antiground bg:orange"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
@@ -103,60 +89,60 @@ truncation_symbol = "…/"
 [git_branch]
 symbol = ""
 style = "bg:yellow"
-format = '[[ $symbol $branch ](fg:crust bg:yellow)]($style)'
+format = '[[ $symbol $branch ](fg:antiground bg:yellow)]($style)'
 
 [git_status]
 style = "bg:yellow"
-format = '[[($all_status$ahead_behind )](fg:crust bg:yellow)]($style)'
+format = '[[($all_status$ahead_behind )](fg:antiground bg:yellow)]($style)'
 
 [nodejs]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = '[[ $symbol( $version) ](fg:antiground bg:green)]($style)'
 
 [c]
 symbol = " "
 style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = '[[ $symbol( $version) ](fg:antiground bg:green)]($style)'
 
 [rust]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = '[[ $symbol( $version) ](fg:antiground bg:green)]($style)'
 
 [golang]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = '[[ $symbol( $version) ](fg:antiground bg:green)]($style)'
 
 [php]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = '[[ $symbol( $version) ](fg:antiground bg:green)]($style)'
 
 [java]
 symbol = " "
 style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = '[[ $symbol( $version) ](fg:antiground bg:green)]($style)'
 
 [kotlin]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = '[[ $symbol( $version) ](fg:antiground bg:green)]($style)'
 
 [haskell]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = '[[ $symbol( $version) ](fg:antiground bg:green)]($style)'
 
 [python]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = '[[ $symbol( $version) ](fg:antiground bg:green)]($style)'
 
 [localip]
 ssh_only = false
-format = '[ @$localipv4 ](fg:crust bg:blue)'
+format = '[ @$localipv4 ](fg:antiground bg:cyan)'
 disabled = false
 
 [time]
@@ -164,7 +150,7 @@ disabled = false
 use_12hr = true
 time_format = "%R"
 style = "bg:surface0"
-format = '[[  $time ](fg:crust bg:mauve)]($style)'
+format = '[[  $time ](fg:antiground bg:purple)]($style)'
 
 [line_break]
 disabled = false
