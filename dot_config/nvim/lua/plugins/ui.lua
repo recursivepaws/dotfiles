@@ -1,40 +1,38 @@
 return {
 	-- Preferred theme
 	{
-		"catppuccin/nvim",
-		name = "catppuccin",
+		"Mofiqul/dracula.nvim",
 		config = function()
-			vim.cmd.colorscheme("catppuccin")
-			require("catppuccin").setup({
-				flavour = "mocha",
-				custom_highlights = function(C)
+			vim.cmd.colorscheme("dracula")
+			require("dracula").setup({
+				transparent_bg = true,
+				overrides = function(C)
 					return {
-						CmpItemKindSnippet = { fg = C.base, bg = C.mauve },
-						CmpItemKindKeyword = { fg = C.base, bg = C.red },
-						CmpItemKindText = { fg = C.base, bg = C.teal },
-						CmpItemKindMethod = { fg = C.base, bg = C.blue },
-						CmpItemKindConstructor = { fg = C.base, bg = C.blue },
-						CmpItemKindFunction = { fg = C.base, bg = C.blue },
-						CmpItemKindFolder = { fg = C.base, bg = C.blue },
-						CmpItemKindModule = { fg = C.base, bg = C.blue },
-						CmpItemKindConstant = { fg = C.base, bg = C.peach },
-						CmpItemKindField = { fg = C.base, bg = C.green },
-						CmpItemKindProperty = { fg = C.base, bg = C.green },
-						CmpItemKindEnum = { fg = C.base, bg = C.green },
-						CmpItemKindUnit = { fg = C.base, bg = C.green },
-						CmpItemKindClass = { fg = C.base, bg = C.yellow },
-						CmpItemKindVariable = { fg = C.base, bg = C.flamingo },
-						CmpItemKindFile = { fg = C.base, bg = C.blue },
-						CmpItemKindInterface = { fg = C.base, bg = C.yellow },
-						CmpItemKindColor = { fg = C.base, bg = C.red },
-						CmpItemKindReference = { fg = C.base, bg = C.red },
-						CmpItemKindEnumMember = { fg = C.base, bg = C.red },
-						CmpItemKindStruct = { fg = C.base, bg = C.blue },
-						CmpItemKindValue = { fg = C.base, bg = C.peach },
-						CmpItemKindEvent = { fg = C.base, bg = C.blue },
-						CmpItemKindOperator = { fg = C.base, bg = C.blue },
-						CmpItemKindTypeParameter = { fg = C.base, bg = C.blue },
-						CmpItemKindCopilot = { fg = C.base, bg = C.teal },
+						CmpItemKindSnippet = { fg = C.bg, bg = C.purple },
+						CmpItemKindKeyword = { fg = C.bg, bg = C.red },
+						CmpItemKindText = { fg = C.bg, bg = C.teal },
+						CmpItemKindMethod = { fg = C.bg, bg = C.cyan },
+						CmpItemKindConstructor = { fg = C.bg, bg = C.cyan },
+						CmpItemKindFunction = { fg = C.bg, bg = C.cyan },
+						CmpItemKindFolder = { fg = C.bg, bg = C.cyan },
+						CmpItemKindModule = { fg = C.bg, bg = C.cyan },
+						CmpItemKindConstant = { fg = C.bg, bg = C.orange },
+						CmpItemKindField = { fg = C.bg, bg = C.green },
+						CmpItemKindProperty = { fg = C.bg, bg = C.green },
+						CmpItemKindEnum = { fg = C.bg, bg = C.green },
+						CmpItemKindUnit = { fg = C.bg, bg = C.green },
+						CmpItemKindClass = { fg = C.bg, bg = C.yellow },
+						CmpItemKindVariable = { fg = C.bg, bg = C.fg },
+						CmpItemKindFile = { fg = C.bg, bg = C.cyan },
+						CmpItemKindInterface = { fg = C.bg, bg = C.yellow },
+						CmpItemKindColor = { fg = C.bg, bg = C.red },
+						CmpItemKindReference = { fg = C.bg, bg = C.red },
+						CmpItemKindEnumMember = { fg = C.bg, bg = C.red },
+						CmpItemKindStruct = { fg = C.bg, bg = C.cyan },
+						CmpItemKindValue = { fg = C.bg, bg = C.orange },
+						CmpItemKindEvent = { fg = C.bg, bg = C.cyan },
+						CmpItemKindOperator = { fg = C.bg, bg = C.cyan },
+						CmpItemKindTypeParameter = { fg = C.bg, bg = C.cyan },
 					}
 				end,
 			})
@@ -52,7 +50,7 @@ return {
 		"rcarriga/nvim-notify",
 		lazy = false,
 		config = function()
-			require("notify").setup({ timeout = 100, background_colour = "#000000" })
+			require("notify").setup({ timeout = 100, background_colour = "#282A36" })
 		end,
 	},
 	-- Improved file search
@@ -131,8 +129,8 @@ return {
 		event = { "BufEnter" },
 		config = function(_, opts)
 			require("sttusline").setup({
-				-- statusline_color = "#000000",
-				statusline_color = "StatusLine",
+				statusline_color = "#282A36",
+				--statusline_color = "StatusLine",
 
 				-- | 1 | 2 | 3
 				-- recommended: 3
