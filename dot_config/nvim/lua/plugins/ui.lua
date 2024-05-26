@@ -6,35 +6,6 @@ return {
 			vim.cmd.colorscheme("dracula")
 			require("dracula").setup({
 				transparent_bg = true,
-				overrides = function(C)
-					return {
-						CmpItemKindSnippet = { fg = C.bg, bg = C.purple },
-						CmpItemKindKeyword = { fg = C.bg, bg = C.red },
-						CmpItemKindText = { fg = C.bg, bg = C.teal },
-						CmpItemKindMethod = { fg = C.bg, bg = C.cyan },
-						CmpItemKindConstructor = { fg = C.bg, bg = C.cyan },
-						CmpItemKindFunction = { fg = C.bg, bg = C.cyan },
-						CmpItemKindFolder = { fg = C.bg, bg = C.cyan },
-						CmpItemKindModule = { fg = C.bg, bg = C.cyan },
-						CmpItemKindConstant = { fg = C.bg, bg = C.orange },
-						CmpItemKindField = { fg = C.bg, bg = C.green },
-						CmpItemKindProperty = { fg = C.bg, bg = C.green },
-						CmpItemKindEnum = { fg = C.bg, bg = C.green },
-						CmpItemKindUnit = { fg = C.bg, bg = C.green },
-						CmpItemKindClass = { fg = C.bg, bg = C.yellow },
-						CmpItemKindVariable = { fg = C.bg, bg = C.fg },
-						CmpItemKindFile = { fg = C.bg, bg = C.cyan },
-						CmpItemKindInterface = { fg = C.bg, bg = C.yellow },
-						CmpItemKindColor = { fg = C.bg, bg = C.red },
-						CmpItemKindReference = { fg = C.bg, bg = C.red },
-						CmpItemKindEnumMember = { fg = C.bg, bg = C.red },
-						CmpItemKindStruct = { fg = C.bg, bg = C.cyan },
-						CmpItemKindValue = { fg = C.bg, bg = C.orange },
-						CmpItemKindEvent = { fg = C.bg, bg = C.cyan },
-						CmpItemKindOperator = { fg = C.bg, bg = C.cyan },
-						CmpItemKindTypeParameter = { fg = C.bg, bg = C.cyan },
-					}
-				end,
 			})
 		end,
 	},
@@ -54,11 +25,20 @@ return {
 		end,
 	},
 	-- Improved file search
+	-- Added cmdline via telescope
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.5",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"jonarrien/telescope-cmdline.nvim",
+		},
+		keys = {
+			{ ":", "<cmd>Telescope cmdline<cr>", desc = "Cmdline" },
+		},
+		config = function(_, opts)
+			require("telescope").setup(opts)
+			require("telescope").load_extension("cmdline")
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
@@ -66,14 +46,19 @@ return {
 			vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 		end,
 	},
-	-- Improved cmd ui
+	-- Dressing for renaming lsp input
 	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		opts = {},
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
+		"liangxianzhe/floating-input.nvim",
+	},
+	-- Fidget for lsp messages
+	{
+		"j-hui/fidget.nvim",
+		opts = {
+			notification = {
+				window = {
+					winblend = 0,
+				},
+			},
 		},
 	},
 	-- Adds a home screen dashboard
@@ -161,6 +146,7 @@ return {
 			})
 		end,
 	},
+	--
 	-- Markdown rendering
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
 }
