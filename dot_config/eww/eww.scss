@@ -1,30 +1,33 @@
+@import "dracula.scss";
+
 * {
   all: unset; //Unsets everything so you can style everything from scratch
 }
 
 //Global Styles
 .bar {
-  background-color: #3a3a3a;
-  color: #b0b4bc;
+  background-color: $background;
+  color: $foreground;
   padding: 10px;
+  border-radius: 10px;
 }
 
 // Styles on classes (see eww.yuck for more information)
 
 .sidestuff slider {
   all: unset;
-  color: #ffd5cd;
+  color: $foreground;
 }
 
 .metric scale trough highlight {
   all: unset;
-  background-color: #D35D6E;
-  color: #000000;
+  background-color: $green;
+  color: $antiground;
   border-radius: 10px;
 }
 .metric scale trough {
   all: unset;
-  background-color: #4e4e4e;
+  background-color: $background;
   border-radius: 50px;
   min-height: 3px;
   min-width: 50px;
@@ -33,13 +36,13 @@
 }
 .metric scale trough highlight {
   all: unset;
-  background-color: #D35D6E;
-  color: #000000;
+  background-color: $green;
+  color: $antiground;
   border-radius: 10px;
 }
 .metric scale trough {
   all: unset;
-  background-color: #4e4e4e;
+  background-color: $antiground;
   border-radius: 50px;
   min-height: 3px;
   min-width: 50px;
@@ -50,7 +53,7 @@
   font-size: large;
 }
 .workspaces button:hover {
-  color: #D35D6E;
+  color: $green;
 }
 
 
