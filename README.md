@@ -1,9 +1,24 @@
-### TODO
-Modify nvim config to allow for certain keybinds outside of the rust ecosytem.
-There are more languages that we want to us `;;` as a binding for, and want to keep that in mind. Same with telescoping stuff.
+### Dotfiles
+These dotfiles maintain a nice environment for coding across Arch and MacOs.
+Emphasis on Rust because it's what I use. 
 
-Additionally, we'd like to introduce some setup scripts to get us up and running in new environments quickly.
+### Dots
+- [chezmoi](https://www.chezmoi.io/)
 
-Particularly, we want a minimum neovim install, as well as a way to introduce the more fully featured version.
+### DE
+- [hyprland](https://hyprland.org/)
+- [eww](https://github.com/elkowar/eww/)
+- [swaybg](https://github.com/swaywm/swaybg)
 
-So far we like chezmoi, but looking at the way sstelfox does his install scripts makes us optimistic about custom tooling in the future. Still indecisive.
+### Editor
+- [nvim](https://neovim.io/)
+  - [lazy.nvim](https://github.com/folke/lazy.nvim)
+  - many more...
+
+### Term
+- [kitty](https://sw.kovidgoyal.net/kitty/)
+- [oh my zsh](https://ohmyz.sh/)
+- [starship](https://starship.rs/)
+
+### Theme
+- [dracula](https://draculatheme.com/)
