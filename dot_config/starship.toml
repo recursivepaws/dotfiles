@@ -1,4 +1,4 @@
-"$schema" = 'https://starship.rs/config-schema.json'
+"$schema" = "https://starship.rs/config-schema.json"
 
 format = """
 [](red)\
@@ -20,13 +20,13 @@ $kotlin\
 $haskell\
 $python\
 [](fg:green bg:cyan)\
-$localip\
+$cmd_duration\
 [](fg:cyan bg:purple)\
 $time\
 [ ](fg:purple)\
 $line_break$character"""
 
-palette = 'dracula'
+palette = "dracula"
 
 [palettes.dracula]
 red = "#ff5555"
@@ -71,7 +71,7 @@ RedHatEnterprise = "󱄛"
 show_always = true
 style_user = "bg:red fg:antiground"
 style_root = "bg:red fg:antiground"
-format = '[ $user ]($style)'
+format = "[ $user ]($style)"
 
 [directory]
 style = "fg:antiground bg:orange"
@@ -88,78 +88,84 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:yellow"
-format = '[[ $symbol $branch ](fg:antiground bg:yellow)]($style)'
+style = "fg:antiground bg:yellow"
+format = "[ $symbol $branch ]($style)"
 
 [git_status]
-style = "bg:yellow"
-format = '[[($all_status$ahead_behind )](fg:antiground bg:yellow)]($style)'
+style = "fg:antiground bg:yellow"
+format = "[$all_status$ahead_behind]($style)"
 
 [nodejs]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:antiground bg:green)]($style)'
+style = "fg:antiground bg:green"
+format = "[ $symbol( $version) ]($style)"
 
 [c]
 symbol = " "
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:antiground bg:green)]($style)'
+style = "fg:antiground bg:green"
+format = "[ $symbol( $version) ]($style)"
 
 [rust]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:antiground bg:green)]($style)'
+style = "fg:antiground bg:green"
+format = "[ $symbol( $version) ]($style)"
 
 [golang]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:antiground bg:green)]($style)'
+style = "fg:antiground bg:green"
+format = "[ $symbol( $version) ]($style)"
 
 [php]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:antiground bg:green)]($style)'
+style = "fg:antiground bg:green"
+format = "[ $symbol( $version) ]($style)"
 
 [java]
 symbol = " "
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:antiground bg:green)]($style)'
+style = "fg:antiground bg:green"
+format = "[ $symbol( $version) ]($style)"
 
 [kotlin]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:antiground bg:green)]($style)'
+style = "fg:antiground bg:green"
+format = "[ $symbol( $version) ]($style)"
 
 [haskell]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:antiground bg:green)]($style)'
+style = "fg:antiground bg:green"
+format = "[ $symbol( $version) ]($style)"
 
 [python]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol( $version) ](fg:antiground bg:green)]($style)'
+style = "fg:antiground bg:green"
+format = "[ $symbol( $version) ]($style)"
 
 [localip]
 ssh_only = false
-format = '[ @$localipv4 ](fg:antiground bg:cyan)'
+style = "fg:antiground bg:cyan"
+format = "[ @$localipv4 ]($style)"
 disabled = false
+
+[cmd_duration]
+min_time = 500
+style = "fg:antiground bg:cyan"
+format = "[ 󰔛 $duration ]($style)"
 
 [time]
 disabled = false
 use_12hr = true
 time_format = "%R"
-style = "bg:surface0"
-format = '[[  $time ](fg:antiground bg:purple)]($style)'
+style = "fg:antiground bg:purple"
+format = "[  $time ]($style)"
 
 [line_break]
 disabled = false
 
 [character]
 disabled = false
-success_symbol = '[](bold fg:green)'
-error_symbol = '[](bold fg:red)'
-vimcmd_symbol = '[](bold fg:green)'
-vimcmd_replace_one_symbol = '[](bold fg:mauve)'
-vimcmd_replace_symbol = '[](bold fg:mauve)'
-vimcmd_visual_symbol = '[](bold fg:yellow)'
+success_symbol = "[](bold fg:green)"
+error_symbol = "[](bold fg:red)"
+vimcmd_symbol = "[](bold fg:green)"
+vimcmd_replace_one_symbol = "[](bold fg:mauve)"
+vimcmd_replace_symbol = "[](bold fg:mauve)"
+vimcmd_visual_symbol = "[](bold fg:yellow)"
