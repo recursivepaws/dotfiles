@@ -19,6 +19,7 @@ return {
 					-- Lua
 					"lua_ls",
 					-- Web
+					"astro",
 					"html",
 					"cssls",
 					"tsserver",
@@ -33,9 +34,7 @@ return {
 					"sqlls",
 					-- Python
 					"pylsp",
-					-- Markdown
-					"marksman",
-					-- MDX
+					-- Markdown / MDX
 					"mdx_analyzer",
 					-- LaTex
 					"ltex",
@@ -49,6 +48,7 @@ return {
 			-- Lua
 			lspconfig.lua_ls.setup({})
 			-- Web
+			lspconfig.astro.setup({})
 			lspconfig.html.setup({})
 			lspconfig.cssls.setup({})
 			lspconfig.tsserver.setup({})
@@ -64,8 +64,12 @@ return {
 			-- Python
 			lspconfig.pylsp.setup({})
 			-- Markdown
-			lspconfig.marksman.setup({})
-			lspconfig.mdx_analyzer.setup({})
+			lspconfig.mdx_analyzer.setup({
+				filetypes = {
+					"markdown.mdx",
+					"markdown.md",
+				},
+			})
 			-- LaTex
 			lspconfig.ltex.setup({})
 			-- WGPU
