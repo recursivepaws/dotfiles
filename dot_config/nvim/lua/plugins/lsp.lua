@@ -1,17 +1,15 @@
 return {
 	{
-		"williamboman/mason-lspconfig.nvim",
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
-	},
-	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			"williamboman/mason.nvim",
+			{
+				"williamboman/mason-lspconfig.nvim",
+				dependencies = {
+					"williamboman/mason.nvim",
+				},
+			},
 		},
 		config = function()
-			local lspconfig = require("lspconfig")
 			require("mason").setup()
 			require("mason-lspconfig").setup({
 				automatic_installation = true,
@@ -45,11 +43,14 @@ return {
 					"wgsl_analyzer",
 				},
 			})
+			local lspconfig = require("lspconfig")
 			-- Bash
 			lspconfig.bashls.setup({ filetypes = { "sh", "zsh" } })
 			-- Lua
 			lspconfig.lua_ls.setup({})
 			-- Web
+			lspconfig.html.setup({})
+			lspconfig.cssls.setup({})
 			lspconfig.tsserver.setup({})
 			lspconfig.eslint.setup({})
 			-- C
