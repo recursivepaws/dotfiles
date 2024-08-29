@@ -87,13 +87,13 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 	-- Makes the window transparent
-	{
-		"xiyaowong/transparent.nvim",
-		config = function()
-			require("transparent").setup()
-			vim.cmd([[TransparentEnable]])
-		end,
-	},
+	-- {
+	-- 	"xiyaowong/transparent.nvim",
+	-- 	config = function()
+	-- 		require("transparent").setup()
+	-- 		vim.cmd([[TransparentEnable]])
+	-- 	end,
+	-- },
 	-- Modify filesystem
 	{
 		"stevearc/oil.nvim",
