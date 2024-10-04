@@ -22,7 +22,7 @@ return {
 					"astro",
 					"html",
 					"cssls",
-					"tsserver",
+					"ts_ls",
 					"eslint",
 					-- C
 					"clangd",
@@ -51,7 +51,7 @@ return {
 			lspconfig.astro.setup({})
 			lspconfig.html.setup({})
 			lspconfig.cssls.setup({})
-			lspconfig.tsserver.setup({})
+			lspconfig.ts_ls.setup({})
 			lspconfig.eslint.setup({})
 			-- C
 			lspconfig.clangd.setup({})
