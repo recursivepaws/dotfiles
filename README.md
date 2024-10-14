@@ -7,8 +7,7 @@ Emphasis on Rust because it's what I use.
 
 ### DE
 - [hyprland](https://hyprland.org/)
-- [eww](https://github.com/elkowar/eww/)
-- [swaybg](https://github.com/swaywm/swaybg)
+- [ignis](https://github.com/linkfrg/ignis)
 
 ### Editor
 - [nvim](https://neovim.io/)
