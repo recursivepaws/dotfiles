@@ -21,7 +21,7 @@ return {
 		"rcarriga/nvim-notify",
 		lazy = false,
 		config = function()
-			require("notify").setup({ timeout = 100, background_colour = "#282A36" })
+			require("notify").setup({ timeout = 100 })
 		end,
 	},
 	-- Improved file search
@@ -113,7 +113,7 @@ return {
 		event = { "BufEnter" },
 		config = function(_, opts)
 			require("sttusline").setup({
-				statusline_color = "#282A36",
+				--statusline_color = "#282A36",
 				--statusline_color = "StatusLine",
 
 				-- | 1 | 2 | 3

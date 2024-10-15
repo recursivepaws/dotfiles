@@ -24,6 +24,8 @@ return {
 					"cssls",
 					"ts_ls",
 					"eslint",
+					-- JSON
+					"jsonls",
 					-- C
 					"clangd",
 					-- OpenGL
@@ -37,7 +39,7 @@ return {
 					-- Markdown / MDX
 					"mdx_analyzer",
 					-- LaTex
-					"ltex",
+					--"ltex",
 					-- WGPU
 					"wgsl_analyzer",
 				},
@@ -46,13 +48,23 @@ return {
 			-- Bash
 			lspconfig.bashls.setup({ filetypes = { "sh", "zsh" } })
 			-- Lua
-			lspconfig.lua_ls.setup({})
+			lspconfig.lua_ls.setup({
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
+						},
+					},
+				},
+			})
 			-- Web
 			lspconfig.astro.setup({})
 			lspconfig.html.setup({})
 			lspconfig.cssls.setup({})
 			lspconfig.ts_ls.setup({})
 			lspconfig.eslint.setup({})
+			-- JSON
+			lspconfig.jsonls.setup({})
 			-- C
 			lspconfig.clangd.setup({})
 			-- OpenGL
@@ -71,7 +83,18 @@ return {
 				},
 			})
 			-- LaTex
-			lspconfig.ltex.setup({})
+			--[[ lspconfig.ltex.setup({
+				settings = {
+					ltex = {
+						language = "en-US",
+						additionalRules = {
+							enablePickyRules = true,
+						},
+					},
+				},
+				filetypes = { "markdown", "text", "tex", "gitcommit" },
+				flags = { debounce_text_changes = 300 },
+			}) ]]
 			-- WGPU
 			vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 				pattern = "*.wgsl",
