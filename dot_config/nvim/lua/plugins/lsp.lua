@@ -1,6 +1,12 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
+		-- opts = {
+		-- 	servers = {
+		-- 		texlab = {},
+		-- 		ltex = { filetypes = { "tex", "pandoc", "bib" } },
+		-- 	},
+		-- },
 		dependencies = {
 			{
 				"williamboman/mason-lspconfig.nvim",
@@ -39,7 +45,8 @@ return {
 					-- Markdown / MDX
 					"mdx_analyzer",
 					-- LaTex
-					--"ltex",
+					"texlab",
+					"ltex",
 					-- WGPU
 					"wgsl_analyzer",
 				},
@@ -77,13 +84,11 @@ return {
 			lspconfig.pylsp.setup({})
 			-- Markdown
 			lspconfig.mdx_analyzer.setup({
-				filetypes = {
-					"markdown.mdx",
-					"markdown.md",
-				},
+				filetypes = { "markdown" },
 			})
 			-- LaTex
-			--[[ lspconfig.ltex.setup({
+			lspconfig.texlab.setup({})
+			lspconfig.ltex.setup({
 				settings = {
 					ltex = {
 						language = "en-US",
@@ -92,9 +97,9 @@ return {
 						},
 					},
 				},
-				filetypes = { "markdown", "text", "tex", "gitcommit" },
-				flags = { debounce_text_changes = 300 },
-			}) ]]
+				filetypes = { "plaintex", "markdown", "text", "tex", "pandoc", "bib", "gitcommit" },
+				--flags = { debounce_text_changes = 300 },
+			})
 			-- WGPU
 			vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 				pattern = "*.wgsl",

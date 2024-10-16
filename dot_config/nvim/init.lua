@@ -41,12 +41,6 @@ vim.g.mapleader = " "
 --au BufNewFile,BufRead *zsh*.tmpl setfiletype zsh
 --
 vim.filetype.add({
-	extension = {
-		md = "markdown.md",
-		mdx = "markdown.mdx",
-	},
-})
-vim.filetype.add({
 	pattern = {
 		["%.env%.[%w_.-]+"] = "dotenv",
 		["%.bashrc"] = "sh",
