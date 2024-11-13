@@ -1,6 +1,7 @@
 [user]
 	email = me@vera.lgbt
 	name = Vera Gonzalez
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIINY5xZYRlbxjdw4N47VADFRSU3EeSI3Yze97F8cWGLS
 
 [include]
 	path = ~/.gitalias
@@ -54,3 +55,7 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /opt/1Password/op-ssh-sign
