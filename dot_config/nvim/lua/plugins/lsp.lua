@@ -110,4 +110,20 @@ return {
 			lspconfig.wgsl_analyzer.setup({})
 		end,
 	},
+	-- Hightouch and others use prettier- we want this to have the final say on formatting if we're
+	-- in a project which has a prettier config
+	{
+		'prettier/vim-prettier',
+		lazy = false,
+		config = function()
+			vim.g["prettier#autoformat_config_present"] = 1
+			vim.cmd([[
+				augroup Prettier
+					autocmd!
+					autocmd BufWritePre *.js,*.ts,*.jsx,*.tsx,*.json,*.css,*.scss,*.md,*.html PrettierAsync
+				augroup end
+				nnoremap gp :silent %!prettier --stdin-filepath %<CR>
+			]])
+		end
+	},
 }

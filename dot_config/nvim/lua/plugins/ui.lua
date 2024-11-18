@@ -5,7 +5,7 @@ return {
 		config = function()
 			vim.cmd.colorscheme("dracula")
 			require("dracula").setup({
-				transparent_bg = true,
+				-- transparent_bg = true,
 			})
 		end,
 	},
@@ -113,8 +113,8 @@ return {
 		event = { "BufEnter" },
 		config = function(_, opts)
 			require("sttusline").setup({
-				--statusline_color = "#282A36",
-				--statusline_color = "StatusLine",
+				-- statusline_color = "#282A36",
+				-- statusline_color = "StatusLine",
 
 				-- | 1 | 2 | 3
 				-- recommended: 3
