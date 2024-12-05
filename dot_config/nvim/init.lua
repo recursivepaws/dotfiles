@@ -18,6 +18,16 @@ vim.o.shiftwidth = 4  -- Number of spaces inserted when indenting
 vim.o.termguicolors = true
 vim.o.clipboard = "unnamedplus"
 
+-- Make sure we load the right spacing for web files
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+	pattern = { "*.js", "*.jsx", "*.tsx", "*.ts" },
+	callback = function()
+		vim.opt_local.expandtab = true
+		vim.opt_local.shiftwidth = 2
+		vim.opt_local.tabstop = 2
+	end
+})
+
 local function map(mode, lhs, rhs, opts)
 	local options = { noremap = true, silent = true }
 	if opts then
@@ -52,5 +62,16 @@ map("n", "<C-h>", "<C-w>h")
 map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
+
+
+require("navigation")
+vim.keymap.set("n", ";;", "$a;<Esc>")
+vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, { noremap = true })
+vim.keymap.set("n", "<leader>D", definition_split, { noremap = true })
+vim.keymap.set("n", "<leader>i", vim.lsp.buf.implementation, { noremap = true })
+vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { noremap = true })
+vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { noremap = true })
+vim.keymap.set("n", "<leader>r", vim.lsp.buf.references, { noremap = true })
+vim.keymap.set("n", "<leader>f", format, { noremap = true })
 
 require("lazy").setup("plugins")

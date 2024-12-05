@@ -1,28 +1,3 @@
-local bufnr = vim.api.nvim_get_current_buf()
-
--- Semicolon
-vim.keymap.set("n", ";;", "$a;<Esc>", { buffer = bufnr })
--- Declaration
-vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = bufnr })
--- Definition
-vim.keymap.set("n", "<leader>d", vim.lsp.buf.definition, { buffer = bufnr })
--- Hover
-vim.keymap.set("n", "<leader>k", vim.lsp.buf.hover, { buffer = bufnr })
--- Implementations
-vim.keymap.set("n", "<leader>i", vim.lsp.buf.implementation, { buffer = bufnr })
--- Type definition
--- vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { buffer = bufnr })
--- Rename
-vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
--- Code action
-vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr })
--- References
-vim.keymap.set("n", "<leader>r", vim.lsp.buf.references, { buffer = bufnr })
--- Format code
-vim.keymap.set("n", "<leader>f", function()
-	vim.lsp.buf.format({ async = true })
-end, { buffer = bufnr })
-
 vim.g.rustaceanvim = {
 	tools = {
 		hover_actions = { auto_focus = true },
@@ -57,6 +32,7 @@ function UpdateRustAnalyzerTarget(newTarget)
 	vim.lsp.stop_client(vim.lsp.get_active_clients({ name = "rust-analyzer" }))
 	vim.cmd([[edit]])
 end
+
 vim.cmd([[command! -nargs=1 SetTarget lua UpdateRustAnalyzerTarget(<f-args>)]])
 
 -- Picker for choosing between targets
@@ -86,4 +62,5 @@ function RustTargetPicker()
 		})
 		:find()
 end
+
 vim.cmd([[command! PickTarget call v:lua.RustTargetPicker()]])
