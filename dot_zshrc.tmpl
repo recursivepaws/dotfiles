@@ -9,6 +9,7 @@ add_to_path() {
 }
 add_to_path "/usr/bin"
 add_to_path "/usr/local/bin"
+add_to_path "/usr/local/go/bin"
 add_to_path "$HOME/.local/bin"
 add_to_path "$HOME/bin"
 add_to_path "$HOME/go/bin"
@@ -56,6 +57,7 @@ source $ZSH/oh-my-zsh.sh
 # opam configuration
 [[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh" >/dev/null 2>/dev/null
 # Use fd instead of fzf
+export FZF_BASE="/usr/bin"
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
@@ -99,4 +101,3 @@ export BAT_THEME="Dracula"
 alias rl="source ~/.zshrc; kill -SIGUSR1 $(pidof kitty)"
 alias cat="bat"
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
-alias l="ls"
