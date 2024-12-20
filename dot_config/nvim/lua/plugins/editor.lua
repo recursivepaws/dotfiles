@@ -72,19 +72,34 @@ return {
 	-- Run formatters on save
 	{
 		"stevearc/conform.nvim",
-		opts = {},
-		config = function()
-			require("conform").setup({
-				formatters_by_ft = {
-					lua = { "stylua" },
-					sh = { "shfmt" },
-					zsh = { "shfmt" },
-				},
-				format_on_save = {
-					timeout_ms = 500,
-					lsp_fallback = true,
-				},
-			})
+		dependencies = { "rcarriga/nvim-notify" },
+		event = "LspAttach",
+		opts = {
+			notify_on_error = true,
+			quiet = true,
+			formatters_by_ft = {
+				lua = { "stylua" },
+				sh = { "shfmt" },
+				zsh = { "shfmt" },
+				javascript = { "dprint" },
+				typescript = { "dprint" },
+				javascriptreact = { "dprint" },
+				typescriptreact = { "dprint" },
+			},
+			format_on_save = function(bufnr)
+				-- Disable autoformat for files in a certain path
+				local bufname = vim.api.nvim_buf_get_name(bufnr)
+				if bufname:match("/node_modules/") then
+					return
+				end
+				return { timeout_ms = 1000, lsp_fallback = true }
+			end,
+			format_after_save = { lsp_fallback = true },
+		},
+		config = function(_, opts)
+			vim.notify("This is an error message", "error")
+			local conform = require("conform")
+			conform.setup(opts)
 		end,
 	},
 	-- Rust-specific quality of life

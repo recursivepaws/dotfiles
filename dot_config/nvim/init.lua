@@ -12,7 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 vim.o.tabstop = 4     -- A TAB character looks like 4 spaces
---vim.o.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
 vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
 vim.o.shiftwidth = 4  -- Number of spaces inserted when indenting
 vim.o.termguicolors = true
@@ -37,19 +36,22 @@ local function map(mode, lhs, rhs, opts)
 end
 
 vim.g.mapleader = " "
---vim.lsp.inlay_hint.enable()
+vim.lsp.inlay_hint.enable()
 
---au BufNewFile,BufRead *zsh*.tmpl setfiletype zsh
---
 vim.filetype.add({
 	pattern = {
-		["%.env%.[%w_.-]+"] = "dotenv",
+		["%.env%.[%w_.-]+"] = "sh",
 		["%.bashrc"] = "sh",
 		["%.zshrc"] = "zsh",
 		["dot_zshrc%.tmpl"] = "zsh",
 		["dot_bashrc%.tmpl"] = "sh",
 	},
 })
+
+-- Deno-specific markup
+vim.g.markdown_fenced_languages = {
+	"ts=typescript"
+}
 
 -- Disable arrow keys
 map("", "<up>", "<nop>")

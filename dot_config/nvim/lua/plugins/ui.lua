@@ -21,7 +21,11 @@ return {
 		"rcarriga/nvim-notify",
 		lazy = false,
 		config = function()
-			require("notify").setup({ timeout = 100 })
+			vim.notify = require("notify")
+			vim.notify.setup({
+				background_colour = "#44475a",
+				timeout = 800
+			})
 		end,
 	},
 	-- Improved file search
@@ -38,7 +42,7 @@ return {
 			telescope.setup(opts)
 			telescope.load_extension("cmdline")
 			local builtin = require("telescope.builtin")
-			vim.api.nvim_set_keymap('n', 'Q', ':Telescope cmdline<CR>', { noremap = true, desc = "Cmdline" })
+			vim.api.nvim_set_keymap("n", "Q", ":Telescope cmdline<CR>", { noremap = true, desc = "Cmdline" })
 			vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
 			vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
@@ -71,7 +75,7 @@ return {
 					header = {
 						[[                                  _           ]],
 						[[  /\/\   ___  _____      __/\   /(_)_ __ ___  ]],
-						[[ /    \ / _ \/ _ \ \ /\ / /\ \ / / | '_ ` _ \ ]],
+						[[ /    \ / _ \/ _ \ \ /\ / /\ \ / / | "_ ` _ \ ]],
 						[[/ /\/\ \  __/ (_) \ V  V /  \ V /| | | | | | |]],
 						[[\/    \/\___|\___/ \_/\_/    \_/ |_|_| |_| |_|]],
 					},
@@ -113,7 +117,7 @@ return {
 		event = { "BufEnter" },
 		config = function(_, opts)
 			require("sttusline").setup({
-				-- statusline_color = "#282A36",
+				statusline_color = "#282A36",
 				-- statusline_color = "StatusLine",
 
 				-- | 1 | 2 | 3
