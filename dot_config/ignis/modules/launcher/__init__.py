@@ -17,8 +17,7 @@ applications = ApplicationsService.get_default()
 def is_url(url: str) -> bool:
     regex = re.compile(
         r"^(?:http|ftp)s?://"  # http:// or https://
-        # domain
-        r"(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|"
+        r"(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|"  # domain
         r"localhost|"  # localhost
         r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}|"  # or ipv4
         r"\[?[A-F0-9]*:[A-F0-9:]+\]?)"  # or ipv6
@@ -50,8 +49,7 @@ class LauncherAppItem(Widget.Button):
             ),
         )
         self.__sync_menu()
-        application.connect("notify::is-pinned", lambda x,
-                            y: self.__sync_menu())
+        application.connect("notify::is-pinned", lambda x, y: self.__sync_menu())
 
     def launch(self) -> None:
         self._application.launch()
@@ -64,8 +62,7 @@ class LauncherAppItem(Widget.Button):
     def __sync_menu(self) -> None:
         self._menu = Widget.PopoverMenu(
             items=[
-                Widget.MenuItem(
-                    label="Launch", on_activate=lambda x: self.launch()),
+                Widget.MenuItem(label="Launch", on_activate=lambda x: self.launch()),
                 Widget.Separator(),
             ]
             + [
@@ -114,8 +111,7 @@ class SearchWebButton(Widget.Button):
             self._url = query
         else:
             label = "Search in Google"
-            self._url = f"https://www.google.com/search?q={
-                query.replace(' ', '+')}"
+            self._url = f"https://www.google.com/search?q={query.replace(' ', '+')}"
 
         super().__init__(
             on_click=lambda x: self.launch(),
@@ -159,8 +155,7 @@ def launcher() -> Widget.Window:
         entry.text = ""
         entry.grab_focus()
 
-    app_list = Widget.Box(vertical=True, visible=False,
-                          style="margin-top: 1rem;")
+    app_list = Widget.Box(vertical=True, visible=False, style="margin-top: 1rem;")
     entry = Widget.Entry(
         hexpand=True,
         placeholder_text="Search",
