@@ -1,1 +1,7 @@
-**/**/__pycache__
+# Python
+**/__pycache__/
+**/*.pyc
+**/.venv/
+
+# Nodejs
+**/node_modules/
