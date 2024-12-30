@@ -81,10 +81,26 @@ return {
 				lua = { "stylua" },
 				sh = { "shfmt" },
 				zsh = { "shfmt" },
-				javascript = { "biome" },
-				typescript = { "biome" },
-				javascriptreact = { "biome" },
-				typescriptreact = { "biome" },
+				-- javascript = { "biome", "biome-check" },
+				-- typescript = { "biome", "biome-check" },
+				-- javascriptreact = { "biome", "biome-check" },
+				-- typescriptreact = { "biome", "biome-check" },
+				-- javascript = { "biome" },
+				-- typescript = { "biome" },
+				-- javascriptreact = { "biome" },
+				-- typescriptreact = { "biome" },
+				-- javascript = { "biome-check" },
+				-- typescript = { "biome-check" },
+				-- javascriptreact = { "biome-check" },
+				-- typescriptreact = { "biome-check" },
+				javascript = { "dprint", "biomejs" },
+				typescript = { "dprint", "biomejs" },
+				javascriptreact = { "dprint", "biomejs" },
+				typescriptreact = { "dprint", "biomejs" },
+				-- javascript = { "biomejs" },
+				-- typescript = { "biomejs" },
+				-- javascriptreact = { "biomejs" },
+				-- typescriptreact = { "biomejs" },
 			},
 			format_on_save = function(bufnr)
 				-- Disable autoformat for files in a certain path
@@ -92,7 +108,11 @@ return {
 				if bufname:match("/node_modules/") then
 					return
 				end
-				return { timeout_ms = 1000, lsp_fallback = true }
+				return {
+					timeout_ms = 1000,
+					async = false,
+					lsp_fallback = true
+				}
 			end,
 			format_after_save = { lsp_fallback = true },
 		},

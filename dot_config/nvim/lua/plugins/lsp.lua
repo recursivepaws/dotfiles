@@ -1,12 +1,23 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		-- opts = {
-		-- 	servers = {
-		-- 		texlab = {},
-		-- 		ltex = { filetypes = { "tex", "pandoc", "bib" } },
-		-- 	},
-		-- },
+		opts = {
+			-- servers = {
+			-- 	texlab = {},
+			-- 	ltex = { filetypes = { "tex", "pandoc", "bib" } },
+			-- },
+			inlay_hints = true,
+			codelens = {
+				enabled = true,
+			},
+			servers = {
+				biome = {
+					settings = {
+						single_file_support = true,
+					},
+				},
+			},
+		},
 		dependencies = {
 			{
 				"williamboman/mason-lspconfig.nvim",
@@ -75,18 +86,15 @@ return {
 			lspconfig.cssls.setup({})
 			lspconfig.ts_ls.setup({
 				init_options = {
-					preferences = { disableSuggestions = true },
+					preferences = { disableSuggestions = false },
 					hostInfo = "neovim",
 				},
 				root_patterns = { "package.json", "jsconfig.json", "tsconfig.json" },
 				cmd = { "typescript-language-server", "--stdio" },
 			})
 			lspconfig.biome.setup({
-				root_pattersn = { "package.json", "biome.jsonc", "biome.json" },
-				cmd = { "biome", "lsp-proxy" },
+				single_file_support = true
 			})
-			-- lspconfig.denols.setup({})
-			-- lspconfig.dprint.setup({})
 			-- JSON
 			lspconfig.jsonls.setup({})
 			-- C

@@ -24,7 +24,7 @@ return {
 			vim.notify = require("notify")
 			vim.notify.setup({
 				background_colour = "#44475a",
-				timeout = 800
+				timeout = 1000
 			})
 		end,
 	},
