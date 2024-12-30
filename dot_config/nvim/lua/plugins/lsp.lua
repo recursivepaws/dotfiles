@@ -28,6 +28,9 @@ return {
 					"astro",
 					"html",
 					"cssls",
+					-- JS/TS
+					"ts_ls",
+					"biome",
 					-- JSON
 					"jsonls",
 					-- C
@@ -70,6 +73,18 @@ return {
 			lspconfig.astro.setup({})
 			lspconfig.html.setup({})
 			lspconfig.cssls.setup({})
+			lspconfig.ts_ls.setup({
+				init_options = {
+					preferences = { disableSuggestions = true },
+					hostInfo = "neovim",
+				},
+				root_patterns = { "package.json", "jsconfig.json", "tsconfig.json" },
+				cmd = { "typescript-language-server", "--stdio" },
+			})
+			lspconfig.biome.setup({
+				root_pattersn = { "package.json", "biome.jsonc", "biome.json" },
+				cmd = { "biome", "lsp-proxy" },
+			})
 			-- lspconfig.denols.setup({})
 			-- lspconfig.dprint.setup({})
 			-- JSON
@@ -112,9 +127,9 @@ return {
 			lspconfig.wgsl_analyzer.setup({})
 		end,
 	},
-	{
-		"pmizio/typescript-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = {},
-	}
+	-- {
+	-- 	"pmizio/typescript-tools.nvim",
+	-- 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	-- 	opts = {},
+	-- }
 }

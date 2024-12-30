@@ -11,9 +11,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.o.tabstop = 4     -- A TAB character looks like 4 spaces
+vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
 vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
-vim.o.shiftwidth = 4  -- Number of spaces inserted when indenting
+vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
 vim.o.termguicolors = true
 vim.o.clipboard = "unnamedplus"
 
@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
 		vim.opt_local.expandtab = true
 		vim.opt_local.shiftwidth = 2
 		vim.opt_local.tabstop = 2
-	end
+	end,
 })
 
 local function map(mode, lhs, rhs, opts)
@@ -50,7 +50,7 @@ vim.filetype.add({
 
 -- Deno-specific markup
 vim.g.markdown_fenced_languages = {
-	"ts=typescript"
+	"ts=typescript",
 }
 
 -- Disable arrow keys
@@ -64,7 +64,6 @@ map("n", "<C-h>", "<C-w>h")
 map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
-
 
 require("navigation")
 vim.keymap.set("n", ";;", "$a;<Esc>")

@@ -81,10 +81,10 @@ return {
 				lua = { "stylua" },
 				sh = { "shfmt" },
 				zsh = { "shfmt" },
-				javascript = { "dprint" },
-				typescript = { "dprint" },
-				javascriptreact = { "dprint" },
-				typescriptreact = { "dprint" },
+				javascript = { "biome" },
+				typescript = { "biome" },
+				javascriptreact = { "biome" },
+				typescriptreact = { "biome" },
 			},
 			format_on_save = function(bufnr)
 				-- Disable autoformat for files in a certain path
@@ -97,9 +97,7 @@ return {
 			format_after_save = { lsp_fallback = true },
 		},
 		config = function(_, opts)
-			vim.notify("This is an error message", "error")
-			local conform = require("conform")
-			conform.setup(opts)
+			require("conform").setup(opts)
 		end,
 	},
 	-- Rust-specific quality of life
