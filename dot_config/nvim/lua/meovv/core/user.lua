@@ -10,58 +10,43 @@ local config = {
 		-- table of callbacks pushed via plugins
 		on_attach_mappings = {},
 		-- lsp servers that should be installed
-		-- ensure_installed = {
-		-- 	-- -- Bash
-		-- 	"bashls",
-		-- 	-- Web
-		-- 	"cssls",
-		-- 	"eslint",
-		-- 	"html",
-		-- 	"prettierd",
-		-- 	"ts_ls",
-		-- 	"jsonls",
-		-- 	-- Web Supplemental
-		-- 	"astro",
-		-- 	"svelte",
-		-- 	"graphql",
-		-- 	"tailwindcss",
-		-- 	-- "mdx_analyzer",
-		-- 	-- Go
-		-- 	"gopls",
-		-- 	-- Lua
-		-- 	"lua_ls",
-		-- 	-- Python
-		-- 	"pyright",
-		-- 	-- Yaml
-		-- 	"yamlls",
-		-- 	-- LaTex
-		-- 	"texlab",
-		-- 	"ltex",
-		-- 	-- WGPU
-		-- 	"wgsl_analyzer",
-		-- },
 		ensure_installed = {
-			"astro",
+			-- Bash
+			"bashls",
+			-- Web
 			"cssls",
 			"eslint",
-			"eslint",
-			"gopls",
-			"graphql",
 			"html",
-			"jsonls",
-			"lua_ls",
 			"prettierd",
-			"pyright",
-			"svelte",
-			"tailwindcss",
 			"ts_ls",
+			"jsonls",
+			-- Web Supplemental
+			"astro",
+			"svelte",
+			"graphql",
+			"tailwindcss",
+			"mdx_analyzer",
+			-- Go
+			"gopls",
+			-- Lua
+			"lua_ls",
+			-- Python
+			"pyright",
+			-- Yaml
 			"yamlls",
+			-- LaTex
+			"texlab",
+			"ltex",
+			-- WGPU
+			"wgsl_analyzer",
 		},
 		-- lsp servers that should be enabled
-		--[[ servers = {
+		servers = {
 			astro = true,
+			wgsl_analyzer = true,
 			bashls = { filetypes = { "sh", "zsh" } },
 			mdx_analyzer = { filetypes = { "markdown" } },
+			texlab = true,
 			ltex = {
 				settings = {
 					ltex = {
@@ -73,26 +58,6 @@ local config = {
 				},
 				filetypes = { "plaintex", "markdown", "text", "tex", "pandoc", "bib", "gitcommit" },
 			},
-			wgsl_analyzer = true,
-			texlab = true,
-			yamlls = true,
-			tailwindcss = true,
-			eslint = true,
-			jsonls = {
-				format_on_save = false,
-			},
-			pyright = true,
-			lua_ls = {
-				format_on_save = false,
-			},
-			gopls = true,
-			html = true,
-			ts_ls = {
-				format_on_save = false,
-			},
-		}, ]]
-		servers = {
-			astro = true,
 			tailwindcss = true,
 			eslint = true,
 			jsonls = {

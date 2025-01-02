@@ -85,19 +85,16 @@ cmp.setup({
 		native_menu = false,
 	},
 	sources = cmp.config.sources({
-		-- DB
-		-- { name = "vim-dadbod-completion" },
 		-- LSP
 		{ name = "nvim_lsp" },
-		-- { name = "nvim_lsp_signature_help" },
+		{ name = "nvim_lsp_signature_help" },
 		-- Lua
-		-- { name = "nvim_lua" },
+		{ name = "nvim_lua" },
 		{ name = "luasnip" },
 		-- Math
+		{ name = "calc" },
 		-- Filesystem
 		{ name = "path" },
-		-- { name = "cmdline" },
-		-- { name = "calc" },
 	}, {
 		{ name = "buffer" },
 	}),
@@ -115,14 +112,6 @@ cmp.setup({
 		end,
 	},
 })
-
--- Set configuration for sql.
--- cmp.setup.filetype({ "sql" }, {
--- 	sources = {
--- 		{ name = "vim-dadbod-completion" },
--- 		{ name = "buffer" },
--- 	},
--- })
 
 -- Set configuration for specific filetype.
 cmp.setup.filetype("gitcommit", {
@@ -154,27 +143,3 @@ cmp.setup.cmdline(":", {
 		{ name = "cmdline" },
 	}),
 })
-
--- cmp.setup.cmdline(":", {
--- 	mapping = cmp.mapping.preset.cmdline({
--- 		["<C-j>"] = {
--- 			c = function(fallback)
--- 				if cmp.visible() then
--- 					cmp.select_next_item()
--- 				else
--- 					fallback()
--- 				end
--- 			end,
--- 		},
--- 	}),
--- 	sources = cmp.config.sources({
--- 		{ name = "path" },
--- 	}, {
--- 		{
--- 			name = "cmdline",
--- 			option = {
--- 				ignore_cmds = { "Man", "!" },
--- 			},
--- 		},
--- 	}),
--- })
