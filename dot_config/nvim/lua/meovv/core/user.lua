@@ -43,6 +43,8 @@ local config = {
 		-- lsp servers that should be enabled
 		servers = {
 			astro = true,
+			-- Enable rust_analyzer
+			rust_analyzer = true,
 			wgsl_analyzer = true,
 			bashls = { filetypes = { "sh", "zsh" } },
 			mdx_analyzer = { filetypes = { "markdown" } },
