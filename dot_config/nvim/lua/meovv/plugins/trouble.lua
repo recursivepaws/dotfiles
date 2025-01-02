@@ -36,7 +36,6 @@ return {
 	},
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
-		"echasnovski/mini.icons",
 	},
 	config = function()
 		require("trouble").setup({

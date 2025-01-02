@@ -7,5 +7,5 @@ vim.api.nvim_create_autocmd("VimResized", {
 })
 
 vim.cmd([[
-  command! MeovvDisableFormatOnSave lua require('meovv.utils.lsp').toggle_format_on_save()
+  command! ToggleFormatOnSave lua require('meovv.utils.lsp').toggle_format_on_save()
 ]])

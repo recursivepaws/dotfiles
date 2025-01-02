@@ -54,7 +54,6 @@ return {
 				end,
 				desc = "Forward Jump",
 			},
-
 			{
 				"<leader>np",
 				function()

@@ -35,5 +35,4 @@ return {
 		null_ls.setup(u.merge(defaults, config_opts))
 	end,
 	event = "BufEnter",
-	enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, "null_ls"),
 }

@@ -41,6 +41,7 @@ return {
 	end,
 	dependencies = {
 		"williamboman/mason.nvim",
+		"folke/noice.nvim",
 	},
 	event = { "BufEnter", "CmdlineEnter" },
 }
