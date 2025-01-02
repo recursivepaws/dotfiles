@@ -1,0 +1,1 @@
+require("meovv.lsp.diagnostics")
