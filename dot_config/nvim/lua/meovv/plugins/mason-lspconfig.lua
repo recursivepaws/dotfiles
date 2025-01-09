@@ -30,33 +30,8 @@ return {
 					then
 						server_config = u.merge(server_config, user_config.lsp.servers[server].opts)
 					end
-					--[[
-					print(vim.inspect(server))
-					if server == "eslint" then
-						print(vim.inspect(server_config))
-					end]]
 					lspconfig[server].setup(server_config)
 				end,
-				--[[
-				["eslint"] = function()
-					lspconfig["eslint"].setup({
-						--capabilities = capabilities,
-						-- on_attach = on_attach,
-						settings = {
-
-							--options = workspaceSettings.eslintOptions,
-							--workingDirectory = workspaceSettings.eslintWorkingDirectory,
-							--codeActionOnSave = workspaceSettings.eslintCodeActionOnSave,
-							enabled = false,
-							execArgv = {
-								"--max-old-space-size=32568",
-								"--max_old_space_size=32568",
-								"asasdkfjasdlkalsdk:workspaceSettings",
-							},
-						},
-					})
-				end,
-        --]]
 			},
 		})
 
@@ -69,15 +44,6 @@ return {
 			automaticinstallation = false,
 			handlers = {},
 		})
-		-- set up lsp servers
-
-		--[[
-		for config_server, config_opt in pairs(user_config.lsp.servers) do
-			if not config_opt == false then
-				start_server(config_server)
-			end
-		end
-    ]]
 	end,
 	dependencies = {
 		"williamboman/mason.nvim",
