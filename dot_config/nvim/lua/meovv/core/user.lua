@@ -45,32 +45,28 @@ local config = {
 			-- Enable rust_analyzer
 			rust_analyzer = true,
 			wgsl_analyzer = true,
-			bashls = { filetypes = { "sh", "zsh" } },
-			mdx_analyzer = { filetypes = { "markdown" } },
+			bashls = { opts = { filetypes = { "sh", "zsh" } } },
+			mdx_analyzer = { opts = { filetypes = { "markdown" } } },
 			texlab = true,
 			ltex = {
-				settings = {
-					ltex = {
-						language = "en-US",
-						additionalRules = {
-							enablePickyRules = true,
+				opts = {
+					settings = {
+						ltex = {
+							language = "en-US",
+							additionalRules = {
+								enablePickyRules = true,
+							},
 						},
 					},
-				},
-				filetypes = { "plaintex", "markdown", "text", "tex", "pandoc", "bib", "gitcommit" },
-			},
-			tailwindcss = true,
-			eslint = {
-				settings = {
-					eslint = {
-						runtime = "node",
-						execArgv = { "--max-old-space-size=8192", "--max_old_space_size=8192" },
-						run = "onSave",
-					},
-					runtime = "node",
-					execArgv = { "--max-old-space-size=8192", "--max_old_space_size=8192" },
+					filetypes = { "plaintex", "markdown", "text", "tex", "pandoc", "bib", "gitcommit" },
 				},
 			},
+			tailwindcss = {
+				flags = {
+					debounce_text_changes = 1000,
+				},
+			},
+			eslint = true,
 			jsonls = {
 				format_on_save = false,
 			},

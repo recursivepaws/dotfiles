@@ -1,5 +1,5 @@
+--[[
 local map = require("meovv.utils").set_keymap
-
 return {
   "rmagatti/auto-session",
   lazy = false,
@@ -22,3 +22,6 @@ return {
     )
   end,
 }
+]]
+
+return {}
