@@ -62,8 +62,12 @@ local config = {
       tailwindcss = true,
       eslint = {
         settings = {
-          execArgv = "--max-old-space-size=8192"
-        }
+          eslint = {
+            runtime = "node",
+            execArgv = { "--max-old-space-size=8192" },
+            run = "onSave"
+          }
+        },
       },
       jsonls = {
         format_on_save = false,
