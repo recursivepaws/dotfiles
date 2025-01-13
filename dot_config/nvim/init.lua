@@ -12,7 +12,7 @@ end
 -- vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
 -- vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
 
---[[ vim.filetype.add({
+vim.filetype.add({
 	pattern = {
 		["%.env%.[%w_.-]+"] = "sh",
 		["%.bashrc"] = "sh",
@@ -21,11 +21,12 @@ end
 		["dot_bashrc%.tmpl"] = "sh",
 	},
 })
-
+--[[
 -- Deno-specific markup
 vim.g.markdown_fenced_languages = {
 	"ts=typescript",
 } ]]
+
 --[[
 require("navigation")
 vim.keymap.set("n", ";;", "$a;<Esc>")
