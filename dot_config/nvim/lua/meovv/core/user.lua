@@ -49,7 +49,6 @@ local config = {
           filetypes = { "markdown" },
         },
       }, ]]
-			rust_analyzer = true,
 			wgsl_analyzer = true,
 			bashls = { opts = { filetypes = { "sh", "zsh" } } },
 			mdx_analyzer = { opts = { filetypes = { "markdown" } } },
