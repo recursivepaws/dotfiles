@@ -1,17 +1,17 @@
-vim.g.rustaceanvim = {
-	tools = {
-		hover_actions = { auto_focus = true },
-	},
-	server = {
-		settings = {
-			["rust-analyzer"] = {
-				cargo = {
-					--features = "all",
-				},
-			},
-		},
-	},
-}
+-- vim.g.rustaceanvim = {
+-- 	tools = {
+-- 		hover_actions = { auto_focus = true },
+-- 	},
+-- 	server = {
+-- 		settings = {
+-- 			["rust-analyzer"] = {
+-- 				cargo = {
+-- 					--features = "all",
+-- 				},
+-- 			},
+-- 		},
+-- 	},
+-- }
 
 -- { "rust-analyzer.server.path": "~/.local/bin/rust-analyzer-linux" }
 
