@@ -2,16 +2,15 @@ if vim.fn.has("nvim-0.11") == 0 then
 	error("Need Neovim v0.11+ (Nightly) in order to run Cosmic!")
 end
 
-local ok, err = pcall(require, "meovv")
-
-if not ok then
-	error(("Error loading core...\n\n%s"):format(err))
-end
-
 -- vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
 -- vim.o.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
 -- vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
 
+vim.filetype.add({
+	extension = {
+		mdx = "markdown",
+	},
+})
 vim.filetype.add({
 	pattern = {
 		["%.env%.[%w_.-]+"] = "sh",
@@ -21,6 +20,12 @@ vim.filetype.add({
 		["dot_bashrc%.tmpl"] = "sh",
 	},
 })
+
+local ok, err = pcall(require, "meovv")
+
+if not ok then
+	error(("Error loading core...\n\n%s"):format(err))
+end
 --[[
 -- Deno-specific markup
 vim.g.markdown_fenced_languages = {
