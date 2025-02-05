@@ -10,14 +10,8 @@ return {
 			local buf_map = utils.create_buf_map(bufnr)
 			buf_map("n", "gn", '<cmd>lua require("cosmic-ui").rename()<cr>', { desc = "Rename" })
 			if vim.bo.filetype == "rust" then
-				buf_map(
-					"n",
-					"<leader>la",
-					'<cmd>RustLsp codeAction<cr>',
-					{ desc = "Code Actions" }
-				)
+				buf_map("n", "<leader>la", "<cmd>RustLsp codeAction<cr>", { desc = "Code Actions" })
 			else
-				require("cosmic-ui").code_actions()
 				buf_map(
 					"n",
 					"<leader>la",
