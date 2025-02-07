@@ -1,5 +1,6 @@
 local user_config = require("meovv.core.user")
 local utils = require("meovv.utils")
+local lsp_utils = require("meovv.utils.lsp")
 return {
 	"CosmicNvim/cosmic-ui",
 	dependencies = {
@@ -11,6 +12,7 @@ return {
 			buf_map("n", "gn", '<cmd>lua require("cosmic-ui").rename()<cr>', { desc = "Rename" })
 			if vim.bo.filetype == "rust" then
 				buf_map("n", "<leader>la", "<cmd>RustLsp codeAction<cr>", { desc = "Code Actions" })
+				lsp_utils.configure_client_formatting(client, bufnr)
 			else
 				buf_map(
 					"n",

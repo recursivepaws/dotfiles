@@ -1,5 +1,7 @@
 local user_config = require("meovv.core.user")
 local M = {}
+local augroup_name = "MeovvNvimLspFormat"
+M.augroup = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 
 M.format_on_save_enabled = true
 
@@ -78,6 +80,32 @@ function M.toggle_inlay_hints()
 			bufnr = vim.api.nvim_get_current_buf(),
 		}))
 	end
+end
+
+function M.configure_client_formatting(client, bufnr)
+	-- set up :LspFormat for clients that are capable
+	vim.cmd(string.format("command! -nargs=? LspFormat lua require('meovv.utils.lsp').buf_format(%s, <q-args>)", bufnr))
+
+	-- set up auto format on save
+	vim.api.nvim_clear_autocmds({
+		group = M.augroup,
+		buffer = bufnr,
+	})
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		callback = function()
+			if M.format_on_save_enabled then
+				vim.lsp.buf.format({
+					timeout_ms = user_config.lsp.format_timeout,
+					bufnr = bufnr,
+					filter = function()
+						return M.can_client_format_on_save(client)
+					end,
+				})
+			end
+		end,
+		buffer = bufnr,
+		group = M.augroup,
+	})
 end
 
 return M

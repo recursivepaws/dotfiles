@@ -1,11 +1,8 @@
 local M = {}
-local augroup_name = "MeovvNvimLspFormat"
 local user_config = require("meovv.core.user")
 local u = require("meovv.utils")
 local lsp_utils = require("meovv.utils.lsp")
 local lsp_mappings = require("meovv.lsp.mappings")
-
-M.augroup = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 
 function M.on_attach(client, bufnr)
 	local function buf_set_option(name, value)
@@ -22,31 +19,7 @@ function M.on_attach(client, bufnr)
 	end
 
 	if client.supports_method("textDocument/formatting") then
-		-- set up :LspFormat for clients that are capable
-		vim.cmd(
-			string.format("command! -nargs=? LspFormat lua require('meovv.utils.lsp').buf_format(%s, <q-args>)", bufnr)
-		)
-
-		-- set up auto format on save
-		vim.api.nvim_clear_autocmds({
-			group = M.augroup,
-			buffer = bufnr,
-		})
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			callback = function()
-				if lsp_utils.format_on_save_enabled then
-					vim.lsp.buf.format({
-						timeout_ms = user_config.lsp.format_timeout,
-						bufnr = bufnr,
-						filter = function()
-							return lsp_utils.can_client_format_on_save(client)
-						end,
-					})
-				end
-			end,
-			buffer = bufnr,
-			group = M.augroup,
-		})
+		lsp_utils.configure_client_formatting(client, bufnr)
 	end
 
 	-- set up default mappings
