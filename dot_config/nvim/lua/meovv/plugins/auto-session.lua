@@ -11,6 +11,7 @@ return {
 		})
 	end,
 	init = function()
+		vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 		map("n", "<leader>sl", "<cmd>silent RestoreSession<cr>", { desc = "Restore session" })
 		map("n", "<leader>ss", "<cmd>SaveSession<cr>", { desc = "Save session" })
 		map(
