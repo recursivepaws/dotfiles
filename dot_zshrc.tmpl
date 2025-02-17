@@ -1,19 +1,25 @@
 # Set up PATH
 if [ "$PATH" = "" ]; then
-	export PATH="/bin"
+  export PATH="/bin"
 fi
 add_to_path() {
-	if ! [[ "$PATH" =~ "$1" ]]; then
-		export PATH="$1:$PATH"
-	fi
+  if ! [[ "$PATH" =~ "$1" ]]; then
+    export PATH="$1:$PATH"
+  fi
 }
+
 add_to_path "/usr/bin"
 add_to_path "/usr/local/bin"
 add_to_path "/usr/local/go/bin"
 add_to_path "$HOME/.local/bin"
+add_to_path "$HOME/.volta/bin"
+add_to_path "$HOME/.local/share/gem/ruby/*/bin"
 add_to_path "$HOME/bin"
 add_to_path "$HOME/go/bin"
 add_to_path "$HOME/.cargo/bin"
+
+export PNPM_HOME="/home/vera/.local/share/pnpm"
+add_to_path "$PNPM_HOME"
 
 # Platform specific stuff
 {{- if eq .chezmoi.os "darwin" }}
@@ -44,14 +50,14 @@ source ~/.zsh/zsh-syntax-highlighting.sh
 export ZOXIDE_CMD_OVERRIDE="cd"
 # Load plugins
 plugins=(
-	git
-	nvm
-	fzf
-	thefuck
-	zoxide
-	eza
-	starship
-	zsh-syntax-highlighting
+  git
+  nvm
+  fzf
+  thefuck
+  zoxide
+  eza
+  starship
+  zsh-syntax-highlighting
 )
 source $ZSH/oh-my-zsh.sh
 # opam configuration
@@ -67,21 +73,21 @@ export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
 _fzf_compgen_path() {
-	fd --hidden --exclude .git . "$1"
+  fd --hidden --exclude .git . "$1"
 }
 _fzf_compgen_dir() {
-	fd --type=d --hidden --exclude .git . "$1"
+  fd --type=d --hidden --exclude .git . "$1"
 }
 _fzf_comprun() {
-	local command=$1
-	shift
+  local command=$1
+  shift
 
-	case "$command" in
-	cd) fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-	export | unset) fzf --preview "eval 'echo $'{}" "$@" ;;
-	ssh) fzf --preview 'dig {}' "$@" ;;
-	*) fzf --preview "$show_file_or_dir_preview" "$@" ;;
-	esac
+  case "$command" in
+  cd) fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+  export | unset) fzf --preview "eval 'echo $'{}" "$@" ;;
+  ssh) fzf --preview 'dig {}' "$@" ;;
+  *) fzf --preview "$show_file_or_dir_preview" "$@" ;;
+  esac
 }
 
 # fzf git
