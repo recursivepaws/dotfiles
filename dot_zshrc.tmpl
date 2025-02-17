@@ -18,8 +18,7 @@ add_to_path "$HOME/bin"
 add_to_path "$HOME/go/bin"
 add_to_path "$HOME/.cargo/bin"
 
-export PNPM_HOME="/home/vera/.local/share/pnpm"
-add_to_path "$PNPM_HOME"
+export VOLTA_FEATURE_PNPM=1
 
 # Platform specific stuff
 {{- if eq .chezmoi.os "darwin" }}
