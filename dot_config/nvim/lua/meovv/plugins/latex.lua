@@ -2,13 +2,13 @@ return {
 	{
 		"jbyuki/nabla.nvim",
 		keys = {
-			{
+			--[[ {
 				"<leader>nN",
 				function()
 					require("nabla").popup()
 				end,
 				desc = "Notation",
-			},
+			}, ]]
 		},
 		config = function()
 			require("nabla").enable_virt()
@@ -54,13 +54,13 @@ return {
 				end,
 				desc = "Forward Jump",
 			},
-			{
+			--[[ {
 				"<leader>np",
 				function()
 					require("knap").launch_notepad()
 				end,
 				desc = "Temporary Notepad",
-			},
+			}, ]]
 		},
 		ft = { "markdown", "tex" },
 	},
