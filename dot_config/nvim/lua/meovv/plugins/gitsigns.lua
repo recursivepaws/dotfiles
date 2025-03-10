@@ -62,7 +62,7 @@ return {
 				map("n", "<leader>vu", gs.undo_stage_hunk, { desc = "Undo stage hunk" })
 				map("n", "<leader>vR", gs.reset_buffer, { desc = "Reset buffer" })
 				map("n", "<leader>vp", gs.preview_hunk, { desc = "Preview hunk" })
-				map("n", "<leader>vb", function()
+				map("n", "<leader>vB", function()
 					gs.blame_line({ full = true })
 				end, {
 					desc = "Blame line",

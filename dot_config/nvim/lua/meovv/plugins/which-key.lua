@@ -32,7 +32,7 @@ return {
 			{ "<leader>lw", group = "workspace" },
 			{ "<leader>n", group = "tree" },
 			{ "<leader>p", group = "lazy (plugins)" },
-			{ "<leader>s", group = "session" },
+			{ "<leader>w", group = "session" },
 			{ "<leader>t", group = "tab" },
 			{ "<leader>v", group = "git (vsc)" },
 			{ "<leader>vt", group = "toggle" },
