@@ -62,7 +62,7 @@ return {
 				desc = "Temporary Notepad",
 			}, ]]
 		},
-		ft = { "markdown", "tex" },
+		t = { "markdown", "tex" },
 	},
 	{
 		"lervag/vimtex",

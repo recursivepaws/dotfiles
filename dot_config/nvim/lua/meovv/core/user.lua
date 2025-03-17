@@ -63,7 +63,7 @@ local config = {
 							},
 						},
 					},
-					filetypes = { "plaintex", "markdown", "text", "tex", "pandoc", "bib", "gitcommit" },
+					filetypes = { "plaintex", "tex", "pandoc", "bib" },
 				},
 			},
 			tailwindcss = true,
