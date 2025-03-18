@@ -16,9 +16,10 @@ map("n", "<leader>kc", ":new<cr>", { desc = "New buffer" })
 map("n", "<leader>ko", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but the current one" }) -- https://stackoverflow.com/a/42071865/516188
 
 -- tab navigation
-map("n", "<leader>tp", ":tabprevious<cr>", { desc = "Prev tab" })
-map("n", "<leader>tn", ":tabnext<cr>", { desc = "Next tab" })
-map("n", "<leader>td", ":tabclose<cr>", { desc = "Close tab" })
+map("n", "<leader>t[", ":tabprevious<cr>", { desc = "Prev tab" })
+map("n", "<leader>t]", ":tabnext<cr>", { desc = "Next tab" })
+map("n", "<leader>tn", ":tabnew<cr>", { desc = "New tab" })
+map("n", "<leader>tc", ":tabclose<cr>", { desc = "Close tab" })
 
 -- plugin management
 map("n", "<leader>pc", ":Lazy check<cr>", { desc = "Check plugins" })
@@ -41,9 +42,3 @@ map("", "<up>", "<nop>")
 map("", "<down>", "<nop>")
 map("", "<left>", "<nop>")
 map("", "<right>", "<nop>")
-
--- Move around splits using Ctrl + {h,j,k,l}
--- map("n", "<C-h>", ":wincmd h<cr>", { desc = "Move left window" })
--- map("n", "<C-j>", ":wincmd j<cr>", { desc = "Move down window" })
--- map("n", "<C-k>", ":wincmd k<cr>", { desc = "Move up window" })
--- map("n", "<C-l>", ":wincmd l<cr>", { noremap = true })

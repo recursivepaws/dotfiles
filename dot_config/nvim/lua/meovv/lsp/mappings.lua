@@ -9,23 +9,23 @@ function M.init(client, bufnr)
 	})
 
 	-- diagnostics
-	buf_map("n", "[g", "<cmd>lua vim.diagnostic.goto_prev()<cr>", { desc = "Prev diagnostic" })
-	buf_map("n", "]g", "<cmd>lua vim.diagnostic.goto_next()<cr>", { desc = "Next diagnostic" })
+	buf_map("n", "<leader>x[", "<cmd>lua vim.diagnostic.goto_prev()<cr>", { desc = "Prev diagnostic" })
+	buf_map("n", "<leader>x]", "<cmd>lua vim.diagnostic.goto_next()<cr>", { desc = "Next diagnostic" })
 	buf_map(
 		"n",
-		"ge",
+		"<leader>xl",
 		'<cmd>lua vim.diagnostic.open_float(nil, { scope = "line", })<cr>',
-		{ desc = "Show current line diagnostic" }
+		{ desc = "Current line diagnostic" }
 	)
 	buf_map(
 		"n",
-		"<leader>ldb",
+		"<leader>xb",
 		'<cmd>lua vim.diagnostic.open_float(nil, { scope = "buffer", })<cr>',
 		{ desc = "Show buffer diagnostics" }
 	)
 
 	-- hover
-	buf_map("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", { desc = "Show documentation" })
+	buf_map("n", "<leader>xd", "<cmd>lua vim.lsp.buf.hover()<cr>", { desc = "Show documentation" })
 
 	-- inlay hints
 	if client.supports_method("textDocument/inlayHint") then
@@ -33,7 +33,7 @@ function M.init(client, bufnr)
 	end
 
 	-- code actions
-	buf_map("n", "gn", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc = "Rename" })
+	buf_map("n", "<leader>gn", "<cmd>lua vim.lsp.buf.rename()<cr>", { desc = "Rename" })
 	buf_map("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_actions()<cr>", { desc = "Code Actions" })
 	buf_map("v", "<leader>la", "<cmd>lua vim.lsp.buf.range_code_actions()<cr>", { desc = "Range Code Actions" })
 
@@ -51,7 +51,7 @@ function M.init(client, bufnr)
 	buf_map(
 		"n",
 		"<leader>lwl",
-		'<cmd>lua require("meovv.utils.logger"):log(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>',
+		"<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>",
 		{ desc = "Show workspace folders" }
 	)
 end

@@ -9,7 +9,7 @@ return {
 	init = function()
 		user_config.lsp.add_on_attach_mapping(function(client, bufnr)
 			local buf_map = utils.create_buf_map(bufnr)
-			buf_map("n", "gn", '<cmd>lua require("cosmic-ui").rename()<cr>', { desc = "Rename" })
+			buf_map("n", "<leader>gn", '<cmd>lua require("cosmic-ui").rename()<cr>', { desc = "Rename" })
 			if vim.bo.filetype == "rust" then
 				buf_map("n", "<leader>la", "<cmd>RustLsp codeAction<cr>", { desc = "Code Actions" })
 				lsp_utils.configure_client_formatting(client, bufnr)

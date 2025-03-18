@@ -33,9 +33,9 @@ return {
 			{ "<leader>p", group = "lazy (plugins)" },
 			{ "<leader>w", group = "session" },
 			{ "<leader>t", group = "tab" },
-			{ "<leader>v", group = "git (vsc)" },
+			{ "<leader>v", group = "git" },
 			{ "<leader>vt", group = "toggle" },
-			{ "<leader>x", group = "terminal" },
+			{ "<leader>x", group = "diagnostics" },
 		})
 	end,
 	event = "VeryLazy",
