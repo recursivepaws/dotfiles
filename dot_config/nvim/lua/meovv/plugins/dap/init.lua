@@ -45,7 +45,7 @@ local map = require("meovv.utils").set_keymap
     })
   end,
 } ]]
-return {
+--[[ return {
   {
     "mfussenegger/nvim-dap",
     keys = {
@@ -184,10 +184,6 @@ return {
       },
     },
     config = function()
-      -- require("dap").providers.configs["custom-neoconf"] = function()
-      --   return require("neoconf").get("debuggers")
-      -- end
-
       vim.fn.sign_define({
         {
           text = "",
@@ -225,4 +221,5 @@ return {
       map("n", "<leader>bu", require("dapui").toggle, { desc = "DAP: Dapui toggle" })
     end,
   },
-}
+} ]]
+return {}
