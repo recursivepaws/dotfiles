@@ -16,10 +16,10 @@ map("n", "<leader>kc", ":new<cr>", { desc = "New buffer" })
 map("n", "<leader>ko", "<cmd>%bd|e#<cr>", { desc = "Close all buffers but the current one" }) -- https://stackoverflow.com/a/42071865/516188
 
 -- tab navigation
-map("n", "<leader>t[", ":tabprevious<cr>", { desc = "Prev tab" })
-map("n", "<leader>t]", ":tabnext<cr>", { desc = "Next tab" })
-map("n", "<leader>tn", ":tabnew<cr>", { desc = "New tab" })
-map("n", "<leader>tc", ":tabclose<cr>", { desc = "Close tab" })
+map("n", "<leader>j[", ":tabprevious<cr>", { desc = "Prev tab" })
+map("n", "<leader>j]", ":tabnext<cr>", { desc = "Next tab" })
+map("n", "<leader>jn", ":tabnew<cr>", { desc = "New tab" })
+map("n", "<leader>jc", ":tabclose<cr>", { desc = "Close tab" })
 
 -- plugin management
 map("n", "<leader>pc", ":Lazy check<cr>", { desc = "Check plugins" })

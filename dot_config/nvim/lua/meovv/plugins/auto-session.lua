@@ -9,6 +9,7 @@ return {
 		{ "<leader>wt", "<cmd>SessionToggleAutoSave<cr>", desc = "Toggle autosave" },
 		{ "<leader>ww", ":w<cr>", desc = "Write buffer" },
 		{ "<leader>wa", ":wall<cr>", desc = "Write all buffers" },
+		{ "<leader>wq", ":wqall<cr>", desc = "Write quit all buffers" },
 	},
 	opts = {
 		suppressed_dirs = { "~/", "~/Documents", "~/Downloads", "/" },
