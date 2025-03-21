@@ -108,4 +108,127 @@ function M.configure_client_formatting(client, bufnr)
 	})
 end
 
+--- Gets the root directories of all active clients for a target buffer or path
+---@param target integer|string|nil # the target to get the roots for or 0 or nil for current
+---@param sort boolean|nil # whether to sort the roots by length
+---@return string[] # the root directories of the active clients
+function M.lsp_roots(target, sort)
+	local buffer, path = vim.fn.expand_target(target)
+
+	local roots = {}
+	if path then
+		for _, client in ipairs(vim.lsp.get_clients({ bufnr = buffer })) do
+			local workspace = client.config.workspace_folders
+
+			---@type string[]
+			local paths = workspace
+					and vim.iter(workspace)
+						:map(
+							---@param ws lsp.WorkspaceFolder
+							function(ws)
+								return vim.uri_to_fname(ws.uri)
+							end
+						)
+						:totable()
+				or client.config.root_dir and { client.config.root_dir }
+				or {}
+
+			for _, p in ipairs(paths) do
+				local r = vim.uv.fs_realpath(p)
+				if r and path:find(r, 1, true) then
+					if not vim.tbl_contains(roots, r) then
+						roots[#roots + 1] = r
+					end
+				end
+			end
+		end
+	end
+
+	if sort then
+		table.sort(roots, function(a, b)
+			return #a > #b
+		end)
+	end
+
+	return roots
+end
+
+--- Returns the project roots for a given target
+---@param target vim.fn.Target # the target to get the roots for
+---@return string[] # the list of roots
+function M.roots(target)
+	local buffer, path = vim.fn.expand_target(target)
+	if not vim.api.nvim_buf_is_valid(buffer) then
+		return {}
+	end
+	-- TODO: cache
+
+	local roots = {}
+	local function add(root)
+		if not vim.tbl_contains(roots, root) then
+			roots[#roots + 1] = root
+		end
+	end
+
+	-- obtain all LSP roots
+	for _, val in ipairs(M.lsp_roots(target)) do
+		add(val)
+	end
+
+	-- find also roots based on patterns
+	local cwd = assert(vim.uv.cwd())
+	path = path and vim.fs.dirname(path) or cwd
+
+	-- now add all the roots from the patterns
+	local matched_files = vim.fs.find(M.root_patterns, {
+		path = path,
+		upward = true,
+		limit = math.huge,
+		stop = vim.uv.os_homedir(),
+	})
+
+	for _, matched_file in ipairs(matched_files) do
+		add(vim.fs.dirname(matched_file))
+	end
+
+	-- add the cwd to the list for the last case scenario (only if no other roots were found)
+	if #roots == 0 then
+		add(cwd)
+	end
+
+	table.sort(roots, function(a, b)
+		return #a > #b
+	end)
+	return roots
+end
+
+--- Returns the primary root for a given target
+---@param target vim.fn.Target # the target to get the root for
+---@param deepest boolean|nil # whether to return the deepest or the shallowest root (default is deepest)
+---@return string # the root
+function M.root(target, deepest)
+	local roots = M.roots(target)
+	assert(#roots > 0)
+
+	if deepest == nil then
+		deepest = true
+	end
+
+	if deepest then
+		return roots[1]
+	else
+		return roots[#roots]
+	end
+end
+
+--- Gets the path to a binary for a given target
+---@param target vim.fn.Target # the target to get the binary path for
+---@param bin string|nil # the path of the binary
+function M.get_js_bin_path(target, bin)
+	local sub = vim.fs.joinpath("node_modules", ".bin", bin)
+	---@cast sub string
+
+	return ide.fs.scan(M.roots(target), sub)
+end
+
 return M
