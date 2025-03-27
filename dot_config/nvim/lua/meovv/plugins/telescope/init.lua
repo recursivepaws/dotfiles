@@ -20,11 +20,11 @@ return {
 		local u = require("meovv.utils")
 		local map = u.set_keymap
 
-		map("n", "<leader>ff", "", {
+		map("n", "<leader>fp", "", {
 			callback = require("meovv.plugins.telescope.utils").project_files,
-			desc = "Find file",
+			desc = "Find project file",
 		})
-		map("n", "<leader>fp", ":Telescope find_files<cr>", { desc = "Find project file" })
+		map("n", "<leader>ff", ":Telescope find_files<cr>", { desc = "Find file" })
 		map("n", "<leader>fk", ":Telescope buffers<cr>", { desc = "Find buffer" })
 		map("n", "<leader>fs", ":Telescope live_grep<cr>", { desc = "Grep string" })
 		map("n", "<leader>fw", ":Telescope grep_string<cr>", { desc = "Grep current word" })
