@@ -12,14 +12,13 @@ add_to_path "/usr/bin"
 add_to_path "/usr/local/bin"
 add_to_path "/usr/local/go/bin"
 add_to_path "$HOME/.local/bin"
-#add_to_path "$HOME/.volta/bin"
 add_to_path "$HOME/.local/share/gem/ruby/3.3.0/bin"
 add_to_path "$HOME/.local/share/pnpm"
 add_to_path "$HOME/bin"
 add_to_path "$HOME/go/bin"
 add_to_path "$HOME/.cargo/bin"
 
-export VOLTA_FEATURE_PNPM=1
+export PNPM_HOME="$HOME/.local/share/pnpm"
 
 # Platform specific stuff
 {{- if eq .chezmoi.os "darwin" }}
