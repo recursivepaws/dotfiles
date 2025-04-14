@@ -4,3 +4,6 @@
 [submodule "dot_local/share/tmux/tpm"]
 	path = dot_local/share/tmux/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "dot_local/share/tmux/plugins/tpm"]
+	path = dot_local/share/tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
