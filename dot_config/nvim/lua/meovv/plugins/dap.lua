@@ -50,7 +50,7 @@ return {
 		dependencies = {
 			"microsoft/vscode-js-debug",
 			version = "1.x",
-			build = "npm i && npm run compile vsDebugServerBundle && mv dist out",
+			build = "pnpm i && pnpm run compile vsDebugServerBundle && mv dist out",
 		},
 		config = function()
 			local dap = require("dap")

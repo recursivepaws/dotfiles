@@ -67,7 +67,6 @@ return {
 				end, {
 					desc = "Blame line",
 				})
-				map("n", "<leader>vtb", gs.toggle_current_line_blame, { desc = "Toggle blame current line" })
 				map("n", "<leader>vd", gs.diffthis, { desc = "Diff buffer" })
 				map("n", "<leader>vD", function()
 					gs.diffthis("~")

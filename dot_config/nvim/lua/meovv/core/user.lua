@@ -67,7 +67,20 @@ local config = {
 				},
 			},
 			tailwindcss = true,
-			eslint = true,
+			eslint = {
+				opts = {
+					settings = {
+						packageManager = "pnpm",
+						workingDirectory = {
+							mode = "auto",
+						},
+						workingDirectories = { mode = "auto" },
+						experimental = {
+							useFlatConfig = true,
+						},
+					},
+				},
+			},
 			jsonls = {
 				format_on_save = false,
 			},

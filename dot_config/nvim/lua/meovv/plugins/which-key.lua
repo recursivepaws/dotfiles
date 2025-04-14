@@ -31,7 +31,6 @@ return {
 			{ "<leader>p", group = "lazy (plugins)" },
 			{ "<leader>w", group = "session" },
 			{ "<leader>v", group = "git" },
-			{ "<leader>vt", group = "toggle" },
 			{ "<leader>x", group = "diagnostics" },
 			{ "<leader>b", group = "debugger" },
 			{ "<leader>t", group = "testing" },

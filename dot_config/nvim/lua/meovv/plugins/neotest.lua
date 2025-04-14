@@ -16,7 +16,7 @@ return {
 		require("neotest").setup({
 			adapters = {
 				require("neotest-jest")({
-					jestCommand = "npm test --",
+					jestCommand = "pnpm test --",
 					jest_test_discovery = false,
 					discovery = {
 						enabled = true,
