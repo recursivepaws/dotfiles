@@ -1,3 +1,6 @@
 [submodule "dot_oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
 	path = dot_oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
+[submodule "dot_local/share/tmux/tpm"]
+	path = dot_local/share/tmux/tpm
+	url = https://github.com/tmux-plugins/tpm
