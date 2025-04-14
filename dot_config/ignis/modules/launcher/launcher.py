@@ -1,4 +1,5 @@
 import re
+import asyncio
 from ignis.widgets import Widget
 from ignis.app import IgnisApp
 from ignis.services.applications import (
@@ -7,6 +8,7 @@ from ignis.services.applications import (
     ApplicationAction,
 )
 from ignis.utils import Utils
+from ignis.menu_model import IgnisMenuModel, IgnisMenuItem, IgnisMenuSeparator
 from gi.repository import Gio  # type: ignore
 
 app = IgnisApp.get_default()
@@ -63,27 +65,25 @@ class LauncherAppItem(Widget.Button):
 
     def __sync_menu(self) -> None:
         self._menu = Widget.PopoverMenu(
-            items=[
-                Widget.MenuItem(label="Launch", on_activate=lambda x: self.launch()),
-                Widget.Separator(),
-            ]
-            + [
-                Widget.MenuItem(
-                    label=i.name,
-                    on_activate=lambda x, action=i: self.launch_action(action),
-                )
-                for i in self._application.actions
-            ]
-            + [
-                Widget.Separator(),
-                Widget.MenuItem(
+            model=IgnisMenuModel(
+                IgnisMenuItem(label="Launch", on_activate=lambda x: self.launch()),
+                IgnisMenuSeparator(),
+                *(
+                    IgnisMenuItem(
+                        label=i.name,
+                        on_activate=lambda x, action=i: self.launch_action(action),
+                    )
+                    for i in self._application.actions
+                ),
+                IgnisMenuSeparator(),
+                IgnisMenuItem(
                     label="Pin", on_activate=lambda x: self._application.pin()
                 )
                 if not self._application.is_pinned
-                else Widget.MenuItem(
+                else IgnisMenuItem(
                     label="Unpin", on_activate=lambda x: self._application.unpin()
                 ),
-            ]
+            )
         )
         self.child.append(self._menu)
 
@@ -130,7 +130,7 @@ class SearchWebButton(Widget.Button):
         )
 
     def launch(self) -> None:
-        Utils.exec_sh_async(f"xdg-open {self._url}")
+        asyncio.create_task(Utils.exec_sh_async(f"xdg-open {self._url}"))
         app.close_window("ignis_LAUNCHER")
 
 

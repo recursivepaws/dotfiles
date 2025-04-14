@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import os
-
+import asyncio
+from gi.repository import GLib  # type: ignore
 from jinja2 import Template
 from PIL import Image
 from materialyoucolor.quantize import QuantizeCelebi
@@ -12,7 +13,6 @@ from materialyoucolor.score.score import Score
 from ignis.utils import Utils
 from ignis.app import IgnisApp
 from ignis.base_service import BaseService
-from ignis.services.wallpaper import CACHE_WALLPAPER_PATH
 from ignis.options import options
 from user_options import user_options
 
@@ -26,19 +26,19 @@ class MaterialService(BaseService):
     def __init__(self):
         super().__init__()
 
-        if not os.path.exists(CACHE_WALLPAPER_PATH):
+        if not options.wallpaper.wallpaper_path:
             self.__on_colors_not_found()
         if user_options.material.colors == {}:
             self.__on_colors_not_found()
 
         user_options.material.connect_option(
-            "dark_mode", lambda: self.generate_colors(CACHE_WALLPAPER_PATH)
+            "dark_mode", lambda: self.generate_colors(options.wallpaper.wallpaper_path)
         )
 
     def __on_colors_not_found(self) -> None:
         options.wallpaper.set_wallpaper_path(SAMPLE_WALL)
         self.generate_colors(SAMPLE_WALL)
-        Utils.exec_sh_async("hyprctl reload")
+        asyncio.create_task(Utils.exec_sh_async("hyprctl reload"))
 
     def get_colors_from_img(self, path: str, dark_mode: bool) -> dict[str, str]:
         image = Image.open(path)
@@ -71,7 +71,7 @@ class MaterialService(BaseService):
         dark_colors = self.get_colors_from_img(path, True)
         user_options.material.colors = colors
         self.__render_templates(colors, dark_colors)
-        self.__setup(path)
+        asyncio.create_task(self.__setup(path))
 
     def __render_templates(self, colors: dict, dark_colors: dict) -> None:
         for template in os.listdir(TEMPLATES):
@@ -107,17 +107,20 @@ class MaterialService(BaseService):
         with open(output_file, "w") as file:
             file.write(template_rendered)
 
-    def __reload_gtk_theme(self) -> None:
+    async def __reload_gtk_theme(self) -> None:
         THEME_CMD = "gsettings set org.gnome.desktop.interface gtk-theme {}"
         COLOR_SCHEME_CMD = "gsettings set org.gnome.desktop.interface color-scheme {}"
-        Utils.exec_sh_async(THEME_CMD.format("Adwaita"))
-        Utils.exec_sh_async(THEME_CMD.format("Material"))
-        Utils.exec_sh_async(COLOR_SCHEME_CMD.format("default"))
-        Utils.exec_sh_async(COLOR_SCHEME_CMD.format("prefer-dark"))
-        Utils.exec_sh_async(COLOR_SCHEME_CMD.format("default"))
+        await Utils.exec_sh_async(THEME_CMD.format("Adwaita"))
+        await Utils.exec_sh_async(THEME_CMD.format("Material"))
+        await Utils.exec_sh_async(COLOR_SCHEME_CMD.format("default"))
+        await Utils.exec_sh_async(COLOR_SCHEME_CMD.format("prefer-dark"))
+        await Utils.exec_sh_async(COLOR_SCHEME_CMD.format("default"))
 
-    def __setup(self, image_path: str) -> None:
-        Utils.exec_sh_async("pkill -SIGUSR1 kitty")
+    async def __setup(self, image_path: str) -> None:
+        try:
+            await Utils.exec_sh_async("pkill -SIGUSR1 kitty")
+        except GLib.Error:
+            ...
         options.wallpaper.set_wallpaper_path(image_path)
         app.reload_css()
-        self.__reload_gtk_theme()
+        await self.__reload_gtk_theme()
