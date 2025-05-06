@@ -1,13 +1,5 @@
 local map = require("meovv.utils").set_keymap
 
--- Quickfix mappings
-map("n", "<leader>ck", ":cexpr []<cr>", { desc = "Clear list" })
-map("n", "<leader>cc", ":cclose <cr>", { desc = "Close list" })
-map("n", "<leader>co", ":copen <cr>", { desc = "Open list" })
-map("n", "<leader>cf", ":cfdo %s/", { desc = "Search & Replace" })
-map("n", "<leader>cp", ":cprev<cr>zz", { desc = "Prev Item" })
-map("n", "<leader>cn", ":cnext<cr>zz", { desc = "Next Item" })
-
 -- buffer navigation
 map("n", "<leader>kp", ":bprev<cr>", { desc = "Prev buffer" })
 map("n", "<leader>kn", ":bnext<cr>", { desc = "Next buffer" })
