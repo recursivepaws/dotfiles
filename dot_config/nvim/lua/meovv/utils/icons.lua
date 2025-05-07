@@ -31,6 +31,7 @@ local icons = {
 	diff_modified = "",
 	diff_remove = "",
 	git = {
+		hub = "",
 		unstaged = "✗",
 		staged = "✓",
 		unmerged = "",

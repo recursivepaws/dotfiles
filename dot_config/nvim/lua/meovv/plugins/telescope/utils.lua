@@ -1,3 +1,4 @@
+local icons = require("meovv.utils.icons")
 local M = {}
 
 M.project_files = function()
@@ -10,14 +11,14 @@ end
 
 M.project_grep = function()
 	local builtin = require("telescope.builtin")
-	local opts = {}
-
-	local ok = pcall(builtin.git_files, opts)
-	if ok then
-		local root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
-		builtin.live_grep(vim.tbl_extend("force", opts, { cwd = root }))
+	local root = vim.fn.systemlist("git rev-parse --show-toplevel 2> /dev/null")[1]
+	if root then
+		builtin.live_grep({
+			prompt_title = icons.git.hub .. " Grep Git Project " .. icons.git.hub,
+			cwd = root,
+		})
 	else
-		builtin.live_grep(opts)
+		vim.notify("Not in a git direcotry")
 	end
 end
 
