@@ -35,6 +35,7 @@ local icons = {
 		unstaged = "✗",
 		staged = "✓",
 		unmerged = "",
+		branch = "",
 		renamed = "➜",
 		untracked = "★",
 		deleted = "",

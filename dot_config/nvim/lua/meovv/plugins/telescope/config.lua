@@ -126,6 +126,10 @@ require("telescope").setup({
 			prompt_title = "✨ Live Grep ✨",
 			mappings = default_mappings,
 		}),
+		git_branches = u.merge(opts_flex, {
+			prompt_title = icons.git.branch .. " Checkout Git Branch " .. icons.git.branch,
+			mappings = default_mappings,
+		}),
 		grep_string = u.merge(opts_vertical, {
 			prompt_title = "✨ Grep String ✨",
 			mappings = default_mappings,
