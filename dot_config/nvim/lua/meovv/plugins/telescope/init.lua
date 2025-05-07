@@ -18,15 +18,14 @@ return {
 	init = function()
 		-- normal mappings
 		local u = require("meovv.utils")
+		local t = require("meovv.plugins.telescope.utils")
 		local map = u.set_keymap
 
-		map("n", "<leader>fp", "", {
-			callback = require("meovv.plugins.telescope.utils").project_files,
-			desc = "Find project file",
-		})
+		map("n", "<leader>fp", "", { callback = t.project_files, desc = "Find project file" })
+		map("n", "<leader>fa", "", { callback = t.project_grep, desc = "Grep whole project" })
 		map("n", "<leader>ff", ":Telescope find_files<cr>", { desc = "Find file" })
-		map("n", "<leader>fk", ":Telescope buffers<cr>", { desc = "Find buffer" })
 		map("n", "<leader>fs", ":Telescope live_grep<cr>", { desc = "Grep string" })
+		map("n", "<leader>fk", ":Telescope buffers<cr>", { desc = "Find buffer" })
 		map("n", "<leader>fw", ":Telescope grep_string<cr>", { desc = "Grep current word" })
 
 		-- git navigation

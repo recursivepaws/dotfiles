@@ -8,4 +8,17 @@ M.project_files = function()
 	end
 end
 
+M.project_grep = function()
+	local builtin = require("telescope.builtin")
+	local opts = {}
+
+	local ok = pcall(builtin.git_files, opts)
+	if ok then
+		local root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+		builtin.live_grep(vim.tbl_extend("force", opts, { cwd = root }))
+	else
+		builtin.live_grep(opts)
+	end
+end
+
 return M
