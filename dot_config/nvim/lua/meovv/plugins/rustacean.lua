@@ -1,9 +1,8 @@
 return {
 	"mrcjkb/rustaceanvim",
-	version = "^4",
+	version = "^6",
 	ft = { "rust" },
 	dependencies = { "mfussenegger/nvim-dap" },
-
 	init = function()
 		vim.g.rustaceanvim = {
 			tools = {},

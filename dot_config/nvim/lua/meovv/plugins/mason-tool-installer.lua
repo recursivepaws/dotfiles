@@ -12,6 +12,7 @@ return {
         "eslint-lsp",
         "json-lsp",
         "html-lsp",
+        "codelldb",
         "typescript-language-server",
         "pyright"
       },
