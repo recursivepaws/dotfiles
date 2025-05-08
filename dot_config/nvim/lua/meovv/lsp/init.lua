@@ -5,7 +5,6 @@ require("meovv.lsp.pyright")()
 -- Mental disorders
 require("meovv.lsp.eslint")()
 require("meovv.lsp.html")()
-require("meovv.lsp.prettier")()
 require("meovv.lsp.tsls")()
 require("meovv.lsp.jsonls")()
 
