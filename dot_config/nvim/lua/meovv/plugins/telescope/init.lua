@@ -26,6 +26,7 @@ return {
 		map("n", "<leader>ff", ":Telescope find_files<cr>", { desc = "Find file" })
 		map("n", "<leader>fb", ":Telescope git_branches<cr>", { desc = "Git branches" })
 		map("n", "<leader>fs", ":Telescope live_grep<cr>", { desc = "Grep string" })
+		map("n", "<leader>ft", ":Telescope treesitter<cr>", { desc = "Grep treesitter" })
 		map("n", "<leader>fk", ":Telescope buffers<cr>", { desc = "Find buffer" })
 		map("n", "<leader>fw", ":Telescope grep_string<cr>", { desc = "Grep current word" })
 

@@ -74,7 +74,6 @@ local config = {
 						workingDirectory = {
 							mode = "auto",
 						},
-						workingDirectories = { mode = "auto" },
 						experimental = {
 							useFlatConfig = true,
 						},
