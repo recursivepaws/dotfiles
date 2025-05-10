@@ -108,4 +108,6 @@ M.configure_client_formatting = function(client, bufnr)
 	})
 end
 
+M.mason_bin = vim.fn.expand("$HOME/.local/share/nvim/mason/bin/")
+
 return M
