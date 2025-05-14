@@ -12,27 +12,6 @@ M.telescope = function(operation)
   end
 end
 
---[[
-M.can_client_format_on_save = function(client)
-	local user_server_config = user_config.lsp.servers[client.name]
-	-- formatting enabled by default if server=true
-	if user_server_config == true then
-		return true
-	end
-
-	-- check config server settings
-	if user_server_config then
-		-- default to true if no format flag on server settings is set
-		if user_server_config.format_on_save == nil then
-			return true
-		end
-		-- check format flag on server settings
-		return user_server_config.format_on_save == true
-	end
-
-	return true
-end ]]
-
 M.toggle_format_on_save = function()
   M.format_on_save_enabled = not M.format_on_save_enabled
   vim.notify(string.format("Format on save: %s", M.format_on_save_enabled))

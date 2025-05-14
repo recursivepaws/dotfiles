@@ -19,20 +19,28 @@ return {
       jump_prev_row = { "<S-Enter>", mode = { "n", "v" } },
     },
   },
-  -- cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
+  -- lazy = false,
+  cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
   init = function()
-    local csvview = require("csvview")
-    -- Make sure we load the right spacing for web files
+    local csv_opts = {
+      view = {
+        display_mode = "border",
+        header_lnum = 1,
+      },
+    }
     vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
       pattern = { "*.csv" },
-      callback = function()
-        local map = buf_map(vim.api.nvim_get_current_buf())
-        map("n", "<leader>ct", function()
-          -- vim.cmd.CsvViewToggle("display_mode")
-          csvview.toggle({
-            display_mode = "border",
-          })
+      callback = function(args)
+        local bufnr = tonumber(args.data)
+        local map = buf_map(bufnr)
+
+        -- Set up toggle
+        map("n", "<leader>lt", function()
+          require("csvview").toggle(bufnr, csv_opts)
         end, { desc = "Toggle View" })
+
+        -- Auto enable
+        require("csvview").enable(bufnr, csv_opts)
       end,
     })
   end,
