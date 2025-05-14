@@ -70,7 +70,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
       map("n", "<leader>gt", telescope("lsp_type_definitions"), { desc = "Go to type" })
     end
     if supports("textDocument/references") then
-      map("n", "<leader>gr", telescope("lsp_references"), { desc = "Go to type" })
+      map("n", "<leader>gr", telescope("lsp_references"), { desc = "Go to references" })
     end
 
     -- F prefix (find)
