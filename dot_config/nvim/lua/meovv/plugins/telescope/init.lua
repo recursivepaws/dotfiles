@@ -1,51 +1,50 @@
-local user_config = require("meovv.core.user")
 -- Improved file search
 -- Added cmdline via telescope
 return {
-	"nvim-telescope/telescope.nvim",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		--"jonarrien/telescope-cmdline.nvim",
-		"nvim-lua/popup.nvim",
-		{
-			"nvim-telescope/telescope-fzf-native.nvim",
-			build = "make",
-		},
-	},
-	config = function()
-		require("meovv.plugins.telescope.config")
-	end,
-	init = function()
-		-- normal mappings
-		local u = require("meovv.utils")
-		local t = require("meovv.plugins.telescope.utils")
-		local map = u.set_keymap
+  "nvim-telescope/telescope.nvim",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    --"jonarrien/telescope-cmdline.nvim",
+    "nvim-lua/popup.nvim",
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+    },
+    "nvim-telescope/telescope-ui-select.nvim",
+  },
+  config = function()
+    require("meovv.plugins.telescope.config")
+  end,
+  init = function()
+    require("telescope").setup({
+      extensions = {
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown({}),
+        },
+      },
+    })
 
-		map("n", "<leader>fp", t.project_files, { desc = "Find project file" })
-		map("n", "<leader>fg", t.project_grep, { desc = "Grep whole project" })
-		map("n", "<leader>ff", ":Telescope find_files<cr>", { desc = "Find file" })
-		map("n", "<leader>fb", ":Telescope git_branches<cr>", { desc = "Git branches" })
-		map("n", "<leader>fs", ":Telescope live_grep<cr>", { desc = "Grep string" })
-		map("n", "<leader>ft", ":Telescope treesitter<cr>", { desc = "Grep treesitter" })
-		map("n", "<leader>fk", ":Telescope buffers<cr>", { desc = "Find buffer" })
-		map("n", "<leader>fw", ":Telescope grep_string<cr>", { desc = "Grep current word" })
+    require("telescope").load_extension("ui-select")
 
-		-- git navigation
-		map("n", "<leader>vc", ":Telescope git_commits<cr>", { desc = "Git commits" })
-		map("n", "<leader>vg", ":Telescope git_status<cr>", { desc = "Git status" })
+    -- normal mappings
+    local map = require("meovv.utils").map
+    local telescope = require("meovv.utils.lsp").telescope
+    local t = require("meovv.plugins.telescope.utils")
+    local project_files, project_grep, git_root = t.project_files, t.project_grep, t.git_root
 
-		-- user_config.lsp.add_on_attach_mapping(function(client, bufnr)
-		-- 	local map = u.create_buf_map(bufnr)
+    map("n", "<leader>fp", project_files, { desc = "Find project file" })
+    map("n", "<leader>fg", project_grep, { desc = "Grep whole project" })
+    map("n", "<leader>ff", telescope("find_files"), { desc = "Find file" })
+    map("n", "<leader>fs", telescope("live_grep"), { desc = "Grep string" })
+    map("n", "<leader>ft", telescope("treesitter"), { desc = "Grep treesitter" })
+    map("n", "<leader>fk", telescope("buffers"), { desc = "Find buffer" })
+    map("n", "<leader>fw", telescope("grep_string"), { desc = "Grep current word" })
 
-		map("n", "<leader>gd", "<cmd>Telescope lsp_definitions<cr>", { desc = "Go to definition" })
-		map("n", "<leader>gi", "<cmd>Telescope lsp_implementations<cr>", { desc = "Go to implementation" })
-		map("n", "<leader>gD", "<cmd>Telescope lsp_declaration<cr>", { desc = "Go to declaration" })
-		map("n", "<leader>gt", "<cmd>Telescope lsp_type_definitions<cr>", { desc = "Go to type definition" })
-		map("n", "<leader>gr", "<cmd>Telescope lsp_references<cr>", { desc = "Go to reference" })
-
-		map("n", "<leader>ldb", "<cmd>Telescope diagnostics bufnr=0<cr>", { desc = "Show buffer diagnostics" })
-		map("n", "<leader>ldw", "<cmd>Telescope diagnostics<cr>", { desc = "Workspace diagnostics" })
-		-- end)
-	end,
-	lazy = false,
+    if git_root() then
+      map("n", "<leader>fc", telescope("git_commits"), { desc = "Git commits" })
+      -- map("n", "<leader>fs", telescope("git_status"), { desc = "Git status" })
+      map("n", "<leader>fb", telescope("git_branches"), { desc = "Git branches" })
+    end
+  end,
+  lazy = false,
 }

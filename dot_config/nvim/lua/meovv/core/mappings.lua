@@ -1,4 +1,4 @@
-local map = require("meovv.utils").set_keymap
+local map = require("meovv.utils").map
 
 -- buffer navigation
 map("n", "<leader>kp", ":bprev<cr>", { desc = "Prev buffer" })

@@ -17,7 +17,7 @@ return {
 				col = 1,
 			},
 			on_attach = function(bufnr)
-				local map = u.create_buf_map(bufnr)
+				local map = u.buf_map(bufnr)
 				-- Navigation
 				map("n", "]c", function()
 					if vim.wo.diff then

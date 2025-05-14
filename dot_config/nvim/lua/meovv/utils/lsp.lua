@@ -5,6 +5,14 @@ M.augroup = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 
 M.format_on_save_enabled = true
 
+--- @param operation string
+M.telescope = function(operation)
+  return function()
+    vim.cmd.Telescope(operation)
+  end
+end
+
+--[[
 M.can_client_format_on_save = function(client)
 	local user_server_config = user_config.lsp.servers[client.name]
 	-- formatting enabled by default if server=true
@@ -23,14 +31,14 @@ M.can_client_format_on_save = function(client)
 	end
 
 	return true
-end
+end ]]
 
 M.toggle_format_on_save = function()
-	M.format_on_save_enabled = not M.format_on_save_enabled
-	vim.notify(string.format("Format on save: %s", M.format_on_save_enabled))
+  M.format_on_save_enabled = not M.format_on_save_enabled
+  vim.notify(string.format("Format on save: %s", M.format_on_save_enabled))
 end
 
-M.buf_format = function(bufnr, timeout)
+--[[ M.buf_format = function(bufnr, timeout)
 	if timeout == "" or timeout == nil then
 		timeout = user_config.lsp.format_timeout
 	else
@@ -106,7 +114,7 @@ M.configure_client_formatting = function(client, bufnr)
 		buffer = bufnr,
 		group = M.augroup,
 	})
-end
+end ]]
 
 M.mason_bin = vim.fn.expand("$HOME/.local/share/nvim/mason/bin/")
 

@@ -8,7 +8,7 @@ return {
 			tools = {},
 			server = {
 				-- on_attach = function(client, bufnr)
-				-- 	set_keymap(client, bufnr)
+				-- 	map(client, bufnr)
 				-- 	set_inlay_hint(client, bufnr)
 				-- end,
 				settings = {
