@@ -46,7 +46,7 @@ return {
             components = {
               kind_icon = {
                 ellipsis = false,
-                highight = function(ctx)
+                --[[ highight = function(ctx)
                   local hl = "BlinkCmpKind" .. ctx.kind
                       or require("blink.cmp.completion.windows.render.tailwind").get_hl(ctx)
                   if vim.tbl_contains({ "Path" }, ctx.source_name) then
@@ -56,7 +56,7 @@ return {
                     end
                   end
                   return hl
-                end,
+                end, ]]
                 text = function(ctx)
                   local icon = ctx.kind_icon
                   if vim.tbl_contains({ "Path" }, ctx.source_name) then
