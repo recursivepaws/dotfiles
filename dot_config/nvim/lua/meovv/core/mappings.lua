@@ -24,13 +24,13 @@ map("n", "<leader>px", ":Lazy clear<cr>", { desc = "Clear uninstalled plugins" }
 map("n", "<leader>pr", ":Lazy restore<cr>", { desc = "Restore plugins from lockfile" })
 
 -- resize with arrows
-map("n", "<C-Up>", ":resize +2<CR>", { desc = "Resize +2" })
-map("n", "<C-Down>", ":resize -2<CR>", { desc = "Resize -2" })
+map("n", "<C-Down>", ":resize +2<CR>", { desc = "Resize +2" })
+map("n", "<C-Up>", ":resize -2<CR>", { desc = "Resize -2" })
 map("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Vertical Resize -2" })
 map("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Vertical Resize +2" })
 
--- Disable arrow keys
-map("", "<up>", "<nop>")
-map("", "<down>", "<nop>")
-map("", "<left>", "<nop>")
-map("", "<right>", "<nop>")
+-- Disable arrow keys in normal mode
+-- map("n", "<up>", "<nop>")
+-- map("n", "<down>", "<nop>")
+-- map("n", "<left>", "<nop>")
+-- map("n", "<right>", "<nop>")

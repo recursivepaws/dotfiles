@@ -37,6 +37,7 @@ return {
     map("n", "<leader>ff", telescope("find_files"), { desc = "Find file" })
     map("n", "<leader>fs", telescope("live_grep"), { desc = "Grep string" })
     map("n", "<leader>ft", telescope("treesitter"), { desc = "Grep treesitter" })
+    map("n", "<leader>fm", telescope("treesitter symbols=function"), { desc = "Grep methods" })
     map("n", "<leader>fk", telescope("buffers"), { desc = "Find buffer" })
     map("n", "<leader>fw", telescope("grep_string"), { desc = "Grep current word" })
 

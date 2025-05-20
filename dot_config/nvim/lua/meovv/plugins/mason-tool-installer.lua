@@ -14,6 +14,7 @@ return {
         "lua-language-server",
         -- ESLint
         "eslint-lsp",
+        "eslint_d",
         -- JSON
         "json-lsp",
         -- HTML

@@ -1,8 +1,6 @@
 local buf_map = require("meovv.utils").buf_map
 
-local augroup_name = "Meow.Lsp"
-local augroup = vim.api.nvim_create_augroup(augroup_name, { clear = true })
--- local  = require("meovv.utils").buf_map
+local augroup = require("meovv.utils.lsp").augroup
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
@@ -87,16 +85,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
     -- end
 
-    -- Auto-format ("lint") on save.
-    -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
-    if not supports("textDocument/willSaveWaitUntil") and supports("textDocument/formatting") then
+    if client.name == "eslint" then
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = augroup,
         buffer = args.buf,
-        callback = function()
-          vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
-        end,
+        command = "LspEslintFixAll",
       })
+    else
+      if not supports("textDocument/willSaveWaitUntil") and supports("textDocument/formatting") then
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          group = augroup,
+          buffer = args.buf,
+          callback = function()
+            vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+          end,
+        })
+      end
     end
 
     -- Rustaceanvim has some custom options that we need to overwrite
