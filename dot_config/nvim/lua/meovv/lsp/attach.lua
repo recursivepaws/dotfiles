@@ -109,10 +109,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- Rustaceanvim has some custom options that we need to overwrite
     if client.name == "rust-analyzer" then
-      map("n", "K", vim.cmd.RustLsp({ "hover", "actions" }), { desc = "Hover" })
-      map("n", "<leader>la", vim.cmd.RustLsp("codeAction"), { desc = "Code Actions" })
-      map("n", "<leader>lf", vim.cmd.RustFmt(), { desc = "Format" })
-      map("v", "<leader>lf", vim.cmd.RustFmtRange(), { desc = "Format" })
+      map("n", "K", function()
+        vim.cmd.RustLsp({ "hover", "actions" })
+      end, { desc = "Hover" })
+      map("n", "<leader>la", function()
+        vim.cmd.RustLsp("codeAction")
+      end, { desc = "Code Actions" })
+      map("n", "<leader>lf", vim.cmd.RustFmt, { desc = "Format" })
+      map("v", "<leader>lf", vim.cmd.RustFmtRange, { desc = "Format" })
     end
   end,
 })
