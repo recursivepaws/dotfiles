@@ -1,9 +1,9 @@
 local lsp_utils = require("meovv.utils.lsp")
 local function debug_print(message)
-	vim.notify("[NEOTEST-DEBUG] " .. message, vim.log.levels.INFO)
+  vim.notify("[NEOTEST-DEBUG] " .. message, vim.log.levels.INFO)
 end
 
-return {
+--[[ return {
 	"nvim-neotest/neotest",
 	dependencies = {
 		"nvim-neotest/neotest-jest",
@@ -63,4 +63,6 @@ return {
 			desc = "Jest test watch",
 		},
 	},
-}
+} ]]
+
+return {}

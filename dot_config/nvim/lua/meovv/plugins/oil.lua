@@ -9,7 +9,7 @@ return {
 	init = function()
 		require("oil").setup()
 		local u = require("meovv.utils")
-		local map = u.set_keymap
+		local map = u.map
 		map("n", "-", "<CMD>Oil<CR>", { desc = "Grep string" })
 	end,
 }

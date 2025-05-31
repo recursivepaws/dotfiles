@@ -1,4 +1,4 @@
-local map = require("meovv.utils").set_keymap
+local map = require("meovv.utils").map
 return {
 	"akinsho/git-conflict.nvim",
 	version = "*",
