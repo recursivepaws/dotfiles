@@ -12,6 +12,11 @@ require("meovv.lsp.html")
 require("meovv.lsp.tsls")
 require("meovv.lsp.jsonls")
 
+-- Worthy of rehabilitation
+-- require("meovv.lsp.yaml")
+require("meovv.lsp.gh-actions")
+
+-- Normal things
 require("meovv.lsp.diagnostics")
 require("meovv.lsp.mappings")
 

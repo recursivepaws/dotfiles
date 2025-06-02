@@ -8,6 +8,7 @@ return {
         typescript = { "prettier", "lsp" },
         typescriptreact = { "prettier", "lsp" },
         json = { "prettier", "lsp" },
+        yaml = { "prettier", "lsp" },
         lua = { "stylua", "lsp" },
         rust = { "lsp" }, -- rustaceanvim provides LSP formatting via rust-analyzer
       },

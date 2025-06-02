@@ -6,6 +6,7 @@ return {
   config = function()
     require("mason-tool-installer").setup({
       ensure_installed = {
+        --- Mental illnesses
         -- Prettier formatting
         "prettier",
         -- Vale for .md
@@ -15,6 +16,10 @@ return {
         -- ESLint
         "eslint-lsp",
         "eslint_d",
+        -- Yaml
+        "circleci-yaml-language-server",
+        "gh-actions-language-server",
+        "yaml-language-server",
         -- JSON
         "json-lsp",
         -- HTML
