@@ -2,7 +2,7 @@ return {
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
+    ft = { "markdown", "octo" },
     build = function(plugin)
       if vim.fn.executable("npx") then
         vim.cmd("!cd " .. plugin.dir .. " && cd app && npx --yes yarn install")
