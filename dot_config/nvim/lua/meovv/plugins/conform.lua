@@ -7,6 +7,7 @@ return {
         javascriptreact = { "prettier", "lsp" },
         typescript = { "prettier", "lsp" },
         typescriptreact = { "prettier", "lsp" },
+        css = { "prettier", "lsp" },
         json = { "prettier", "lsp" },
         yaml = { "prettier", "lsp" },
         lua = { "stylua", "lsp" },
