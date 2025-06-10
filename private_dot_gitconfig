@@ -18,6 +18,8 @@
 	navigate = true
 	light = false
 	side-by-side = true
+  true-color = always
+  features = decorations
 
 [merge]
 	conflictstyle = diff3
@@ -36,6 +38,7 @@
 [rebase]
 	autosquash = true
 	autostash = true
+  rebaseMerges = true
 
 [push]
 	default = current
@@ -50,10 +53,8 @@
 	autocorrect = 10
 
 [credential "https://github.com"]
-	helper = 
 	helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
 	helper = !/usr/bin/gh auth git-credential
 [gpg]
 	format = ssh
