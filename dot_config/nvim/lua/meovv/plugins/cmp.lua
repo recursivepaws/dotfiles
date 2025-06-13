@@ -14,14 +14,16 @@ return {
     "saghen/blink.cmp",
     version = "*",
     dependencies = {
-      { "rafamadriz/friendly-snippets" },
-      { "MeanderingProgrammer/render-markdown.nvim" },
+      "rafamadriz/friendly-snippets",
+      "MeanderingProgrammer/render-markdown.nvim",
+      "saghen/blink.compat",
       {
         "onsails/lspkind.nvim",
         opts = {
           symbol_map = { spell = "󰓆", cmdline = "", markdown = "" },
         },
       },
+      { "allaman/emoji.nvim", opts = { enable_cmp_integration = true } },
     },
     opts = {
       keymap = {
@@ -143,6 +145,7 @@ return {
           "buffer",
           "path",
           "markdown",
+          "emoji",
         },
         providers = {
           lazydev = {
@@ -157,6 +160,18 @@ return {
               return vim.bo.filetype == "markdown"
             end,
             fallbacks = { "lsp" },
+          },
+          emoji = {
+            name = "emoji",
+            module = "blink.compat.source",
+            -- overwrite kind of suggestion
+            transform_items = function(ctx, items)
+              local kind = require("blink.cmp.types").CompletionItemKind.Text
+              for i = 1, #items do
+                items[i].kind = kind
+              end
+              return items
+            end,
           },
         },
       },

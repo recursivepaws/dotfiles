@@ -3,15 +3,15 @@ return {
   config = function()
     require("conform").setup({
       formatters_by_ft = {
-        javascript = { "prettier", "lsp" },
-        javascriptreact = { "prettier", "lsp" },
-        typescript = { "prettier", "lsp" },
-        typescriptreact = { "prettier", "lsp" },
-        css = { "prettier", "lsp" },
-        json = { "prettier", "lsp" },
-        yaml = { "prettier", "lsp" },
-        lua = { "stylua", "lsp" },
-        rust = { "lsp" }, -- rustaceanvim provides LSP formatting via rust-analyzer
+        javascript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescript = { "prettier" },
+        typescriptreact = { "prettier" },
+        css = { "prettier" },
+        json = { "prettier" },
+        yaml = { "prettier" },
+        lua = { "stylua" },
+        -- rust = { "lsp" }, -- rustaceanvim provides LSP formatting via rust-analyzer
         sh = { "shfmt" },
         zsh = { "shfmt" },
       },

@@ -39,6 +39,7 @@ return {
         -- #FF0 TODO
         -- Bash
         "bash-language-server",
+        "awk-language-server",
         "shfmt",
         -- LaTex
         -- "texlab",
