@@ -5,6 +5,7 @@ require("meovv.lsp.luals")
 require("meovv.lsp.pyright")
 require("meovv.lsp.sqls")
 require("meovv.lsp.wgsl")
+require("meovv.lsp.bashls")
 
 -- Mental disorders
 require("meovv.lsp.eslint")

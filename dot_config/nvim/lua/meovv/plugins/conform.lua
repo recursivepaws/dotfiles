@@ -12,6 +12,8 @@ return {
         yaml = { "prettier", "lsp" },
         lua = { "stylua", "lsp" },
         rust = { "lsp" }, -- rustaceanvim provides LSP formatting via rust-analyzer
+        sh = { "shfmt" },
+        zsh = { "shfmt" },
       },
       format_on_save = {
         lsp_fallback = true,

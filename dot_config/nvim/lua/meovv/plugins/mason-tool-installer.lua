@@ -20,6 +20,8 @@ return {
         "circleci-yaml-language-server",
         "gh-actions-language-server",
         "yaml-language-server",
+        -- GQL
+        "graphql-language-service-cli",
         -- JSON
         "json-lsp",
         -- HTML
@@ -36,7 +38,8 @@ return {
         "wgsl-analyzer",
         -- #FF0 TODO
         -- Bash
-        -- "bashls",
+        "bash-language-server",
+        "shfmt",
         -- LaTex
         -- "texlab",
         -- "ltex"
