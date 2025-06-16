@@ -15,6 +15,7 @@ return {
     version = "*",
     dependencies = {
       "rafamadriz/friendly-snippets",
+      -- dependencies = { "L3MON4D3/LuaSnip", version = "v2.*" },
       "MeanderingProgrammer/render-markdown.nvim",
       "saghen/blink.compat",
       {
@@ -141,6 +142,7 @@ return {
       sources = {
         default = {
           "lazydev",
+          "snippets",
           "lsp",
           "buffer",
           "path",
@@ -148,10 +150,13 @@ return {
           "emoji",
         },
         providers = {
+          snippets = {
+            score_offset = 100,
+          },
           lazydev = {
             name = "LazyDev",
             module = "lazydev.integrations.blink",
-            score_offset = 100,
+            score_offset = 90,
           },
           markdown = {
             name = "markdown",
@@ -172,6 +177,7 @@ return {
               end
               return items
             end,
+            score_offset = 50,
           },
         },
       },
@@ -193,5 +199,6 @@ return {
         },
       },
     },
+    opts_extend = { "sources.default" },
   },
 }
