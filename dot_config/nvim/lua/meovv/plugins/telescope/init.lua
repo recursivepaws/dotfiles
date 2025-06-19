@@ -17,14 +17,20 @@ return {
   end,
   init = function()
     require("telescope").setup({
+      pickers = {
+        lsp_references = {
+          theme = "dropdown",
+        },
+      },
       extensions = {
         ["ui-select"] = {
-          require("telescope.themes").get_dropdown({}),
+          require("telescope.themes").get_dropdown({ winblend = 10 }),
         },
       },
     })
 
     require("telescope").load_extension("ui-select")
+    require("telescope").load_extension("fzf")
 
     -- normal mappings
     local map = require("meovv.utils").map
@@ -37,14 +43,15 @@ return {
     map("n", "<leader>ff", telescope("find_files"), { desc = "Find file" })
     map("n", "<leader>fs", telescope("live_grep"), { desc = "Grep string" })
     map("n", "<leader>ft", telescope("treesitter"), { desc = "Grep treesitter" })
+    map("n", "<leader>fh", telescope("help_tags"), { desc = "Find Help" })
     map("n", "<leader>fm", telescope("treesitter symbols=function"), { desc = "Grep methods" })
-    map("n", "<leader>fk", telescope("buffers"), { desc = "Find buffer" })
+    map("n", "<leader>fb", telescope("buffers"), { desc = "Find buffer" })
     map("n", "<leader>fw", telescope("grep_string"), { desc = "Grep current word" })
 
     if git_root() then
       map("n", "<leader>fc", telescope("git_commits"), { desc = "Git commits" })
       -- map("n", "<leader>fs", telescope("git_status"), { desc = "Git status" })
-      map("n", "<leader>fb", telescope("git_branches"), { desc = "Git branches" })
+      -- map("n", "<leader>fb", telescope("git_branches"), { desc = "Git branches" })
     end
   end,
   lazy = false,

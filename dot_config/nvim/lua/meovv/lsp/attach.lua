@@ -1,18 +1,5 @@
 local buf_map = require("meovv.utils").buf_map
-
 local augroup = require("meovv.utils.lsp").augroup
-
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    local map = buf_map(args.buf)
-    -- code actions
-    -- map("v", "<leader>la", ":lua vim.lsp.buf.range_code_actions()<cr>", { desc = "Range Code Actions" })
-
-    -- map("n", "<leader>lf", "", { desc = "Format", callback = lsp_utils.buf_format })
-    -- map("v", "<leader>lf", ":lua vim.lsp.buf.range_formatting()<cr>", { desc = "Range Format" })
-    -- lsp workspace
-  end,
-})
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = augroup,
