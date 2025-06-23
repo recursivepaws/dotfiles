@@ -2,6 +2,7 @@
 if [ "$PATH" = "" ]; then
   export PATH="/bin"
 fi
+
 add_to_path() {
   if ! [[ "$PATH" =~ "$1" ]]; then
     export PATH="$1:$PATH"
@@ -17,6 +18,7 @@ add_to_path "$HOME/.local/share/pnpm"
 add_to_path "$HOME/bin"
 add_to_path "$HOME/go/bin"
 add_to_path "$HOME/.cargo/bin"
+add_to_path "$HOME/.local/share/uv/python"
 
 export PNPM_HOME="$HOME/.local/share/pnpm"
 
@@ -109,5 +111,5 @@ export BAT_THEME="Dracula"
 # Aliases
 alias rl="source ~/.zshrc; kill -SIGUSR1 $(pidof kitty)"
 alias cat="bat"
-alias l="/bin/ls"
-alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias ls="/bin/ls"
+alias l="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
