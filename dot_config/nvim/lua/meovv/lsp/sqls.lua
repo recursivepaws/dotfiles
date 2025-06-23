@@ -11,4 +11,4 @@ vim.lsp.config("sqls", {
   workspace_required = false,
 })
 
-vim.lsp.enable("sqls")
+-- vim.lsp.enable("sqls")

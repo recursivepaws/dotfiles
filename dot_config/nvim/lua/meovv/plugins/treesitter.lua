@@ -9,27 +9,54 @@ return {
   config = function()
     require("nvim-treesitter.configs").setup({
       ensure_installed = {
-        "astro",
+        -- real
         "bash",
+        "json",
+        "lua",
+        "luadoc",
+        "markdown",
+        "markdown_inline",
+        "toml",
+        "yaml",
+        "kdl",
+        "sql",
+        "wgsl",
+        "glsl",
+        "xml",
+        "ssh_config",
+        "rust",
+        "regex",
+        "python",
+        "perl",
+        -- "latex",
+        "graphql",
+
+        "gitattributes",
+        "gitcommit",
+        "gitignore",
+        "git_config",
+        "git_rebase",
+
+        "dockerfile",
+        "rust",
+        "csv",
+
+        -- maybe in the future
+        -- "nix"
+        -- "make"
+
+        -- fake
+        "astro",
         "css",
+        "scss",
         "go",
         "html",
         "javascript",
         "jsdoc",
-        "json",
-        "lua",
-        "markdown",
-        "markdown_inline",
         "php",
-        "python",
-        "regex",
-        "rust",
         "styled",
-        "scss",
-        "toml",
         "tsx",
         "typescript",
-        "yaml",
       },
       auto_install = true,
       highlight = {
