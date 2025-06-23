@@ -35,6 +35,7 @@ return {
       file_ignore_patterns = {
         ".git/",
         "node_modules/",
+        "__snapshots__/",
         "*.ipynb",
       },
       dynamic_preview_title = true,
