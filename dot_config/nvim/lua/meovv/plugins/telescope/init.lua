@@ -14,9 +14,6 @@ return {
     },
     "nvim-telescope/telescope-ui-select.nvim",
   },
-  config = function()
-    require("meovv.plugins.telescope.config")
-  end,
   init = function()
     require("telescope").setup({
       pickers = {
@@ -53,13 +50,15 @@ return {
 
     map("n", "<leader>fp", project_files, { desc = "Find project file" })
     map("n", "<leader>fg", project_grep, { desc = "Grep whole project" })
+
+    map("n", "<leader>ft", telescope("todo-comments"), { desc = "Find file" })
     map("n", "<leader>ff", telescope("find_files"), { desc = "Find file" })
     map("n", "<leader>fc", telescope("commands"), { desc = "Find commands" })
     map("n", "<leader>fk", telescope("keys"), { desc = "Find keymappings" })
     map("n", "<leader>fs", telescope("live_grep"), { desc = "Grep string" })
-    map("n", "<leader>ft", telescope("treesitter"), { desc = "Grep treesitter" })
     map("n", "<leader>fh", telescope("help_tags theme=ivy"), { desc = "Find Help" })
-    map("n", "<leader>fm", telescope("treesitter symbols=function"), { desc = "Grep methods" })
+    -- map("n", "<leader>ft", telescope("treesitter"), { desc = "Grep treesitter" })
+    -- map("n", "<leader>fm", telescope("treesitter symbols=function"), { desc = "Grep methods" })
     map("n", "<leader>fb", telescope("buffers"), { desc = "Find buffer" })
     map("n", "<leader>fw", telescope("grep_string"), { desc = "Grep current word" })
 

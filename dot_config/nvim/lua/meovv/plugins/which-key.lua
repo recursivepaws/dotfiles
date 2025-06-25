@@ -1,11 +1,10 @@
-local user_config = require("meovv.core.user")
 return {
   "folke/which-key.nvim",
   config = function()
     local wk = require("which-key")
     wk.setup({
       win = {
-        border = user_config.border,
+        --border = user_config.border,
         --[[ position = 'bottom', ]]
         --[[ margin = { 1, 0, 1, 0 }, ]]
         padding = { 3, 2, 3, 2 },
@@ -37,5 +36,4 @@ return {
     })
   end,
   event = "VeryLazy",
-  enabled = not vim.tbl_contains(user_config.disable_builtin_plugins, "which-key"),
 }

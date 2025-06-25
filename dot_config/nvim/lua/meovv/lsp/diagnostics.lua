@@ -1,5 +1,4 @@
 local icons = require("meovv.utils.icons")
-local user_config = require("meovv.core.user")
 
 local function format_diagnostic(diagnostic)
 	local icon = icons.error
@@ -41,7 +40,7 @@ vim.diagnostic.config({
 		},
 	},
 	float = {
-		border = user_config.border,
+		--border = user_config.border,
 		focusable = false,
 		header = { icons.debug .. " Diagnostics:", "DiagnosticInfo" },
 		scope = "line",

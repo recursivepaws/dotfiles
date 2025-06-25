@@ -9,6 +9,7 @@ local icons = {
   rocket = "🚀",
   warn = "",
   info = "",
+  comment = "󰆈",
   error = "",
   hint = "󰌵",
   perf = "󰄭",
