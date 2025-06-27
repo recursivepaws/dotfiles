@@ -154,6 +154,54 @@ return {
           "emoji",
         },
         providers = {
+          lsp = {
+            name = "LSP",
+            module = "blink.cmp.sources.lsp",
+            score_offset = 100, -- Base score for LSP items
+            transform_items = function(_, items)
+              local before_cursor = vim.api.nvim_get_current_line():sub(1, vim.fn.col("."))
+              -- Check if we're typing after a dot (method/property access)
+              local is_after_dot = before_cursor:match("%w+%.%s*%w*$") ~= nil
+              -- Import completion item kinds for comparison
+              local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
+
+              for _, item in ipairs(items) do
+                local kind = item.kind
+
+                if is_after_dot then
+                  -- After dot: prioritize methods and functions
+                  if kind == CompletionItemKind.Method then
+                    item.score_offset = 300 -- Highest priority for methods
+                  elseif kind == CompletionItemKind.Function then
+                    item.score_offset = 250 -- High priority for functions
+                  elseif kind == CompletionItemKind.Property then
+                    item.score_offset = 200 -- Good priority for properties
+                  elseif kind == CompletionItemKind.Field then
+                    item.score_offset = 150 -- Medium priority for fields
+                  else
+                    item.score_offset = 50 -- Lower priority for other types
+                  end
+                else
+                  -- From scratch: prioritize variables
+                  if kind == CompletionItemKind.Variable then
+                    item.score_offset = 300 -- Highest priority for variables
+                  elseif kind == CompletionItemKind.Field then
+                    item.score_offset = 250 -- High priority for fields
+                  elseif kind == CompletionItemKind.Property then
+                    item.score_offset = 200 -- Good priority for properties
+                  elseif kind == CompletionItemKind.Function then
+                    item.score_offset = 150 -- Medium priority for functions
+                  elseif kind == CompletionItemKind.Method then
+                    item.score_offset = 100 -- Lower priority for methods
+                  else
+                    item.score_offset = 100 -- Base score for other types
+                  end
+                end
+              end
+
+              return items
+            end,
+          },
           snippets = {
             score_offset = 100,
           },
@@ -174,10 +222,19 @@ return {
             name = "emoji",
             module = "blink.compat.source",
             -- overwrite kind of suggestion
-            transform_items = function(ctx, items)
+            transform_items = function(_, items)
+              -- vs being triggered by typing keywords from scratch
+              local before_cursor = vim.api.nvim_get_current_line():sub(1, vim.fn.col("."))
+
+              -- Check if we're typing after a dot (method/property access)
+              local is_after_colon = before_cursor:match("%s+%:%w*$") ~= nil
+
               local kind = require("blink.cmp.types").CompletionItemKind.Text
               for i = 1, #items do
                 items[i].kind = kind
+                if is_after_colon then
+                  items[i].score_offset = 1000
+                end
               end
               return items
             end,
