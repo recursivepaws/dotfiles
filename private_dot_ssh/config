@@ -7,6 +7,11 @@ Host pi
   User vera
 
 Host remarkable
-  Hostname 192.168.1.173
+  Hostname 10.11.99.1
   User root
-  PubkeyAcceptedKeyTypes=ssh-rsa
+  Port 22
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  IdentityFile ~/.ssh/id_rsa_remarkable
+  IdentityFile ~/.ssh/id_rsa_remarkable.pub
+
