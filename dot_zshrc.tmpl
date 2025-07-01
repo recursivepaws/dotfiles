@@ -19,8 +19,10 @@ add_to_path "$HOME/bin"
 add_to_path "$HOME/go/bin"
 add_to_path "$HOME/.cargo/bin"
 add_to_path "$HOME/.local/share/uv/python"
+add_to_path "$HOME/.fly/bin"
 
 export PNPM_HOME="$HOME/.local/share/pnpm"
+export FLYCTL_INSTALL="$HOME/.fly"
 
 # Platform specific stuff
 {{- if eq .chezmoi.os "darwin" }}
