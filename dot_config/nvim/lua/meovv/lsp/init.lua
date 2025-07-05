@@ -7,6 +7,8 @@ require("meovv.lsp.sqls")
 require("meovv.lsp.wgsl")
 require("meovv.lsp.bashls")
 require("meovv.lsp.awkls")
+require("meovv.lsp.dockerls")
+require("meovv.lsp.tombi")
 
 -- Mental disorders
 require("meovv.lsp.eslint")

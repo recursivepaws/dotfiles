@@ -36,14 +36,19 @@ return {
         "pyright",
         -- WGPU
         "wgsl-analyzer",
-        -- #FF0 TODO
         -- Bash
         "bash-language-server",
         "awk-language-server",
         "shfmt",
-        -- LaTex
+        -- Rust toml
+        "tombi",
+
+        -- TODO: LaTex
         -- "texlab",
         -- "ltex"
+
+        -- Docker
+        "dockerfile-language-server",
       },
     })
   end,
