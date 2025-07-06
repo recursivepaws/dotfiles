@@ -12,7 +12,12 @@ return {
         -- 	set_inlay_hint(client, bufnr)
         -- end,
         settings = {
-          ["rust-analyzer"] = {},
+          ["rust-analyzer"] = {
+            cargo = {
+              -- target = ["wasm32-unknown-unknown"],
+              -- features = "all"
+            },
+          },
         },
       },
       dap = {},
