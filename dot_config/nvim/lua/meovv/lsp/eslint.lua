@@ -69,7 +69,8 @@ vim.lsp.config("eslint", {
     quiet = false,
     onIgnoredFiles = "off",
     rulesCustomizations = {},
-    run = "onType",
+    -- Running this `onType` is just too expensive for my machine lol
+    run = "onSave",
     problems = {
       shortenToSingleLine = false,
     },
