@@ -57,9 +57,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if supports("textDocument/references") then
       map("n", "<leader>gr", telescope("lsp_references"), { desc = "Go to references" })
     end
-    if supports("callHierarchy/incomingCalls") then
-      map("n", "<leader>gc", telescope("lsp_incoming_calls"), { desc = "Go to calls" })
-    end
 
     -- F prefix (find)
     -- if supports("textDocument/diagnostic") or supports("workspace/diagnostic") then
