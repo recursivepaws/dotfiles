@@ -1,6 +1,7 @@
 Host *
-	IdentityFile ~/.ssh/id_ed25519
-	IdentityFile ~/.ssh/id_ed25519.pub
+	IdentityFile ~/.ssh/id_ssh
+	IdentityFile ~/.ssh/id_ssh.pub
+  SetEnv TERM=xterm-256color
 
 Host pi
   Hostname 192.168.1.163
@@ -10,27 +11,19 @@ Host BarkStation
   Hostname 192.168.1.181
   User vera
   Port 22
-  SetEnv TERM=xterm-256color
   UserKnownHostsFile ~/.ssh/known_hosts
-  IdentityFile ~/.ssh/id_ssh
-  IdentityFile ~/.ssh/id_ssh.pub
 
 Host MeowStation
   Hostname 192.168.1.167
   User vera
   Port 22
-  SetEnv TERM=xterm-256color
   UserKnownHostsFile ~/.ssh/known_hosts
-  IdentityFile ~/.ssh/id_ssh
-  IdentityFile ~/.ssh/id_ssh.pub
 
 Host remarkable
   Hostname 10.11.99.1
   User root
   Port 22
-  SetEnv TERM=xterm-256color
   StrictHostKeyChecking no
   UserKnownHostsFile /dev/null
   IdentityFile ~/.ssh/id_rsa_remarkable
   IdentityFile ~/.ssh/id_rsa_remarkable.pub
-
