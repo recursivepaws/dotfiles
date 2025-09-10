@@ -4,7 +4,7 @@ return {
   "lewis6991/gitsigns.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
   event = "VeryLazy",
-  cmd = "gs",
+  cmd = "Gs",
   opts = {
     preview_config = {
       -- Options passed to nvim_open_win
