@@ -28,7 +28,7 @@ return {
           symbol_map = { spell = "󰓆", cmdline = "", markdown = "" },
         },
       },
-      { "allaman/emoji.nvim", opts = { enable_cmp_integration = true } },
+      { "allaman/emoji.nvim", opts = { enable_cmp_integration = true }, lazy = true, event = "InsertEnter" },
     },
     opts = {
       keymap = {
@@ -151,7 +151,7 @@ return {
           "buffer",
           "path",
           "markdown",
-          "emoji",
+          -- "emoji",
         },
         providers = {
           lsp = {
@@ -261,5 +261,6 @@ return {
       },
     },
     opts_extend = { "sources.default" },
+    lazy = true,
   },
 }

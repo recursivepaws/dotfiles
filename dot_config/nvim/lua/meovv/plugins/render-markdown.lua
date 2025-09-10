@@ -1,5 +1,6 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
+  lazy = true,
   ft = {
     "markdown",
     "octo",
@@ -11,7 +12,4 @@ return {
     completions = { lsp = { enabled = true }, blink = { enabled = true } },
     file_types = { "markdown", "octo" },
   },
-  config = function()
-    require("render-markdown").setup()
-  end,
 }
