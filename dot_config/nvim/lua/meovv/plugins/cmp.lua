@@ -261,6 +261,6 @@ return {
       },
     },
     opts_extend = { "sources.default" },
-    lazy = true,
+    lazy = false,
   },
 }
