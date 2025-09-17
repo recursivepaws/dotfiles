@@ -9,6 +9,7 @@ local icons = require("meovv.utils.icons")
 -- FIXIT:
 -- ISSUE:
 -- BUG:
+-- DOCS:
 -- WARNING:
 -- XXX:
 -- OPTIMIZE:
@@ -36,6 +37,7 @@ return {
         alt = { "FIXME", "BUG", "FIXIT", "ISSUE", "fix", "fixme", "bug" }, -- a set of other keywords that all map to this FIX keywords
       },
       TODO = { icon = icons.check, color = "info" },
+      DOCS = { icon = icons.file, color = "hint" },
       HACK = { icon = icons.flame, color = "warning" },
       WARN = { icon = icons.warn, color = "warning", alt = { "WARNING", "XXX" } },
       PERF = { icon = icons.clock, alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
