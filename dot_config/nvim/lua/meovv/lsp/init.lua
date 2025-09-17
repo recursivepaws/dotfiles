@@ -20,7 +20,7 @@ require("meovv.lsp.tsgo")
 -- require("meovv.lsp.vtsls")
 require("meovv.lsp.biome")
 
-require("meovv.lsp.jsonls")
+-- require("meovv.lsp.jsonls")
 
 -- Worthy of rehabilitation
 require("meovv.lsp.yaml")

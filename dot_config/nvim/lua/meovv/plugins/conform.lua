@@ -23,6 +23,7 @@ return {
         typescriptreact = { "prettier" },
         css = { "prettier" },
         json = { "prettier" },
+        jsonc = { "prettier" },
         yaml = { "prettier" },
         lua = { "stylua" },
         -- rust = { "lsp" }, -- rustaceanvim provides LSP formatting via rust-analyzer

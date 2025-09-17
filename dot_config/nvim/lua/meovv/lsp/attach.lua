@@ -42,8 +42,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
       end, { desc = "Toggle inlay hints" })
     end
 
+    local builtin = require("telescope.builtin")
+    local theme = { layout_strategy = "horizontal", layout_config = { width = 0.8 } }
     -- G prefix (goto)
-    local telescope = require("meovv.utils.lsp").telescope
+    local telescope = function(cmd)
+      return function()
+        builtin[cmd](theme)
+      end
+    end
     if supports("textDocument/implementation") then
       map("n", "<leader>gi", telescope("lsp_implementations"), { desc = "Go to implementation" })
     end
