@@ -9,7 +9,7 @@ vim.lsp.config("tsls", {
     "typescript.tsx",
   },
   root_markers = {
-    "tsconfig.json",
+    -- "tsconfig.json",
     ".git",
   },
 })

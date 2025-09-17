@@ -10,10 +10,16 @@ require("meovv.lsp.awkls")
 require("meovv.lsp.dockerls")
 require("meovv.lsp.tombi")
 
--- Mental disorders
-require("meovv.lsp.eslint")
+-- XXX: Terminal mental disorders
+-- require("meovv.lsp.eslint")
+-- require("meovv.lsp.tsls")
+
+-- INFO: Treatable mental disorders
 require("meovv.lsp.html")
-require("meovv.lsp.tsls")
+require("meovv.lsp.tsgo")
+-- require("meovv.lsp.vtsls")
+require("meovv.lsp.biome")
+
 require("meovv.lsp.jsonls")
 
 -- Worthy of rehabilitation

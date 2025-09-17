@@ -1,7 +1,21 @@
+local mason_bin = require("meovv.utils.lsp").mason_bin
 return {
   "stevearc/conform.nvim",
   config = function()
     require("conform").setup({
+      formatters = {
+        prettier = {
+          command = mason_bin .. "prettier",
+          args = { "--stdin-filepath", "$FILENAME" },
+        },
+        cwd = require("conform.util").root_file({
+          ".prettierrc",
+          ".prettierrc.json",
+          ".prettierrc.js",
+          "prettier.config.js",
+          "package.json",
+        }),
+      },
       formatters_by_ft = {
         javascript = { "prettier" },
         javascriptreact = { "prettier" },
@@ -17,7 +31,8 @@ return {
         zsh = { "shfmt" },
       },
       format_on_save = {
-        lsp_fallback = true,
+        timeout_ms = 2000,
+        lsp_fallback = false,
       },
     })
   end,
