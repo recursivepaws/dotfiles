@@ -26,6 +26,7 @@ vim.lsp.config("luals", {
         checkThirdParty = false,
         library = {
           vim.env.VIMRUNTIME,
+          vim.fn.stdpath("data") .. "/lazy",
         },
       },
       -- Do not send telemetry data containing a randomized but unique identifier

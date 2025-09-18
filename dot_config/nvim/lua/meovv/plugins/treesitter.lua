@@ -8,6 +8,9 @@ return {
   build = ":TSUpdate",
   config = function()
     require("nvim-treesitter.configs").setup({
+      modules = {},
+      sync_install = true,
+      ignore_install = {},
       ensure_installed = {
         -- real
         "bash",

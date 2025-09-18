@@ -1,3 +1,3 @@
 return {
-	"liangxianzhe/floating-input.nvim",
+  "liangxianzhe/floating-input.nvim",
 }

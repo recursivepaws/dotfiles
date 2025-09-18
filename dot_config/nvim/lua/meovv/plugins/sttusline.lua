@@ -5,7 +5,7 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   event = { "BufEnter" },
-  config = function(_, opts)
+  config = function()
     require("sttusline").setup({
       -- statusline_color = "#282A36",
       -- mode
