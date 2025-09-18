@@ -16,8 +16,8 @@ require("meovv.lsp.tombi")
 
 -- INFO: Treatable mental disorders
 require("meovv.lsp.html")
-require("meovv.lsp.tsgo")
--- require("meovv.lsp.vtsls")
+-- require("meovv.lsp.tsgo")
+require("meovv.lsp.vtsls")
 require("meovv.lsp.biome")
 
 -- require("meovv.lsp.jsonls")
