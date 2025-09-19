@@ -23,7 +23,7 @@ return {
           return "]c"
         end
         vim.schedule(function()
-          gs.next_hunk()
+          gs.nav_hunk({}, "next")
         end)
         return "<Ignore>"
       end, {
@@ -36,7 +36,7 @@ return {
           return "[c"
         end
         vim.schedule(function()
-          gs.prev_hunk()
+          gs.nav_hunk({}, "prev")
         end)
         return "<Ignore>"
       end, {
@@ -51,6 +51,7 @@ return {
       map("n", "<leader>vu", gs.undo_stage_hunk, { desc = "Undo stage hunk" })
       map("n", "<leader>vR", gs.reset_buffer, { desc = "Reset buffer" })
       map("n", "<leader>vp", gs.preview_hunk, { desc = "Preview hunk" })
+      map("n", "<leader>vb", gs.toggle_current_line_blame, { desc = "Current blame line" })
       map("n", "<leader>vB", function()
         gs.blame_line({ full = true })
       end, {

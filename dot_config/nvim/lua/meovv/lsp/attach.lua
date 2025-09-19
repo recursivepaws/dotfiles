@@ -43,25 +43,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     local builtin = require("telescope.builtin")
-    local theme = { layout_strategy = "horizontal", layout_config = { width = 0.8 } }
-    -- G prefix (goto)
+    --[[ local theme = { layout_strategy = "horizontal", layout_config = { width = 0.8 } }
     local telescope = function(cmd)
       return function()
         builtin[cmd](theme)
       end
-    end
+    end ]]
+    local telescope = require("meovv.utils.lsp").telescope
     if supports("textDocument/implementation") then
-      map("n", "<leader>gi", telescope("lsp_implementations"), { desc = "Go to implementation" })
+      map("n", "<leader>gi", telescope("lsp_implementations theme=ivy"), { desc = "Go to implementation" })
     end
 
     if supports("textDocument/definition") then
-      map("n", "<leader>gd", telescope("lsp_definitions"), { desc = "Go to declaration" })
+      map("n", "<leader>gd", telescope("lsp_definitions theme=ivy"), { desc = "Go to declaration" })
     end
     if supports("textDocument/typeDefinition") then
-      map("n", "<leader>gt", telescope("lsp_type_definitions"), { desc = "Go to type" })
+      map("n", "<leader>gt", telescope("lsp_type_definitions theme=ivy"), { desc = "Go to type" })
     end
     if supports("textDocument/references") then
-      map("n", "<leader>gr", telescope("lsp_references"), { desc = "Go to references" })
+      map("n", "<leader>gr", telescope("lsp_references theme=ivy"), { desc = "Go to references" })
     end
 
     -- F prefix (find)
