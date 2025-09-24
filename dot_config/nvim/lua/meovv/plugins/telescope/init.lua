@@ -12,6 +12,7 @@ return {
       build = "make",
     },
     "nvim-telescope/telescope-ui-select.nvim",
+    "olimorris/persisted.nvim",
   },
   init = function()
     require("telescope").setup({
@@ -42,6 +43,7 @@ return {
 
     require("telescope").load_extension("ui-select")
     require("telescope").load_extension("fzf")
+    require("telescope").load_extension("persisted")
 
     -- normal mappings
     local map = require("meovv.utils").map

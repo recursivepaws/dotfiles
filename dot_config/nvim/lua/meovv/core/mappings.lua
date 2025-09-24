@@ -29,6 +29,7 @@ map("n", "<C-Up>", ":resize -2<CR>", { desc = "Resize -2" })
 map("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Vertical Resize -2" })
 map("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Vertical Resize +2" })
 
+map("n", "q:", ":q")
 -- Disable arrow keys in normal mode
 -- map("n", "<up>", "<nop>")
 -- map("n", "<down>", "<nop>")
