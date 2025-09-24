@@ -25,6 +25,25 @@ export PNPM_HOME="$HOME/.local/share/pnpm"
 export FLYCTL_INSTALL="$HOME/.fly"
 export EDITOR="nvim"
 
+nvim() {
+  local cwd_file="$HOME/.local/state/nvim/cwd"
+
+  # Cleanup
+  mkdir -p "$(dirname "$cwd_file")"
+  [[ -f "$cwd_file" ]] && rm "$cwd_file"
+
+  command nvim "$@"
+
+  if [[ -f "$cwd_file" ]]; then
+    local session_dir=$(cat "$cwd_file")
+    if [[ -d "$session_dir" && "$session_dir" != "$PWD" ]]; then
+      echo "Changing to session directory: $session_dir"
+      cd "$session_dir"
+    fi
+    rm "$cwd_file"
+  fi
+}
+
 # Platform specific stuff
 {{- if eq .chezmoi.os "darwin" }}
 eval "$(/opt/homebrew/bin/brew shellenv)"

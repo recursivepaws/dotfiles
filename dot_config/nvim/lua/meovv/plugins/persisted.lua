@@ -5,6 +5,7 @@ local telescope = require("meovv.utils.lsp").telescope
 vim.o.sessionoptions = "buffers,curdir,folds,globals,tabpages,winpos,winsize"
 -- Workspace
 map("n", "<leader>wo", telescope("persisted"), { desc = "Load session" })
+map("n", "<leader>wb", telescope("git_branches"), { desc = "Switch branch" })
 map("n", "<leader>wa", ":wall<cr>", { desc = "Write all buffers" })
 map("n", "<leader>wq", ":wqall<cr>", { desc = "Write quit all buffers" })
 
@@ -33,6 +34,19 @@ return {
           vim.defer_fn(function()
             require("telescope").extensions.persisted.persisted()
           end, 50)
+        end
+      end,
+    })
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "PersistedLoadPost",
+      callback = function()
+        local session_dir = vim.fn.getcwd()
+        local temp_file = os.getenv("HOME") .. "/.local/state/nvim/cwd"
+        local file = io.open(temp_file, "w")
+        if file then
+          file:write(session_dir)
+          file:close()
+          vim.notify("Session loaded")
         end
       end,
     })
