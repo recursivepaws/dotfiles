@@ -30,17 +30,6 @@ return {
       use_git_branch = true,
     })
 
-    -- Auto-start on empty Neovim
-    vim.api.nvim_create_autocmd("VimEnter", {
-      callback = function()
-        if vim.fn.argc() == 0 then
-          vim.defer_fn(function()
-            telescope("persisted")()
-          end, 50)
-        end
-      end,
-    })
-
     vim.api.nvim_create_autocmd("User", {
       pattern = "PersistedTelescopeLoadPre",
       callback = function(session)
