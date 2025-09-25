@@ -1,9 +1,6 @@
 local icons = require("meovv.utils.icons")
+local git_root = require("meovv.utils").git_root
 local M = {}
-
-M.git_root = function()
-  return vim.fn.systemlist("git rev-parse --show-toplevel 2> /dev/null")[1]
-end
 
 M.project_files = function()
   local opts = {} -- define here if you want to define something
@@ -15,7 +12,7 @@ end
 
 M.project_grep = function()
   local builtin = require("telescope.builtin")
-  local root = M.git_root()
+  local root = git_root()
   if root then
     builtin.live_grep({
       prompt_title = icons.git.hub .. " Grep Git Project " .. icons.git.hub,

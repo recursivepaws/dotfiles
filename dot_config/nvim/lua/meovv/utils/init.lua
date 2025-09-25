@@ -25,6 +25,10 @@ function M.buf_map(bufnr, opts)
   end
 end
 
+function M.git_root()
+  return vim.fn.systemlist("git rev-parse --show-toplevel 2> /dev/null")[1]
+end
+
 function M.merge_list(tbl1, tbl2)
   for _, v in ipairs(tbl2) do
     table.insert(tbl1, v)
