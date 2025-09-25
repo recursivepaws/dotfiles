@@ -6,6 +6,7 @@ local git_root = require("meovv.utils").git_root
 vim.o.sessionoptions = "buffers,curdir,folds,globals,tabpages,winpos,winsize"
 -- Workspace
 map("n", "<leader>wo", telescope("persisted"), { desc = "Load session" })
+map("n", "<leader>ws", ":SessionSave<cr>", { desc = "Save session" })
 map("n", "<leader>wb", telescope("git_branches"), { desc = "Switch branch" })
 map("n", "<leader>wa", ":wall<cr>", { desc = "Write all buffers" })
 map("n", "<leader>wq", ":wqall<cr>", { desc = "Write quit all buffers" })
@@ -32,7 +33,7 @@ return {
 
     vim.api.nvim_create_autocmd("User", {
       pattern = "PersistedTelescopeLoadPre",
-      callback = function(session)
+      callback = function()
         -- Save the currently loaded session passing in the path to the current session
         require("persisted").save({ session = vim.g.persisted_loaded_session })
 
@@ -43,7 +44,7 @@ return {
 
     vim.api.nvim_create_autocmd("User", {
       pattern = "PersistedLoadPost",
-      callback = function(e)
+      callback = function()
         local session_dir = vim.fn.getcwd()
         local temp_file = os.getenv("HOME") .. "/.local/state/nvim/cwd"
         local file = io.open(temp_file, "w")
@@ -86,8 +87,8 @@ return {
               vim.log.levels.ERROR
             )
           else
-            vim.cmd("checktime")
             vim.notify("Successfully switched to branch: " .. session_branch)
+            vim.cmd("SessionLoad")
           end
         else
           vim.notify("No branch found in session filename")
