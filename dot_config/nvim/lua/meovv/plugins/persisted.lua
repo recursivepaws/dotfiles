@@ -34,11 +34,23 @@ return {
     vim.api.nvim_create_autocmd("User", {
       pattern = "PersistedTelescopeLoadPre",
       callback = function()
-        -- Save the currently loaded session passing in the path to the current session
-        require("persisted").save({ session = vim.g.persisted_loaded_session })
+        local persisted = require("persisted")
 
-        -- Delete all of the open buffers
-        vim.api.nvim_input("<ESC>:%bd!<CR>")
+        if vim.g.dont_save_session == true then
+          vim.g.dont_save_session = false
+          vim.notify("Not saving session during transition state")
+          return
+        elseif not vim.g.persisted_loaded_session then
+          vim.notify("No existing session needs saving")
+          return
+        else
+          vim.notify("Saving current state as " .. vim.g.persisted_loaded_session)
+          -- Save the currently loaded session passing in the path to the current session
+          persisted.save({ session = vim.g.persisted_loaded_session })
+
+          -- Delete all of the open buffers
+          vim.api.nvim_input("<ESC>:%bd!<CR>")
+        end
       end,
     })
 
@@ -88,6 +100,10 @@ return {
             )
           else
             vim.notify("Successfully switched to branch: " .. session_branch)
+
+            -- When reloading this session, we don't want to save the blank buffers
+            -- and overwrite the session we're trying to load
+            vim.g.dont_save_session = true
             vim.cmd("SessionLoad")
           end
         else
