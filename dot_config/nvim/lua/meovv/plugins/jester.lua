@@ -1,12 +1,12 @@
 local map = require("meovv.utils").map
 return {
-  "David-Kunz/jester",
+	--[[ "David-Kunz/jester",
   config = function()
     require("jester").setup({})
     map("n", "<leader>tf", function()
       vim.cmd("lua require('jester').run_file()")
     end)
-  end,
+  end, ]]
 }
 
 --[[ { "<leader>tn",
