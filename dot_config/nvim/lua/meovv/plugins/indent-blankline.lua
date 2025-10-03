@@ -8,6 +8,7 @@ return {
     vim.api.nvim_create_autocmd({ "VimEnter" }, {
       command = "IBLDisable",
     })
+    -- Show when a buffer is entered
     vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
       command = "IBLEnable",
     })

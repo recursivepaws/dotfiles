@@ -18,7 +18,7 @@ return {
         shortcut = {},
         packages = { false },
         project = { enable = false },
-        mru = { enable = false, limit = 4 },
+        mru = { enable = false },
         footer = {},
       },
     })

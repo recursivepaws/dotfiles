@@ -17,39 +17,19 @@ return {
     on_attach = function(bufnr)
       local gs = require("gitsigns")
       local map = u.buf_map(bufnr)
-      -- Navigation
-      map("n", "]c", function()
-        if vim.wo.diff then
-          return "]c"
-        end
-        vim.schedule(function()
-          gs.nav_hunk({}, "next")
-        end)
-        return "<Ignore>"
-      end, {
-        expr = true,
-        desc = "Next git hunk",
-      })
-
-      map("n", "[c", function()
-        if vim.wo.diff then
-          return "[c"
-        end
-        vim.schedule(function()
-          gs.nav_hunk({}, "prev")
-        end)
-        return "<Ignore>"
-      end, {
-        expr = true,
-        desc = "Prev git hunk",
-      })
-
+      -- Nav
+      map("n", "<leader>v]", function(opts)
+        gs.nav_hunk(opts, "next")
+      end, { desc = "Next hunk" })
+      map("n", "<leader>v[", function(opts)
+        gs.nav_hunk(opts, "prev")
+      end, { desc = "Prev hunk" })
       -- Actions
       map("n", "<leader>vs", gs.stage_hunk, { desc = "Stage hunk" })
       map("n", "<leader>vr", gs.reset_hunk, { desc = "Reset hunk" })
       map("n", "<leader>vS", gs.stage_buffer, { desc = "Stage buffer" })
-      map("n", "<leader>vu", gs.undo_stage_hunk, { desc = "Undo stage hunk" })
       map("n", "<leader>vR", gs.reset_buffer, { desc = "Reset buffer" })
+      map("n", "<leader>vp", gs.preview_hunk, { desc = "Preview hunk" })
       map("n", "<leader>vp", gs.preview_hunk, { desc = "Preview hunk" })
       map("n", "<leader>vb", gs.toggle_current_line_blame, { desc = "Current blame line" })
       map("n", "<leader>vB", function()
@@ -59,7 +39,7 @@ return {
       })
       map("n", "<leader>vd", gs.diffthis, { desc = "Diff buffer" })
       map("n", "<leader>vD", function()
-        gs.diffthis("~")
+        gs.diffthis({}, "~")
       end, { desc = "Diff project" })
       -- map("n", "<leader>td", gs.toggle_deleted, { desc = "Toggle delete" })
 

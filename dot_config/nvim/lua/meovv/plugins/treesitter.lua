@@ -30,6 +30,9 @@ return {
       "python",
       "perl",
 
+      -- Without vim, cmdline and docs might break
+      "vim",
+
       -- Required for getting most of the `todo-comments` working
       "comment",
 
@@ -98,6 +101,7 @@ return {
         "css",
         "gitcommit",
         "gitignore",
+        "vimdoc",
         "help",
         "html",
         "javascript",

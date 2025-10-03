@@ -212,14 +212,6 @@ return {
               module = "lazydev.integrations.blink",
               score_offset = 90,
             },
-            -- markdown = {
-            --   name = "markdown",
-            --   module = "render-markdown.integ.blink",
-            --   enabled = function()
-            --     return vim.bo.filetype == "markdown"
-            --   end,
-            --   fallbacks = { "lsp" },
-            -- },
             emoji = {
               name = "emoji",
               module = "blink.compat.source",

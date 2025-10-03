@@ -2,11 +2,16 @@ return {
   "mistricky/codesnap.nvim",
   build = "make",
   keys = {
-    { "<leader>cc", "<cmd>CodeSnap<cr>",     mode = "x", desc = "Save selected code snapshot into clipboard" },
-    { "<leader>cs", "<cmd>CodeSnapSave<cr>", mode = "x", desc = "Save selected code snapshot in ~/Pictures/Code" },
+    { "<leader>cc", "<Esc><cmd>CodeSnap<cr>", mode = "x", desc = "Save selected code snapshot into clipboard" },
+    {
+      "<leader>cs",
+      "<Esc><cmd>CodeSnapSave<cr>",
+      mode = "x",
+      desc = "Save selected code snapshot in ~/Pictures/Code",
+    },
     {
       "<leader>ca",
-      "<cmd>CodeSnapSave<cr>",
+      "<Esc><cmd>CodeSnapSave<cr>",
       mode = "x",
       desc = "Save selected code snapshot as ASCII into clipboard",
     },
@@ -22,4 +27,7 @@ return {
     show_workspace = true,
     bg_theme = "summer",
   },
+  config = function(opts)
+    require("codesnap").setup(opts)
+  end,
 }

@@ -1,3 +1,4 @@
+local icons = require("meovv.utils.icons")
 return {
   "folke/which-key.nvim",
   config = function()
@@ -19,20 +20,20 @@ return {
     })
 
     wk.add({
-      { "<leader>c", group = "quickfix" },
-      { "<leader>f", group = "find" },
-      { "<leader>g", group = "goto", icon = "" },
-      { "<leader>k", group = "buffer" },
-      { "<leader>j", group = "tab" },
-      { "<leader>l", group = "lsp", icon = "" },
-      { "<leader>lt", group = "toggle" },
+      { "<leader>f",  group = "find",       icon = icons.magnify },
+      { "<leader>g",  group = "goto",       icon = icons.target },
+      { "<leader>k",  group = "buffer",     icon = icons.file },
+      { "<leader>j",  group = "tab",        icon = icons.tab },
+      { "<leader>l",  group = "lsp",        icon = icons.lsp },
       { "<leader>lw", group = "workspace" },
-      { "<leader>p", group = "lazy (plugins)" },
-      { "<leader>w", group = "session" },
-      { "<leader>v", group = "git" },
-      { "<leader>x", group = "diagnostics" },
-      { "<leader>b", group = "debugger" },
-      { "<leader>t", group = "testing" },
+      { "<leader>p",  group = "lazy" },
+      { "<leader>w",  group = "session" },
+      { "<leader>v",  group = "git",        icon = icons.git.hub },
+      { "<leader>x",  group = "diagnostics" },
+      -- { "<leader>c", group = "quickfix" },
+      -- { "<leader>lt", group = "toggle" },
+      -- { "<leader>b", group = "debugger" },
+      -- { "<leader>t", group = "testing" },
     })
   end,
   event = "VeryLazy",
