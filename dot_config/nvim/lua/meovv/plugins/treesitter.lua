@@ -87,11 +87,34 @@ return {
     -- Register octo as a markdown file
     vim.treesitter.language.register("markdown", "octo")
 
-    -- TODO: Maybe we want these ? see what else is new on the new version of treesitter
+    -- TODO: Figure out if we need to turn this on for anything
     -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-    -- vim.api.nvim_create_autocmd('FileType', {
-    --   pattern = { '<filetype>' },
-    --   callback = function() vim.treesitter.start() end,
-    -- })
+
+    -- TODO: Figure out what we actually need here
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = {
+        "bash",
+        "c",
+        "css",
+        "gitcommit",
+        "gitignore",
+        "help",
+        "html",
+        "javascript",
+        "json",
+        "lua",
+        "python",
+        "rust",
+        "sh",
+        "toml",
+        "typescript",
+        "javascript",
+        "tsx",
+        "yaml",
+      },
+      callback = function()
+        vim.treesitter.start()
+      end,
+    })
   end,
 }

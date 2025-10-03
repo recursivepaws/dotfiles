@@ -1,12 +1,11 @@
-### Dotfiles
-These dotfiles maintain a nice environment for coding across Arch and MacOs.
-Emphasis on Rust because it's what I use. 
+# Dotfiles
+I
 
 ### Dots
 - [chezmoi](https://www.chezmoi.io/)
 
 ### DE
-- [hyprland](https://hyprland.org/)
+- [niri](https://hyprland.org/)
 - [ignis](https://github.com/linkfrg/ignis)
 
 ### Editor

@@ -1,5 +1,5 @@
 return {
-  "MeanderingProgrammer/render-markdown.nvim",
+  --[[ "MeanderingProgrammer/render-markdown.nvim",
   lazy = true,
   ft = {
     "markdown",
@@ -11,5 +11,5 @@ return {
   opts = {
     completions = { lsp = { enabled = true }, blink = { enabled = true } },
     file_types = { "markdown", "octo" },
-  },
+  }, ]]
 }

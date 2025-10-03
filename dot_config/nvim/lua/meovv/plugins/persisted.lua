@@ -23,10 +23,10 @@ return {
     end
     p.setup({
       ignored_dirs = {
-        { "~",                     exact = true },
-        { "/",                     exact = true },
-        { "~/Documents/hightouch", exact = true },
-        { "~/Documents",           exact = true },
+        { "~",           exact = true },
+        { "/",           exact = true },
+        -- { "~/Documents/hightouch", exact = true },
+        { "~/Documents", exact = true },
       },
       use_git_branch = true,
     })
@@ -34,6 +34,7 @@ return {
     vim.api.nvim_create_autocmd("User", {
       pattern = "PersistedTelescopeLoadPre",
       callback = function()
+        vim.opt.swapfile = false
         local persisted = require("persisted")
 
         if vim.g.dont_save_session == true then
@@ -87,6 +88,9 @@ return {
 
           if current_branch == session_branch then
             vim.notify("Already on branch: " .. session_branch)
+            vim.defer_fn(function()
+              vim.opt.swapfile = true
+            end, 50)
             return
           end
 
@@ -108,6 +112,7 @@ return {
           end
         else
           vim.notify("No branch found in session filename")
+          vim.opt.swapfile = true
         end
       end,
     })
