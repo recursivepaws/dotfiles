@@ -272,7 +272,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Q { spawn "kitty"; }
     Mod+B { spawn "firefox-nightly"; }
-    Mod+E { spawn "nautilus"; }
+    Mod+E { spawn "thunar"; }
     // Mod+X { spawn "fuzzel"; }
     Mod+X { spawn "ignis" "toggle" "ignis_LAUNCHER"; }
     Mod+P { spawn "ignis" "toggle" "ignis_POWERMENU"; }
