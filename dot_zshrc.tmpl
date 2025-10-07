@@ -133,5 +133,11 @@ export BAT_THEME="Dracula"
 # Aliases
 alias rl="source ~/.zshrc; kill -SIGUSR1 $(pidof kitty)"
 alias cat="bat"
-alias ls="/bin/ls"
-alias l="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+alias lsd="eza -G"
+
+# 1password integration
+if [[ -f "$HOME/.config/op/plugins.sh" ]]; then
+  source "$HOME/.config/op/plugins.sh"
+else
+  echo "1password extensions not loaded."
+fi
