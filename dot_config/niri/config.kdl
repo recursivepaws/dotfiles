@@ -199,6 +199,7 @@ layout {
 spawn-at-startup "fcitx5" "-d"
 spawn-at-startup "ignis" "init"
 spawn-at-startup "xwayland-satellite"
+spawn-at-startup "dbus-update-activation-environment --all"
 
 environment {
   DISPLAY ":0"
