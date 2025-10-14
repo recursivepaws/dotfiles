@@ -104,7 +104,6 @@ return {
         "vimdoc",
         "help",
         "html",
-        "javascript",
         "json",
         "lua",
         "python",
@@ -112,8 +111,9 @@ return {
         "sh",
         "toml",
         "typescript",
+        "typescriptreact",
         "javascript",
-        "tsx",
+        "javascriptreact",
         "yaml",
       },
       callback = function()
