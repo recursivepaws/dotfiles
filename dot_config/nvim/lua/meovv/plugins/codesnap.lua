@@ -16,18 +16,17 @@ return {
       desc = "Save selected code snapshot as ASCII into clipboard",
     },
   },
-  ---@module 'codesnap'
-  opts = {
-    save_path = "~/Pictures/Code",
-    code_font_family = "CaskaydiaCove Nerd Font",
-    bg_x_padding = 33,
-    bg_y_padding = 33,
-    mac_window_bar = false,
-    has_breadcrumbs = true,
-    show_workspace = true,
-    bg_theme = "summer",
-  },
   config = function(opts)
-    require("codesnap").setup(opts)
+    require("codesnap").setup({
+      save_path = "~/Pictures/Code",
+      code_font_family = "CaskaydiaCove Nerd Font",
+      bg_x_padding = 33,
+      bg_y_padding = 33,
+      mac_window_bar = false,
+      has_breadcrumbs = true,
+      show_workspace = true,
+      bg_theme = "summer",
+      watermark = "",
+    })
   end,
 }
