@@ -103,7 +103,7 @@ return {
 							vim.log.levels.ERROR
 						)
 					else
-						vim.notify("Successfully switched to branch: " .. session_branch)
+						-- vim.notify("Successfully switched to branch: " .. session_branch)
 
 						-- When reloading this session, we don't want to save the blank buffers
 						-- and overwrite the session we're trying to load
