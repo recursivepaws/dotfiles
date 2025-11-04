@@ -55,9 +55,8 @@ return {
         -- Rust toml
         "tombi",
 
-        -- TODO: LaTex
-        -- "texlab",
-        -- "ltex"
+        -- Typst
+        "tinymist",
 
         -- Docker
         "dockerfile-language-server",
