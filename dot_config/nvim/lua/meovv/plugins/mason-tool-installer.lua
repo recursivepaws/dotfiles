@@ -57,6 +57,7 @@ return {
 
         -- Typst
         "tinymist",
+        "typstyle",
 
         -- Docker
         "dockerfile-language-server",

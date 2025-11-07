@@ -26,11 +26,11 @@ return {
         jsonc = { "prettier" },
         yaml = { "prettier" },
         lua = { "stylua" },
-        nix = { "nixfmt", "lsp" },
-        -- rust = { "lsp" }, -- rustaceanvim provides LSP formatting via rust-analyzer
+        nix = { "nixfmt" },
         sql = {},
         sh = { "shfmt" },
         zsh = { "shfmt" },
+        typst = { "typstyle" },
       },
       format_on_save = {
         timeout_ms = 2000,

@@ -7,14 +7,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local map = buf_map(args.buf)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
+    -- for _, client in ipairs(vim.lsp.get_clients())
     --- @param method vim.lsp.protocol.Method.ClientToServer
     local supports = function(method)
       return client:supports_method(method)
     end
-
-    -- vim.no
-    vim.notify(client.name .. " was attached...")
-    -- vim
 
     -- L prefix (perform LSP action)
     map("n", "<leader>lwa", vim.lsp.buf.add_workspace_folder, { desc = "Add workspace folder" })
@@ -26,7 +23,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if supports("textDocument/codeAction") then
       map("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code Actions" })
     end
-    if supports("textDocument/formatting") then
+    if client.server_capabilities.documentFormattingProvider then
       map("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format" })
     end
     if supports("textDocument/rangeFormatting") then
