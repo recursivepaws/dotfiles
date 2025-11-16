@@ -11,6 +11,7 @@ require("meovv.lsp.dockerls")
 require("meovv.lsp.tombi")
 require("meovv.lsp.nil")
 require("meovv.lsp.tinymist")
+require("meovv.lsp.zls")
 
 -- XXX: Terminal mental disorders
 -- require("meovv.lsp.eslint")

@@ -28,6 +28,7 @@ return {
         -- "eslint_d",
         "biome",
         "vtsls",
+        "zls",
         -- Yaml
         "circleci-yaml-language-server",
         "gh-actions-language-server",
