@@ -1,7 +1,7 @@
-local mason_bin = require("meovv.utils.lsp").mason_bin
+local prefer_system_binary = require("meovv.utils.lsp").prefer_system_binary
 
 vim.lsp.config("luals", {
-  cmd = { mason_bin .. "lua-language-server" },
+  cmd = { prefer_system_binary("lua-language-server") },
   filetypes = { "lua" },
   root_markers = { ".luarc.json", ".luarc.jsonc" },
   settings = {

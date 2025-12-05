@@ -1,7 +1,7 @@
 local mason_bin = require("meovv.utils.lsp").mason_bin
 
 vim.lsp.config("pyright", {
-	cmd = { mason_bin .. "pyright" },
+	cmd = { mason_bin .. "pyright-langserver", "--stdio" },
 	filetypes = {
 		"python",
 	},
