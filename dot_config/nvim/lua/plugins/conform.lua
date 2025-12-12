@@ -4,10 +4,10 @@ return {
   config = function()
     require("conform").setup({
       formatters = {
-        rustfmt = function()
-          vim.cmd.RustFmt()
-          return {}
-        end,
+        -- rustfmt = function()
+        --   vim.cmd.RustFmt()
+        --   return {}
+        -- end,
         prettier = {
           command = mason_bin .. "prettier",
           args = { "--stdin-filepath", "$FILENAME" },
@@ -21,7 +21,7 @@ return {
         }),
       },
       formatters_by_ft = {
-        rust = { "rustfmt" },
+        -- rust = { "rustfmt" },
         javascript = { "prettier" },
         javascriptreact = { "prettier" },
         typescript = { "prettier" },

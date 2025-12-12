@@ -86,14 +86,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end,
       })
     else
-      if not supports("textDocument/willSaveWaitUntil") and supports("textDocument/formatting") then
+      if client.name == "rust-analyzer" then
         vim.api.nvim_create_autocmd("BufWritePre", {
           group = augroup,
           buffer = args.buf,
           callback = function()
-            vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+            vim.cmd.RustFmt()
           end,
         })
+      else
+        if not supports("textDocument/willSaveWaitUntil") and supports("textDocument/formatting") then
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            group = augroup,
+            buffer = args.buf,
+            callback = function()
+              vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+            end,
+          })
+        end
       end
     end
 
