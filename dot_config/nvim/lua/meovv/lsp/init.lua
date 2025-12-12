@@ -33,5 +33,7 @@ require("meovv.lsp.gh-actions")
 require("meovv.lsp.diagnostics")
 require("meovv.lsp.mappings")
 
+vim.lsp.config("rust-analyzer", {})
+
 -- Auto attach mappings
 require("meovv.lsp.attach")

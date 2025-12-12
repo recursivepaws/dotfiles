@@ -55,6 +55,7 @@ return {
         "shfmt",
         -- Rust toml
         "tombi",
+        "rust-analyzer",
 
         -- Typst
         "tinymist",
