@@ -18,12 +18,12 @@ return {
       local gs = require("gitsigns")
       local map = u.buf_map(bufnr)
       -- Nav
-      map("n", "<leader>v]", function(opts)
-        gs.nav_hunk(opts, "next")
-      end, { desc = "Next hunk" })
-      map("n", "<leader>v[", function(opts)
-        gs.nav_hunk(opts, "prev")
-      end, { desc = "Prev hunk" })
+      -- map("n", "<leader>v]", function(opts)
+      --   gs.nav_hunk(opts, "next")
+      -- end, { desc = "Next hunk" })
+      -- map("n", "<leader>v[", function(opts)
+      --   gs.nav_hunk(opts, "prev")
+      -- end, { desc = "Prev hunk" })
       -- Actions
       map("n", "<leader>vs", gs.stage_hunk, { desc = "Stage hunk" })
       map("n", "<leader>vr", gs.reset_hunk, { desc = "Reset hunk" })

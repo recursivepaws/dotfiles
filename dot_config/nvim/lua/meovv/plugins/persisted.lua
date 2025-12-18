@@ -86,7 +86,7 @@ return {
           local current_branch = vim.fn.systemlist("git branch --show-current")[1]
 
           if current_branch == session_branch then
-            vim.notify("Already on branch: " .. session_branch)
+            -- vim.notify("Already on branch: " .. session_branch)
             -- Reload every buffer from disk on deference
             vim.defer_fn(function()
               vim.cmd("windo if @% != '' | edit! | endif")
@@ -94,7 +94,7 @@ return {
             return
           end
 
-          vim.notify("Switching from " .. current_branch .. " to " .. session_branch)
+          -- vim.notify("Switching from " .. current_branch .. " to " .. session_branch)
           local result = vim.fn.system("git checkout --quiet " .. vim.fn.shellescape(session_branch))
 
           if vim.v.shell_error ~= 0 then

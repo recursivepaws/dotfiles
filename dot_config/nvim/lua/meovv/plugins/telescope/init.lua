@@ -15,9 +15,16 @@ return {
     "olimorris/persisted.nvim",
   },
   init = function()
+    local actions = require("telescope.actions")
     require("telescope").setup({
       defaults = {
         layout_config = {},
+        i = {
+          ["<c-d>"] = actions.delete_buffer,
+        },
+        n = {
+          ["<c-d>"] = actions.delete_buffer,
+        },
       },
       pickers = {
         -- lsp_references = {
