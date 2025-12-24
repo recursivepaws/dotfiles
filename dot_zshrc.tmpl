@@ -86,7 +86,7 @@ plugins=(
   starship
   zsh-syntax-highlighting
 )
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 # opam configuration
 [[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh" >/dev/null 2>/dev/null
 # Use fd instead of fzf
@@ -133,6 +133,7 @@ export BAT_THEME="Dracula"
 # Aliases
 alias rl="source ~/.zshrc; kill -SIGUSR1 $(pidof kitty)"
 alias cat="bat"
+alias g="git"
 alias lsd="eza -G"
 alias kys="sudo poweroff -ff"
 
