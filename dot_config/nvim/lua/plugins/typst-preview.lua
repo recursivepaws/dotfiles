@@ -6,7 +6,7 @@ return {
   opts = {
     dependencies_bin = {
       ["tinymist"] = mason_bin .. "tinymist",
-      ["websocat"] = "websocat",
+      -- ["websocat"] = "websocat",
     },
   },
 }
