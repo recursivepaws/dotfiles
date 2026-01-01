@@ -45,8 +45,11 @@ return {
         "codelldb",
         -- Typescript
         -- "typescript-language-server",
+
         -- Python
-        "pyright",
+        "basedpyright",
+        "ruff",
+
         -- WGPU
         "wgsl-analyzer",
         -- Bash

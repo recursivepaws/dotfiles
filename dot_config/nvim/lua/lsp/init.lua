@@ -2,7 +2,8 @@
 
 -- Real programming languages
 require("lsp.luals")
-require("lsp.pyright")
+require("lsp.basedpyright")
+require("lsp.ruff")
 require("lsp.sqls")
 require("lsp.wgsl")
 require("lsp.bashls")
