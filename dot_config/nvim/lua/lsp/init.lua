@@ -34,7 +34,7 @@ require("lsp.gh-actions")
 require("lsp.diagnostics")
 require("lsp.mappings")
 
-vim.lsp.config("rust-analyzer", {})
+-- vim.lsp.config("rust-analyzer", {})
 
 -- Auto attach mappings
 require("lsp.attach")

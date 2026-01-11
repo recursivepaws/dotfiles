@@ -21,6 +21,7 @@ return {
 
     wk.add({
       { "<leader>f",  group = "find",       icon = icons.magnify },
+      { "<leader>d",  group = "dap",        icon = icons.debug },
       { "<leader>g",  group = "goto",       icon = icons.target },
       { "<leader>k",  group = "buffer",     icon = icons.file },
       { "<leader>j",  group = "tab",        icon = icons.tab },
