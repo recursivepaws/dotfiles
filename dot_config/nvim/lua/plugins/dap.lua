@@ -1,5 +1,6 @@
 local map = require("utils").map
 local util = require("utils.lsp")
+local icons = require("utils.icons")
 
 return {
   {
@@ -49,6 +50,12 @@ return {
           "codelldb",
         },
       })
+
+      vim.cmd("hi DapBreakpointColor guifg=#fa4848")
+      vim.fn.sign_define(
+        "DapBreakpoint",
+        { text = icons.debug, texthl = "DapBreakpointColor", linehl = "", numhl = "" }
+      )
 
       dap.listeners.after.event_initialized["dapui_config"] = dapui.open
       dap.listeners.before.event_terminated["dapui_config"] = dapui.close
