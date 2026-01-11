@@ -8,6 +8,7 @@ return {
     init = function()
       map("n", "<leader>dt", vim.cmd.DapTerminate, { desc = "Terminate" })
       map("n", "<leader>dn", vim.cmd.DapNew, { desc = "New" })
+      map("n", "<leader>dc", vim.cmd.DapContinue, { desc = "Continue" })
       map("n", "<leader>db", vim.cmd.DapToggleBreakpoint, { desc = "Toggle Breakpoint" })
       map("n", "<leader>de", vim.cmd.DapEval, { desc = "Evaluate" })
       map("n", "<leader>di", vim.cmd.DapEval, { desc = "Step Into" })
