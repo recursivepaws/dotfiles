@@ -23,12 +23,58 @@ vim.api.nvim_create_autocmd("LspAttach", {
     if supports("textDocument/codeAction") then
       map("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code Actions" })
     end
+
+    -- Disable formatting for biome and vtsls
+    -- vim.notify(
+    --   "lsp attached: "
+    --   .. client.name
+    --   .. "; formatting: "
+    --   .. string.format("%s", client.server_capabilities.documentFormattingProvider)
+    -- )
+
+    vim.api.nvim_create_autocmd("CursorHold", {
+      buffer = args.buf,
+      callback = function()
+        vim.lsp.buf.hover({ focusable = false, silent = true })
+      end,
+    })
+    vim.lsp.handlers["textDocument/hover"] =
+        vim.lsp.with(vim.lsp.handlers.hover, { focusable = false, border = "rounded", silent = true })
+
+    vim.keymap.set("n", "K", function()
+      vim.lsp.buf.hover()
+    end, { desc = "Show hover" })
+
+    local format = function()
+      local filetype = vim.bo[args.buf].filetype
+      if client.name == "eslint" then
+        if vim.fn.exists(":LspEslintFixAll") > 0 then
+          vim.cmd("LspEslintFixAll")
+        end
+      else
+        if client.name == "rust-analyzer" then
+          vim.cmd.RustFmt()
+        elseif
+            (filetype == "typescript" or filetype == "javascript")
+            and (client.name == "biome" or client.name == "vtsls")
+        then
+          -- Do nothing
+          -- I want `prettier` to handle this instead
+        else
+          if not supports("textDocument/willSaveWaitUntil") and supports("textDocument/formatting") then
+            vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+          end
+        end
+      end
+    end
+
     if client.server_capabilities.documentFormattingProvider then
-      map("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format" })
+      map("n", "<leader>lf", format, { desc = "Format" })
     end
-    if supports("textDocument/rangeFormatting") then
-      map("v", "<leader>lf", vim.lsp.buf.format, { desc = "Range Format" })
-    end
+    -- TODO: range formatting
+    -- if supports("textDocument/rangeFormatting") then
+    --   map("v", "<leader>lf", vim.lsp.buf.format, { desc = "Range Format" })
+    -- end
     if supports("textDocument/rename") then
       map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
     end
@@ -68,44 +114,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
     -- end
 
-    -- Toggle inlay hints
-
-    -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
-    -- if supports("textDocument/completion") then
-    -- vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
-    -- end
-
-    if client.name == "eslint" then
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
-        buffer = args.buf,
-        callback = function()
-          if vim.fn.exists(":LspEslintFixAll") > 0 then
-            vim.cmd("LspEslintFixAll")
-          end
-        end,
-      })
-    else
-      if client.name == "rust-analyzer" then
-        vim.api.nvim_create_autocmd("BufWritePre", {
-          group = augroup,
-          buffer = args.buf,
-          callback = function()
-            vim.cmd.RustFmt()
-          end,
-        })
-      else
-        if not supports("textDocument/willSaveWaitUntil") and supports("textDocument/formatting") then
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
-            buffer = args.buf,
-            callback = function()
-              vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
-            end,
-          })
-        end
-      end
-    end
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = args.buf,
+      callback = format,
+    })
 
     -- Rustaceanvim has some custom options that we need to overwrite
     if client.name == "rust-analyzer" then

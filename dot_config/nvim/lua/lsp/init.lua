@@ -2,6 +2,9 @@
 
 -- Real programming languages
 require("lsp.luals")
+-- TODO: https://github.com/EmmyLuaLs/emmylua-analyzer-rust
+-- apparently much faster
+-- require("lsp.emmylua_ls")
 require("lsp.basedpyright")
 require("lsp.ruff")
 require("lsp.sqls")

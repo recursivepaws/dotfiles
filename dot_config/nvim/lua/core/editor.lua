@@ -11,26 +11,26 @@ cmd([[
 local augroup_name = "MeovvNvimEditor"
 local group = vim.api.nvim_create_augroup(augroup_name, { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
-	command = [[%s/\s\+$//e]],
-	group = group,
+  command = [[%s/\s\+$//e]],
+  group = group,
 })
 
 -- Make sure we load the right spacing for web files
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-	pattern = { "*.js", "*.jsx", "*.tsx", "*.ts" },
-	callback = function()
-		opt_local.expandtab = true
-		opt_local.shiftwidth = 2
-		opt_local.tabstop = 2
-	end,
+  pattern = { "*.js", "*.jsx", "*.tsx", "*.ts" },
+  callback = function()
+    opt_local.expandtab = true
+    opt_local.shiftwidth = 2
+    opt_local.tabstop = 2
+  end,
 })
 
 -- Mark the weird filetype i use as being wgsl
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-	pattern = "*.wgsl",
-	callback = function()
-		vim.bo.filetype = "wgsl"
-	end,
+  pattern = "*.wgsl",
+  callback = function()
+    vim.bo.filetype = "wgsl"
+  end,
 })
 
 g.mapleader = " "
@@ -63,12 +63,12 @@ opt.laststatus = 2
 --[[ opt.lazyredraw = true ]]
 opt.list = true
 opt.listchars = {
-	tab = "❘-",
-	trail = "·",
-	lead = "·",
-	extends = "»",
-	precedes = "«",
-	nbsp = "×",
+  tab = "❘-",
+  trail = "·",
+  lead = "·",
+  extends = "»",
+  precedes = "«",
+  nbsp = "×",
 }
 opt.mouse = "a"
 opt.number = true
@@ -94,7 +94,7 @@ opt.shortmess = opt.shortmess + { c = true }
 opt.redrawtime = 1500
 opt.timeoutlen = 200
 opt.ttimeoutlen = 10
-opt.updatetime = 100
+opt.updatetime = 1000
 
 -- theme
 opt.termguicolors = true
