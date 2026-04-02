@@ -32,12 +32,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     --   .. string.format("%s", client.server_capabilities.documentFormattingProvider)
     -- )
 
-    vim.api.nvim_create_autocmd("CursorHold", {
-      buffer = args.buf,
-      callback = function()
-        vim.lsp.buf.hover({ focusable = false, silent = true })
-      end,
-    })
+    -- vim.api.nvim_create_autocmd("CursorHold", {
+    --   buffer = args.buf,
+    --   callback = function()
+    --     vim.lsp.buf.hover({ focusable = false, silent = true })
+    --   end,
+    -- })
+    --
     vim.lsp.handlers["textDocument/hover"] =
         vim.lsp.with(vim.lsp.handlers.hover, { focusable = false, border = "rounded", silent = true })
 

@@ -1,4 +1,4 @@
-" ftplugin/sloka.vim  — buffer-local settings for .sloka files
+" ftplugin/nirukta.vim  — buffer-local settings for nirukta files
 
 let s:fmt = expand('~/Software/nirukta/format.py')
 let &l:formatprg = 'uv run ' . s:fmt . ' 2>/dev/null'

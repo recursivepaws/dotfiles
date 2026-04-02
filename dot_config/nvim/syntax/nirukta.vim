@@ -1,7 +1,7 @@
 if exists("b:current_syntax")
   finish
 endif
-let b:current_syntax = "sloka"
+let b:current_syntax = "nirukta"
 
 " ── Structural markers ──────────────────────────────────────────────────────
 " === citation text ===
