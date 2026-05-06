@@ -29,6 +29,8 @@ return {
         "biome",
         "vtsls",
         "zls",
+
+        "nil",
         -- Yaml
         "circleci-yaml-language-server",
         "gh-actions-language-server",
