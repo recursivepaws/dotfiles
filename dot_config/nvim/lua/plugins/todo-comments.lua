@@ -19,8 +19,6 @@ local icons = require("utils.icons")
 
 -- local dracula = require("").setup()
 local palette = require("nightfox.palette").load("carbonfox")
--- print(vim.inspect(palette))
--- vim.notify(vim.inspect(palette))
 
 return {
   "folke/todo-comments.nvim",
