@@ -1,6 +1,7 @@
 vim.lsp.config("tsgo", {
   cmd = {
     "pnpm",
+    "exec",
     "tsgo",
     "--lsp",
     "-stdio",

@@ -1,7 +1,7 @@
 local mason_bin = require("utils.lsp").mason_bin
 
 vim.lsp.config("biome", {
-  cmd = { "pnpm", "biome", "lsp-proxy" },
+  cmd = { "pnpm", "exec", "biome", "lsp-proxy" },
   filetypes = {
     "javascript",
     "javascriptreact",
