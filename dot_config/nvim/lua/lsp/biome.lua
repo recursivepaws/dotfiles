@@ -9,7 +9,10 @@ vim.lsp.config("biome", {
     "typescriptreact",
     "json",
   },
-  root_markers = { "biome.json", ".biome.json", "package.json", ".git" },
+  -- Root at VCS root so Biome's `"extends": "//"` in nested configs
+  -- (e.g. packages/app/biome.jsonc) resolves to the repo root config.
+  -- Biome handles per-file config resolution internally.
+  root_markers = { ".git" },
   single_file_support = true,
 })
 

@@ -23,8 +23,9 @@ require("lsp.zls")
 
 -- INFO: Treatable mental disorders
 require("lsp.html")
--- require("lsp.tsgo")
-require("lsp.vtsls")
+
+require("lsp.tsgo")
+-- require("lsp.vtsls")
 require("lsp.biome")
 
 -- require("lsp.jsonls")
