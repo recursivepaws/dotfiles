@@ -17,7 +17,7 @@ syn match slokaEtymGloss  /{[^}]*}/
 
 " ── Sandhi compound operators ────────────────────────────────────────────────
 " +  joins components,  =  introduces the sandhi surface form
-syn match slokaSandhi     /[>+=]/
+syn match slokaSandhi     /[->+=]/
 " Parentheses for nested sandhi groups  (a+b=ab)
 syn match slokaParen      /[()]/
 
